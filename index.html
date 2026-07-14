@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CFA Level 1 — Flashcards (EN/VN)</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="theme-color" content="#0f6e56">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CFA Flashcards">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Be+Vietnam+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f4ee; --panel:#ffffff; --ink:#1c2826; --muted:#5a6b67;
+  --line:#e2ddd2; --accent:#0f6e56; --accent-deep:#08423a; --accent-soft:#e1f0ea;
+  --amber:#b07514; --amber-soft:#fbf0db;
+  --known:#2f8f4f; --unknown:#c0492a;
+  --hl-bg:#fbf0db; --hl-ink:#6e480c;
+  --vi:#1f5d99; --note-bg:#fffdf7;
+  --shadow:0 1px 2px rgba(28,40,38,.05), 0 8px 24px rgba(28,40,38,.07);
+}
+[data-theme="dark"]{
+  --bg:#171d1b; --panel:#1f2725; --ink:#eae6dc; --muted:#a4afab;
+  --line:#33403c; --accent:#4db89b; --accent-deep:#bfe6da; --accent-soft:#123a33;
+  --amber:#e0b24a; --amber-soft:#3a2f15;
+  --known:#5cc47a; --unknown:#e5836a;
+  --hl-bg:#4a3d17; --hl-ink:#f7e6bf;
+  --vi:#82b2e2; --note-bg:#232b28;
+  --shadow:0 8px 24px rgba(0,0,0,.42);
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Be Vietnam Pro',system-ui,-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
+  transition:background .25s,color .25s;}
+header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,var(--panel),var(--bg));
+  border-bottom:1px solid var(--line);box-shadow:var(--shadow);}
+.hwrap{max-width:1120px;margin:0 auto;padding:18px 22px 14px;}
+.titlerow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.brand{display:flex;flex-direction:column;}
+.chap{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:600;}
+h1{font-family:'Playfair Display',serif;font-size:1.5rem;margin:.1rem 0 0;font-weight:700;
+  letter-spacing:-.2px;color:var(--accent-deep);}
+h1 span{color:var(--accent);}
+.spacer{flex:1;}
+.btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;
+  padding:8px 14px;font-size:12.5px;cursor:pointer;font-weight:600;transition:.18s;white-space:nowrap;}
+.btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
+.controls{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:14px;}
+input[type=search]{flex:1;min-width:200px;border:1px solid var(--line);background:var(--panel);color:var(--ink);
+  border-radius:999px;padding:10px 16px;font-size:14px;outline:none;font-family:inherit;}
+input[type=search]:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);}
+select{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;
+  padding:10px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;}
+.topics{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
+.chip{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;
+  padding:5px 13px;font-size:12px;cursor:pointer;font-weight:600;transition:.18s;}
+.chip:hover{color:var(--accent-deep);border-color:var(--accent);background:var(--accent-soft);}
+.chip.active{background:var(--accent);color:#fff;border-color:var(--accent);}
+.stats{max-width:1120px;margin:16px auto 0;padding:0 22px;display:flex;gap:14px;flex-wrap:wrap;
+  font-size:13px;color:var(--muted);align-items:center;}
+.bar{flex:1;min-width:160px;height:9px;border-radius:6px;background:var(--line);overflow:hidden;}
+.bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#2f8f4f);width:0;transition:width .3s;}
+.pill{padding:3px 12px;border-radius:999px;font-weight:600;font-size:12px;}
+.pill.k{background:color-mix(in srgb,var(--known) 20%,transparent);color:var(--known);}
+.pill.u{background:color-mix(in srgb,var(--unknown) 20%,transparent);color:var(--unknown);}
+main{max-width:1120px;margin:0 auto;padding:22px;}
+.deck{display:grid;gap:18px;align-items:start;}
+.card{perspective:1800px;}
+.inner{position:relative;width:100%;min-height:200px;transition:transform .55s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d;}
+.card.flipped .inner{transform:rotateY(180deg);}
+.face{backface-visibility:hidden;-webkit-backface-visibility:hidden;
+  background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:22px 24px;
+  box-shadow:var(--shadow);display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s;}
+.front{position:absolute;inset:0;cursor:pointer;}
+.back{position:relative;transform:rotateY(180deg);}
+.card:hover .face{box-shadow:0 3px 8px rgba(28,40,38,.08),0 18px 40px rgba(28,40,38,.13);}
+.meta{display:flex;align-items:center;gap:8px;margin-bottom:12px;}
+.tag{display:inline-flex;align-items:center;font-size:10.5px;font-weight:600;text-transform:uppercase;
+  letter-spacing:.06em;color:#fff;padding:4px 10px;border-radius:999px;background:var(--accent);}
+.num{font-size:11px;color:var(--muted);font-family:'Playfair Display',serif;}
+.hint{margin-left:auto;font-size:11px;color:var(--muted);}
+.term{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;line-height:1.25;margin:auto 0;
+  color:var(--accent-deep);cursor:pointer;}
+.term .vi{display:block;font-family:'Be Vietnam Pro',sans-serif;font-size:1.02rem;font-weight:600;
+  color:var(--vi);margin-top:8px;}
+.def{font-size:15.5px;line-height:1.72;margin:2px 0 auto;cursor:text;}
+.def .en{color:var(--ink);}
+.def .vi{display:block;color:var(--vi);margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);}
+.def mark{background:var(--hl-bg);color:var(--hl-ink);border-radius:4px;padding:.02em .16em;cursor:pointer;
+  -webkit-box-decoration-break:clone;box-decoration-break:clone;transition:box-shadow .15s;}
+.def mark:hover{box-shadow:inset 0 0 0 2px var(--amber);}
+.selhint{font-size:11px;color:var(--muted);margin-top:10px;opacity:.85;}
+.selhint b{color:var(--amber);font-weight:600;}
+.cardfoot{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;align-items:center;}
+.sbtn{border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:999px;
+  padding:6px 13px;font-size:12px;font-weight:600;cursor:pointer;transition:.18s;}
+.sbtn:hover{border-color:var(--accent);color:var(--accent);}
+.sbtn.k.on{background:var(--known);color:#fff;border-color:var(--known);}
+.sbtn.u.on{background:var(--unknown);color:#fff;border-color:var(--unknown);}
+.sbtn.erase{margin-left:auto;}
+.sbtn.erase:hover{border-color:var(--amber);color:var(--amber);}
+.notewrap{position:relative;margin-top:16px;}
+.notewrap::before{content:'Ghi chú';position:absolute;top:-.68rem;left:1rem;background:var(--amber);color:#fff;
+  font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:.14rem .6rem;border-radius:999px;}
+.note{width:100%;border:1px dashed var(--amber);background:var(--note-bg);color:var(--ink);
+  border-radius:12px;padding:14px 14px 10px;font-size:13.5px;font-family:inherit;line-height:1.55;
+  resize:vertical;min-height:46px;outline:none;transition:.18s;}
+.note:focus{box-shadow:0 0 0 3px var(--amber-soft);}
+.note::placeholder{color:var(--muted);opacity:.7;}
+.empty{text-align:center;color:var(--muted);padding:60px 20px;font-size:15px;}
+.count{font-size:12px;color:var(--muted);}
+footer{max-width:1120px;margin:0 auto;padding:14px 22px 44px;color:var(--muted);font-size:12.5px;text-align:center;
+  border-top:1px solid var(--line);}
+[data-lang="en"] .vi{display:none!important;}
+[data-lang="vi"] .en{display:none!important;}
+[data-lang="vi"] .def .vi{border-top:none;margin-top:0;padding-top:0;}
+@media(min-width:720px){.deck{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body data-lang="both">
+<header>
+  <div class="hwrap">
+    <div class="titlerow">
+      <div class="brand"><span class="chap">Tài liệu ôn thi CFA</span><h1>CFA <span>Level&nbsp;I</span> Flashcards</h1></div>
+      <span class="count" id="count"></span>
+      <div class="spacer"></div>
+      <button class="btn" id="lang">🌐 EN + VN</button>
+      <button class="btn" id="flipall">👁 Hiện nghĩa</button>
+      <button class="btn" id="shuffle">🔀 Shuffle</button>
+      <button class="btn" id="reset">↺ Reset</button>
+      <button class="btn" id="theme">🌙 Dark</button>
+    </div>
+    <div class="controls">
+      <input type="search" id="search" placeholder="Search EN or VN… / Tìm thuật ngữ…">
+      <select id="filterStatus">
+        <option value="all">All cards</option>
+        <option value="unknown">Still learning</option>
+        <option value="known">Known</option>
+        <option value="unseen">Unmarked</option>
+        <option value="noted">With notes</option>
+      </select>
+    </div>
+    <div class="topics" id="topics"></div>
+  </div>
+</header>
+
+<div class="stats">
+  <span class="pill k" id="pk">Known 0</span>
+  <span class="pill u" id="pu">Learning 0</span>
+  <div class="bar"><i id="barfill"></i></div>
+  <span id="pct">0%</span>
+</div>
+
+<main>
+  <div class="deck" id="deck"></div>
+  <div class="empty" id="empty" style="display:none">No cards match. / Không có thẻ phù hợp.</div>
+</main>
+<footer>
+  Tap a card to flip · Mark Known/Learning · Highlight · Add notes — all saved in your browser. &nbsp;|&nbsp; Nhấn thẻ để lật · English + Tiếng Việt · 270 thuật ngữ, 10 chủ đề CFA.
+</footer>
+
+<script>
+/* ============ DATA: [EN term, EN def, VI term, VI def] ============ */
+const DATA = {
+"Quantitative Methods":[
+["Time value of money (TVM)","The principle that a unit of currency today is worth more than the same unit in the future because of its earning capacity; the basis for discounting and compounding.","Giá trị thời gian của tiền","Nguyên tắc rằng một đồng tiền hôm nay có giá trị hơn cùng số tiền đó trong tương lai vì khả năng sinh lời; là nền tảng của chiết khấu và lãi kép."],
+["Effective annual rate (EAR)","The actual annual return accounting for compounding: EAR = (1 + periodic rate)^m − 1, where m is the number of compounding periods per year.","Lãi suất thực hàng năm","Lợi suất năm thực tế có tính gộp lãi: EAR = (1 + lãi suất kỳ)^m − 1, với m là số kỳ ghép lãi mỗi năm."],
+["Nominal vs. real interest rate","Nominal rate includes expected inflation; real rate ≈ nominal − expected inflation (Fisher relation). Real reflects purchasing-power growth.","Lãi suất danh nghĩa và thực","Lãi suất danh nghĩa gồm lạm phát kỳ vọng; lãi suất thực ≈ danh nghĩa − lạm phát kỳ vọng. Lãi suất thực phản ánh tăng trưởng sức mua."],
+["Required rate of return","The minimum return investors demand = real risk-free rate + inflation premium + risk premiums (default, liquidity, maturity).","Tỷ suất sinh lời yêu cầu","Lợi suất tối thiểu nhà đầu tư đòi hỏi = lãi suất phi rủi ro thực + phần bù lạm phát + các phần bù rủi ro (vỡ nợ, thanh khoản, kỳ hạn)."],
+["Net present value (NPV)","Sum of present values of all cash flows discounted at the required rate; positive NPV adds value. Accept if NPV > 0.","Giá trị hiện tại ròng","Tổng giá trị hiện tại của toàn bộ dòng tiền chiết khấu theo tỷ suất yêu cầu; NPV dương tạo giá trị. Chấp nhận nếu NPV > 0."],
+["Internal rate of return (IRR)","The discount rate that makes NPV = 0. Accept a project if IRR > required rate; can give conflicting rankings vs. NPV.","Tỷ suất hoàn vốn nội bộ","Tỷ lệ chiết khấu làm NPV = 0. Chấp nhận dự án nếu IRR > tỷ suất yêu cầu; đôi khi xếp hạng mâu thuẫn với NPV."],
+["Money-weighted return","An IRR of a portfolio that reflects the timing and size of cash inflows/outflows; sensitive to when the investor adds or withdraws funds.","Lợi suất trọng số theo tiền","IRR của danh mục, phản ánh thời điểm và quy mô dòng tiền vào/ra; nhạy cảm với thời điểm nhà đầu tư nạp hay rút vốn."],
+["Time-weighted return","Geometric mean of period returns; removes the effect of cash-flow timing, so it is preferred for evaluating manager performance.","Lợi suất trọng số theo thời gian","Trung bình nhân của lợi suất từng kỳ; loại bỏ ảnh hưởng thời điểm dòng tiền, nên được ưu tiên để đánh giá hiệu quả nhà quản lý."],
+["Harmonic mean","Used to average ratios such as cost per share (dollar-cost averaging): n ÷ Σ(1/xᵢ). Always ≤ geometric ≤ arithmetic mean.","Trung bình điều hòa","Dùng để lấy trung bình các tỷ số như giá bình quân mỗi cổ phiếu: n ÷ Σ(1/xᵢ). Luôn ≤ trung bình nhân ≤ trung bình cộng."],
+["Standard deviation & variance","Variance is the average squared deviation from the mean; standard deviation is its square root — a measure of total dispersion/risk.","Độ lệch chuẩn và phương sai","Phương sai là trung bình bình phương độ lệch so với giá trị trung bình; độ lệch chuẩn là căn bậc hai của nó — thước đo mức phân tán/rủi ro tổng."],
+["Coefficient of variation (CV)","Standard deviation ÷ mean; a scale-free measure of risk per unit of return — lower CV is preferred.","Hệ số biến thiên","Độ lệch chuẩn ÷ trung bình; thước đo không phụ thuộc đơn vị về rủi ro trên mỗi đơn vị lợi suất — CV thấp hơn tốt hơn."],
+["Skewness","Asymmetry of a distribution. Positive (right) skew: mean > median > mode; negative (left) skew: mean < median < mode.","Độ lệch (Skewness)","Tính bất đối xứng của phân phối. Lệch phải (dương): trung bình > trung vị > mode; lệch trái (âm): trung bình < trung vị < mode."],
+["Kurtosis","Degree of peakedness/fat tails. Leptokurtic (excess kurtosis > 0) has fatter tails than normal, implying more extreme outcomes.","Độ nhọn (Kurtosis)","Mức độ nhọn/đuôi dày. Leptokurtic (độ nhọn dư > 0) có đuôi dày hơn phân phối chuẩn, hàm ý nhiều kết quả cực đoan hơn."],
+["Normal distribution","Symmetric, bell-shaped, fully described by mean and variance; ~68/95/99% of observations fall within 1/2/3 standard deviations.","Phân phối chuẩn","Đối xứng, hình chuông, được xác định đầy đủ bởi trung bình và phương sai; ~68/95/99% quan sát nằm trong 1/2/3 độ lệch chuẩn."],
+["Confidence interval","A range expected to contain a parameter with a stated probability, e.g. 90% CI = mean ± 1.65σ; 95% = ±1.96σ; 99% = ±2.58σ.","Khoảng tin cậy","Khoảng kỳ vọng chứa tham số với xác suất cho trước, ví dụ 90% = trung bình ± 1.65σ; 95% = ±1.96σ; 99% = ±2.58σ."],
+["Central limit theorem","For a large sample (n ≥ 30), the sampling distribution of the mean is approximately normal regardless of the population's shape.","Định lý giới hạn trung tâm","Với mẫu lớn (n ≥ 30), phân phối mẫu của trung bình xấp xỉ chuẩn bất kể hình dạng của tổng thể."],
+["Standard error","The standard deviation of the sampling distribution of the mean = σ/√n; falls as sample size rises.","Sai số chuẩn","Độ lệch chuẩn của phân phối mẫu của trung bình = σ/√n; giảm khi cỡ mẫu tăng."],
+["Null vs. alternative hypothesis","Null (H₀) is the statement tested (often 'no effect'); alternative (Hₐ) is accepted if H₀ is rejected. You never 'accept' H₀.","Giả thuyết không và giả thuyết đối","Giả thuyết không (H₀) là điều được kiểm định (thường 'không có tác động'); giả thuyết đối (Hₐ) được chấp nhận nếu bác bỏ H₀. Không bao giờ 'chấp nhận' H₀."],
+["Type I vs. Type II error","Type I: rejecting a true null (probability = significance level α). Type II: failing to reject a false null.","Sai lầm loại I và loại II","Loại I: bác bỏ H₀ đúng (xác suất = mức ý nghĩa α). Loại II: không bác bỏ H₀ sai."],
+["p-value","The smallest significance level at which the null can be rejected; reject H₀ if p-value < α.","Giá trị p","Mức ý nghĩa nhỏ nhất mà tại đó có thể bác bỏ H₀; bác bỏ H₀ nếu p-value < α."],
+["Correlation coefficient","Standardized measure of linear association between two variables, ranging from −1 to +1; correlation does not imply causation.","Hệ số tương quan","Thước đo chuẩn hóa mức liên hệ tuyến tính giữa hai biến, từ −1 đến +1; tương quan không hàm ý quan hệ nhân quả."],
+["Linear regression","Models a dependent variable as a linear function of independent variable(s): Y = b₀ + b₁X + ε; b₁ is the slope/sensitivity.","Hồi quy tuyến tính","Mô hình hóa biến phụ thuộc như hàm tuyến tính của biến độc lập: Y = b₀ + b₁X + ε; b₁ là độ dốc/độ nhạy."],
+["Coefficient of determination (R²)","Proportion of the variation in the dependent variable explained by the independent variable(s); equals the squared correlation in simple regression.","Hệ số xác định (R²)","Tỷ lệ biến thiên của biến phụ thuộc được giải thích bởi biến độc lập; bằng bình phương hệ số tương quan trong hồi quy đơn."],
+["Permutations vs. combinations","Permutations count ordered arrangements (nPr); combinations count unordered selections (nCr). Order matters only for permutations.","Chỉnh hợp và tổ hợp","Chỉnh hợp đếm các sắp xếp có thứ tự (nPr); tổ hợp đếm các lựa chọn không thứ tự (nCr). Thứ tự chỉ quan trọng với chỉnh hợp."],
+["Bayes' formula","Updates a prior probability with new information: P(A|B) = P(B|A)·P(A) / P(B).","Công thức Bayes","Cập nhật xác suất tiên nghiệm bằng thông tin mới: P(A|B) = P(B|A)·P(A) / P(B)."],
+["Simulation / Monte Carlo","Generates thousands of random outcomes from assumed distributions to estimate the distribution of a result; complements analytical methods.","Mô phỏng / Monte Carlo","Tạo hàng nghìn kết quả ngẫu nhiên từ các phân phối giả định để ước lượng phân phối của một kết quả; bổ trợ cho phương pháp giải tích."],
+["Covariance","A measure of how two variables move together; its sign shows direction but its magnitude is not standardized (unlike correlation).","Hiệp phương sai","Thước đo mức độ hai biến biến động cùng nhau; dấu cho biết chiều nhưng độ lớn không được chuẩn hóa (khác với tương quan)."],
+["Roy's safety-first ratio","(E[Rₚ] − R_threshold) / σₚ; investors prefer the portfolio with the highest ratio to minimize the chance of returns below a threshold.","Tỷ số an toàn trước của Roy","(E[Rₚ] − R_ngưỡng) / σₚ; nhà đầu tư chọn danh mục có tỷ số cao nhất để giảm khả năng lợi suất rơi dưới ngưỡng."]
+],
+"Economics":[
+["Law of demand","Holding other factors constant, the quantity demanded of a good falls as its price rises, tracing a downward-sloping demand curve.","Quy luật cầu","Giữ các yếu tố khác không đổi, lượng cầu của một hàng hóa giảm khi giá tăng, tạo nên đường cầu dốc xuống."],
+["Price elasticity of demand","%Δ quantity demanded ÷ %Δ price. Elastic (>1), inelastic (<1); determined by substitutes, income share, and time horizon.","Độ co giãn của cầu theo giá","%Δ lượng cầu ÷ %Δ giá. Co giãn (>1), kém co giãn (<1); phụ thuộc hàng thay thế, tỷ trọng chi tiêu và thời gian."],
+["Income elasticity","%Δ quantity ÷ %Δ income. Positive for normal goods, negative for inferior goods.","Độ co giãn theo thu nhập","%Δ lượng ÷ %Δ thu nhập. Dương với hàng thông thường, âm với hàng thứ cấp."],
+["Cross-price elasticity","%Δ quantity of one good ÷ %Δ price of another; positive for substitutes, negative for complements.","Độ co giãn chéo theo giá","%Δ lượng của một hàng ÷ %Δ giá của hàng khác; dương với hàng thay thế, âm với hàng bổ sung."],
+["Substitution & income effects","A price change alters consumption via substitution (relative price) and income (real purchasing power) effects.","Hiệu ứng thay thế và thu nhập","Thay đổi giá làm thay đổi tiêu dùng qua hiệu ứng thay thế (giá tương đối) và hiệu ứng thu nhập (sức mua thực)."],
+["Marginal cost & marginal revenue","MC is the cost of one more unit; MR is the revenue from one more unit. Profit is maximized where MR = MC.","Chi phí biên và doanh thu biên","MC là chi phí cho một đơn vị thêm; MR là doanh thu từ một đơn vị thêm. Lợi nhuận tối đa khi MR = MC."],
+["Economies of scale","Long-run average total cost falls as output rises (spreading fixed costs, specialization); diseconomies raise cost at very high output.","Lợi thế kinh tế theo quy mô","Chi phí bình quân dài hạn giảm khi sản lượng tăng (dàn trải chi phí cố định, chuyên môn hóa); phi kinh tế làm chi phí tăng ở sản lượng rất cao."],
+["Perfect competition","Many firms, identical products, price takers, free entry/exit; long-run economic profit is zero, price = marginal cost.","Cạnh tranh hoàn hảo","Nhiều doanh nghiệp, sản phẩm giống hệt, chấp nhận giá, tự do gia nhập/rời bỏ; lợi nhuận kinh tế dài hạn bằng 0, giá = chi phí biên."],
+["Monopoly","A single seller with high barriers to entry and pricing power; produces where MR = MC and can earn long-run economic profit.","Độc quyền","Một người bán duy nhất với rào cản gia nhập cao và quyền định giá; sản xuất tại MR = MC và có thể có lợi nhuận kinh tế dài hạn."],
+["Monopolistic competition","Many firms with differentiated products and some pricing power; long-run economic profit tends to zero due to free entry.","Cạnh tranh độc quyền","Nhiều doanh nghiệp với sản phẩm khác biệt và ít quyền định giá; lợi nhuận kinh tế dài hạn tiến về 0 do tự do gia nhập."],
+["Oligopoly","A few interdependent firms; outcomes analyzed with game theory (e.g., Nash equilibrium, kinked demand, Cournot).","Độc quyền nhóm","Một số ít doanh nghiệp phụ thuộc lẫn nhau; kết quả phân tích bằng lý thuyết trò chơi (cân bằng Nash, đường cầu gãy, Cournot)."],
+["GDP","The market value of all final goods and services produced within a country in a period; measured via expenditure, income, or value-added.","Tổng sản phẩm quốc nội (GDP)","Giá trị thị trường của tất cả hàng hóa và dịch vụ cuối cùng sản xuất trong một nước trong một kỳ; đo bằng chi tiêu, thu nhập hoặc giá trị gia tăng."],
+["Nominal vs. real GDP","Nominal is at current prices; real is inflation-adjusted using a base year. The GDP deflator = nominal/real × 100.","GDP danh nghĩa và thực","Danh nghĩa theo giá hiện hành; thực đã điều chỉnh lạm phát theo năm gốc. Chỉ số giảm phát GDP = danh nghĩa/thực × 100."],
+["Aggregate demand & supply","AD relates total spending to price level; SRAS/LRAS relate output supplied. Equilibrium sets price level and real output.","Tổng cầu và tổng cung","AD liên hệ tổng chi tiêu với mức giá; SRAS/LRAS liên hệ sản lượng cung. Cân bằng xác định mức giá và sản lượng thực."],
+["Fiscal policy","Government use of spending and taxation to influence the economy; expansionary policy raises deficits to boost demand.","Chính sách tài khóa","Chính phủ dùng chi tiêu và thuế để tác động nền kinh tế; chính sách mở rộng làm tăng thâm hụt để kích cầu."],
+["Monetary policy","Central-bank management of money supply and interest rates to achieve price stability and growth; tools include open-market operations.","Chính sách tiền tệ","Ngân hàng trung ương quản lý cung tiền và lãi suất để đạt ổn định giá và tăng trưởng; công cụ gồm nghiệp vụ thị trường mở."],
+["Quantity theory of money","MV = PY: money supply × velocity = price level × real output; underpins monetarist views that inflation is a monetary phenomenon.","Thuyết số lượng tiền tệ","MV = PY: cung tiền × vòng quay = mức giá × sản lượng thực; nền tảng cho quan điểm rằng lạm phát là hiện tượng tiền tệ."],
+["Inflation, disinflation, deflation","Inflation = rising prices; disinflation = a slower rate of inflation; deflation = falling prices.","Lạm phát, giảm lạm phát, giảm phát","Lạm phát = giá tăng; giảm lạm phát = tốc độ lạm phát chậm lại; giảm phát = giá giảm."],
+["Demand-pull vs. cost-push inflation","Demand-pull comes from excess aggregate demand; cost-push from rising input costs (e.g., wages, energy).","Lạm phát do cầu kéo và chi phí đẩy","Cầu kéo do tổng cầu vượt mức; chi phí đẩy do chi phí đầu vào tăng (lương, năng lượng)."],
+["Business cycle","Recurring expansion and contraction in economic activity; phases: expansion, peak, contraction/recession, trough.","Chu kỳ kinh tế","Sự mở rộng và thu hẹp lặp lại của hoạt động kinh tế; các pha: mở rộng, đỉnh, thu hẹp/suy thoái, đáy."],
+["Unemployment types","Frictional (job search), structural (skills mismatch), cyclical (downturn). Natural rate excludes cyclical unemployment.","Các loại thất nghiệp","Cọ xát (tìm việc), cơ cấu (lệch kỹ năng), chu kỳ (suy thoái). Tỷ lệ tự nhiên không tính thất nghiệp chu kỳ."],
+["Fisher effect","Nominal interest rate ≈ real rate + expected inflation; links interest rates to inflation expectations.","Hiệu ứng Fisher","Lãi suất danh nghĩa ≈ lãi suất thực + lạm phát kỳ vọng; liên kết lãi suất với kỳ vọng lạm phát."],
+["Exchange rate regimes","Range from fixed pegs to free floats, with intermediate managed floats, crawling pegs, and currency boards.","Chế độ tỷ giá hối đoái","Từ neo cố định đến thả nổi tự do, với các dạng trung gian như thả nổi có quản lý, neo trượt và ủy ban tiền tệ."],
+["Purchasing power parity (PPP)","Exchange rates should adjust so identical goods cost the same across countries; relative PPP links currency moves to inflation differentials.","Ngang giá sức mua (PPP)","Tỷ giá điều chỉnh để hàng hóa giống nhau có giá bằng nhau giữa các nước; PPP tương đối liên hệ biến động tiền tệ với chênh lệch lạm phát."],
+["Balance of payments","Records a country's transactions with the world: current account (trade/income) plus capital and financial accounts.","Cán cân thanh toán","Ghi nhận giao dịch của một nước với thế giới: tài khoản vãng lai (thương mại/thu nhập) cùng tài khoản vốn và tài chính."],
+["Comparative advantage","A country should specialize in goods it produces at lower opportunity cost, gaining from trade even without absolute advantage.","Lợi thế so sánh","Một nước nên chuyên môn hóa vào hàng hóa có chi phí cơ hội thấp hơn, thu lợi từ thương mại ngay cả khi không có lợi thế tuyệt đối."],
+["Money multiplier","1 ÷ reserve requirement; the maximum expansion of the money supply from new reserves in a fractional-reserve banking system.","Số nhân tiền tệ","1 ÷ tỷ lệ dự trữ bắt buộc; mức mở rộng tối đa của cung tiền từ dự trữ mới trong hệ thống ngân hàng dự trữ một phần."]
+],
+"Financial Statement Analysis":[
+["Balance sheet","A snapshot at a point in time of assets, liabilities, and owners' equity, satisfying Assets = Liabilities + Equity.","Bảng cân đối kế toán","Ảnh chụp tại một thời điểm về tài sản, nợ phải trả và vốn chủ sở hữu, thỏa mãn Tài sản = Nợ phải trả + Vốn chủ."],
+["Income statement","Reports revenues, expenses, and profit over a period; 'the top line' is revenue and 'the bottom line' is net income.","Báo cáo kết quả kinh doanh","Trình bày doanh thu, chi phí và lợi nhuận trong một kỳ; 'dòng trên' là doanh thu, 'dòng dưới' là lợi nhuận ròng."],
+["Statement of cash flows","Classifies cash movements into operating, investing, and financing activities, reconciling beginning and ending cash.","Báo cáo lưu chuyển tiền tệ","Phân loại dòng tiền thành hoạt động kinh doanh, đầu tư và tài chính, đối chiếu tiền đầu kỳ và cuối kỳ."],
+["Accrual accounting","Recognizes revenue when earned and expenses when incurred, regardless of cash timing; the basis of the matching principle.","Kế toán dồn tích","Ghi nhận doanh thu khi phát sinh và chi phí khi phát sinh, không phụ thuộc thời điểm tiền; nền tảng của nguyên tắc phù hợp."],
+["CFO / CFI / CFF","Cash from Operations (core business), Investing (long-term assets), and Financing (debt/equity/dividends).","CFO / CFI / CFF","Tiền từ hoạt động kinh doanh (cốt lõi), đầu tư (tài sản dài hạn) và tài chính (nợ/vốn/cổ tức)."],
+["Direct vs. indirect method","Direct lists actual operating cash receipts/payments; indirect starts from net income and adjusts for non-cash items and working capital.","Phương pháp trực tiếp và gián tiếp","Trực tiếp liệt kê các khoản thu/chi tiền hoạt động thực tế; gián tiếp bắt đầu từ lợi nhuận ròng và điều chỉnh các khoản phi tiền và vốn lưu động."],
+["FIFO vs. LIFO","Inventory cost-flow assumptions. In rising prices, FIFO gives higher ending inventory and net income; LIFO (US GAAP only) gives lower taxes.","FIFO và LIFO","Giả định luồng chi phí hàng tồn kho. Khi giá tăng, FIFO cho tồn kho cuối và lợi nhuận cao hơn; LIFO (chỉ US GAAP) cho thuế thấp hơn."],
+["LIFO reserve","The difference between FIFO and LIFO inventory; used to convert LIFO statements to a FIFO basis for comparison.","Dự trữ LIFO","Chênh lệch giữa tồn kho theo FIFO và LIFO; dùng để chuyển báo cáo LIFO sang cơ sở FIFO nhằm so sánh."],
+["Straight-line vs. accelerated depreciation","Straight-line spreads cost evenly; accelerated (e.g., double-declining) front-loads expense, lowering early net income.","Khấu hao đường thẳng và nhanh","Đường thẳng phân bổ chi phí đều; khấu hao nhanh (ví dụ số dư giảm dần kép) dồn chi phí về đầu, làm giảm lợi nhuận những năm đầu."],
+["Deferred tax liability/asset","Arises from temporary differences between accounting and tax reporting; DTL when tax is postponed, DTA when tax is prepaid.","Thuế hoãn lại phải trả/tài sản","Phát sinh từ chênh lệch tạm thời giữa kế toán và thuế; DTL khi thuế bị hoãn, DTA khi thuế trả trước."],
+["Goodwill","The excess of purchase price over the fair value of identifiable net assets in an acquisition; not amortized but tested for impairment.","Lợi thế thương mại","Phần vượt của giá mua so với giá trị hợp lý của tài sản thuần nhận diện được trong thương vụ; không khấu hao nhưng kiểm tra suy giảm giá trị."],
+["Current ratio","Current assets ÷ current liabilities; a liquidity measure of ability to meet short-term obligations.","Hệ số thanh toán hiện hành","Tài sản ngắn hạn ÷ nợ ngắn hạn; thước đo thanh khoản về khả năng đáp ứng nghĩa vụ ngắn hạn."],
+["Quick (acid-test) ratio","(Cash + marketable securities + receivables) ÷ current liabilities; a stricter liquidity test excluding inventory.","Hệ số thanh toán nhanh","(Tiền + chứng khoán ngắn hạn + phải thu) ÷ nợ ngắn hạn; phép đo thanh khoản chặt hơn, loại trừ hàng tồn kho."],
+["Inventory turnover","Cost of goods sold ÷ average inventory; measures how efficiently inventory is managed. Days = 365 ÷ turnover.","Vòng quay hàng tồn kho","Giá vốn hàng bán ÷ tồn kho bình quân; đo mức hiệu quả quản lý tồn kho. Số ngày = 365 ÷ vòng quay."],
+["Receivables turnover","Revenue ÷ average receivables; days sales outstanding = 365 ÷ turnover indicates collection speed.","Vòng quay khoản phải thu","Doanh thu ÷ phải thu bình quân; số ngày thu tiền = 365 ÷ vòng quay cho biết tốc độ thu hồi công nợ."],
+["Gross / operating / net margin","Profitability at successive levels: gross (after COGS), operating (after operating costs), net (after all costs and taxes).","Biên lợi nhuận gộp/hoạt động/ròng","Khả năng sinh lời ở từng cấp: gộp (sau giá vốn), hoạt động (sau chi phí hoạt động), ròng (sau mọi chi phí và thuế)."],
+["Return on equity (ROE)","Net income ÷ average shareholders' equity; the return generated on owners' capital.","Tỷ suất lợi nhuận trên vốn chủ (ROE)","Lợi nhuận ròng ÷ vốn chủ bình quân; lợi nhuận tạo ra trên vốn của chủ sở hữu."],
+["DuPont analysis","Decomposes ROE into net profit margin × asset turnover × financial leverage (and further into 5 factors).","Phân tích DuPont","Phân rã ROE thành biên lợi nhuận ròng × vòng quay tài sản × đòn bẩy tài chính (và mở rộng thành 5 nhân tố)."],
+["Financial leverage ratio","Average total assets ÷ average equity; higher leverage magnifies both returns and risk.","Hệ số đòn bẩy tài chính","Tổng tài sản bình quân ÷ vốn chủ bình quân; đòn bẩy cao khuếch đại cả lợi nhuận lẫn rủi ro."],
+["Interest coverage ratio","EBIT ÷ interest expense; measures ability to service debt from operating earnings.","Hệ số khả năng trả lãi","EBIT ÷ chi phí lãi vay; đo khả năng trả nợ lãi từ lợi nhuận hoạt động."],
+["Basic vs. diluted EPS","Basic = (net income − preferred dividends) ÷ weighted average shares; diluted includes potentially dilutive securities (options, convertibles).","EPS cơ bản và pha loãng","Cơ bản = (lợi nhuận ròng − cổ tức ưu đãi) ÷ số cổ phiếu bình quân gia quyền; pha loãng gồm cả chứng khoán có thể pha loãng (quyền chọn, trái phiếu chuyển đổi)."],
+["Operating vs. finance lease","Under IFRS lessees capitalize most leases; classification affects whether payments hit operating vs. financing cash flow and the balance sheet.","Thuê hoạt động và thuê tài chính","Theo IFRS bên thuê vốn hóa hầu hết hợp đồng thuê; cách phân loại ảnh hưởng khoản chi vào dòng tiền hoạt động hay tài chính và bảng cân đối."],
+["Impairment","A write-down when an asset's carrying value exceeds its recoverable amount; reduces net income but is often non-cash.","Suy giảm giá trị tài sản","Ghi giảm khi giá trị ghi sổ của tài sản vượt giá trị có thể thu hồi; làm giảm lợi nhuận ròng nhưng thường là khoản phi tiền."],
+["Common-size analysis","Expresses income-statement items as a % of revenue and balance-sheet items as a % of total assets to enable comparison across firms/time.","Phân tích theo tỷ trọng","Biểu diễn khoản mục trên báo cáo KQKD theo % doanh thu và bảng cân đối theo % tổng tài sản để so sánh giữa các công ty/kỳ."],
+["Accruals ratio & earnings quality","High accruals relative to cash flow can signal lower-quality, less sustainable earnings and possible manipulation.","Tỷ lệ dồn tích và chất lượng lợi nhuận","Dồn tích cao so với dòng tiền có thể báo hiệu lợi nhuận chất lượng thấp, kém bền vững và có thể bị thao túng."],
+["Capitalizing vs. expensing","Capitalizing spreads a cost over future periods (higher early income, an asset); expensing recognizes it immediately.","Vốn hóa và ghi nhận chi phí","Vốn hóa phân bổ chi phí qua các kỳ tương lai (lợi nhuận đầu cao hơn, tạo tài sản); ghi nhận chi phí thì tính ngay lập tức."],
+["Revenue recognition (5-step model)","Identify the contract, performance obligations, transaction price, allocate the price, and recognize revenue as obligations are satisfied.","Ghi nhận doanh thu (mô hình 5 bước)","Xác định hợp đồng, nghĩa vụ thực hiện, giá giao dịch, phân bổ giá, và ghi nhận doanh thu khi hoàn thành nghĩa vụ."]
+],
+"Corporate Issuers":[
+["Stakeholders vs. shareholders","Stakeholders include employees, creditors, customers, suppliers, and government; shareholders are the equity owners with residual claims.","Các bên liên quan và cổ đông","Các bên liên quan gồm nhân viên, chủ nợ, khách hàng, nhà cung cấp và chính phủ; cổ đông là chủ sở hữu vốn với quyền lợi còn lại."],
+["Principal-agent problem","Conflict when managers (agents) act in their own interest rather than that of owners (principals); mitigated by governance and incentives.","Vấn đề người chủ - người đại diện","Xung đột khi nhà quản lý (đại diện) hành động vì lợi ích riêng thay vì của chủ sở hữu; giảm nhẹ bằng quản trị và cơ chế khuyến khích."],
+["Corporate governance","The system of controls and incentives aligning management with stakeholder interests; includes the board, audits, and shareholder rights.","Quản trị công ty","Hệ thống kiểm soát và khuyến khích gắn kết ban quản lý với lợi ích các bên; gồm hội đồng quản trị, kiểm toán và quyền cổ đông."],
+["Business structures","Sole proprietorship, general/limited partnership, and corporation differ in liability, taxation, and access to capital.","Các loại hình doanh nghiệp","Doanh nghiệp tư nhân, hợp danh (trách nhiệm chung/hữu hạn) và công ty cổ phần khác nhau về trách nhiệm, thuế và khả năng huy động vốn."],
+["Capital budgeting","The process of evaluating long-term investment projects using NPV, IRR, payback, and profitability index.","Hoạch định ngân sách vốn","Quá trình đánh giá dự án đầu tư dài hạn bằng NPV, IRR, thời gian hoàn vốn và chỉ số sinh lời."],
+["Opportunity cost","The value of the next-best forgone alternative; relevant cash flows in capital budgeting must reflect it.","Chi phí cơ hội","Giá trị của phương án tốt nhất bị bỏ qua; dòng tiền liên quan trong hoạch định vốn phải phản ánh nó."],
+["Sunk cost","A cost already incurred and unrecoverable; it should be ignored in investment decisions.","Chi phí chìm","Chi phí đã phát sinh và không thể thu hồi; cần bỏ qua khi ra quyết định đầu tư."],
+["Cost of capital (WACC)","Weighted average cost of debt and equity by market-value weights, with debt cost adjusted for taxes; the hurdle rate for projects.","Chi phí vốn bình quân (WACC)","Bình quân gia quyền chi phí nợ và vốn chủ theo giá trị thị trường, chi phí nợ đã điều chỉnh thuế; là ngưỡng sinh lời cho dự án."],
+["Cost of debt","The after-tax yield to maturity a firm pays on borrowing: r_d × (1 − tax rate).","Chi phí nợ vay","Lợi suất đáo hạn sau thuế mà công ty trả cho khoản vay: r_d × (1 − thuế suất)."],
+["Cost of equity (CAPM)","r_e = risk-free rate + β × (market risk premium); the return required by equity holders for systematic risk.","Chi phí vốn chủ (CAPM)","r_e = lãi suất phi rủi ro + β × (phần bù rủi ro thị trường); lợi suất cổ đông yêu cầu cho rủi ro hệ thống."],
+["Weighted average cost of capital use","The appropriate discount rate for a project of average risk; should be adjusted upward/downward for riskier/safer projects.","Cách dùng WACC","Tỷ lệ chiết khấu phù hợp cho dự án rủi ro trung bình; cần điều chỉnh tăng/giảm cho dự án rủi ro cao/thấp hơn."],
+["Operating leverage","Sensitivity of operating income to changes in sales, driven by fixed operating costs; measured by DOL.","Đòn bẩy hoạt động","Độ nhạy của lợi nhuận hoạt động với thay đổi doanh thu, do chi phí hoạt động cố định; đo bằng DOL."],
+["Financial leverage","Use of debt to finance assets; magnifies EPS changes from operating income, measured by DFL.","Đòn bẩy tài chính","Dùng nợ để tài trợ tài sản; khuếch đại thay đổi EPS từ lợi nhuận hoạt động, đo bằng DFL."],
+["Total leverage (DTL)","DOL × DFL; the combined sensitivity of net income/EPS to a change in sales.","Đòn bẩy tổng (DTL)","DOL × DFL; độ nhạy kết hợp của lợi nhuận ròng/EPS với thay đổi doanh thu."],
+["Capital structure","The mix of debt and equity financing; the target structure balances tax benefits of debt against financial distress costs.","Cơ cấu vốn","Tỷ lệ tài trợ giữa nợ và vốn chủ; cơ cấu mục tiêu cân bằng lợi ích thuế của nợ với chi phí kiệt quệ tài chính."],
+["Modigliani-Miller propositions","Under no taxes, capital structure is irrelevant to firm value; with taxes, debt adds value via the interest tax shield.","Các định đề Modigliani-Miller","Không có thuế, cơ cấu vốn không ảnh hưởng giá trị doanh nghiệp; có thuế, nợ tạo giá trị qua lá chắn thuế lãi vay."],
+["Static trade-off theory","Optimal capital structure balances the tax shield of debt against the present value of expected financial distress costs.","Lý thuyết đánh đổi tĩnh","Cơ cấu vốn tối ưu cân bằng lá chắn thuế của nợ với giá trị hiện tại của chi phí kiệt quệ tài chính kỳ vọng."],
+["Pecking order theory","Firms prefer internal financing first, then debt, and issue equity last, reflecting information asymmetry.","Lý thuyết trật tự phân hạng","Doanh nghiệp ưu tiên vốn nội bộ trước, rồi đến nợ, và phát hành cổ phần sau cùng, phản ánh bất cân xứng thông tin."],
+["Working capital management","Managing current assets and liabilities to ensure liquidity and operating efficiency.","Quản lý vốn lưu động","Quản lý tài sản và nợ ngắn hạn để đảm bảo thanh khoản và hiệu quả hoạt động."],
+["Cash conversion cycle","Days inventory + days receivables − days payables; the time to convert investments in inventory back into cash.","Chu kỳ chuyển đổi tiền mặt","Số ngày tồn kho + số ngày phải thu − số ngày phải trả; thời gian để biến đầu tư vào tồn kho trở lại thành tiền."],
+["Sources of short-term financing","Trade credit, bank lines of credit, commercial paper, and factoring of receivables.","Nguồn tài trợ ngắn hạn","Tín dụng thương mại, hạn mức tín dụng ngân hàng, thương phiếu và bao thanh toán khoản phải thu."],
+["Dividend policy","Decisions on paying cash dividends, share repurchases, or retaining earnings; signaling and clientele effects matter.","Chính sách cổ tức","Quyết định trả cổ tức tiền mặt, mua lại cổ phần hay giữ lại lợi nhuận; hiệu ứng tín hiệu và nhóm nhà đầu tư có ý nghĩa."],
+["Share repurchase","A firm buying back its own shares; reduces share count, can raise EPS, and is an alternative to dividends.","Mua lại cổ phần","Công ty mua lại cổ phiếu của chính mình; giảm số cổ phiếu, có thể tăng EPS và là phương án thay cho cổ tức."],
+["Business risk vs. financial risk","Business risk stems from operations and demand variability; financial risk arises from the use of debt (fixed charges).","Rủi ro kinh doanh và rủi ro tài chính","Rủi ro kinh doanh đến từ hoạt động và biến động cầu; rủi ro tài chính phát sinh từ việc dùng nợ (chi phí cố định)."],
+["ESG considerations","Environmental, social, and governance factors integrated into investment and corporate analysis for risk and value.","Yếu tố ESG","Các yếu tố môi trường, xã hội và quản trị được tích hợp vào phân tích đầu tư và doanh nghiệp về rủi ro và giá trị."],
+["Marginal cost of capital","The cost of raising the next dollar of new capital; it typically rises as a firm exhausts cheaper sources.","Chi phí vốn biên","Chi phí huy động đồng vốn mới tiếp theo; thường tăng khi doanh nghiệp cạn các nguồn rẻ hơn."],
+["Net working capital","Current assets minus current liabilities; positive NWC generally indicates short-term financial health.","Vốn lưu động ròng","Tài sản ngắn hạn trừ nợ ngắn hạn; NWC dương thường cho thấy sức khỏe tài chính ngắn hạn tốt."]
+],
+"Equity":[
+["Primary vs. secondary market","Primary markets issue new securities (IPOs); secondary markets trade existing securities among investors.","Thị trường sơ cấp và thứ cấp","Thị trường sơ cấp phát hành chứng khoán mới (IPO); thị trường thứ cấp giao dịch chứng khoán đã có giữa các nhà đầu tư."],
+["IPO vs. seasoned offering","An IPO is a company's first public share sale; a seasoned (secondary) offering issues additional shares by an already-public firm.","IPO và phát hành bổ sung","IPO là lần bán cổ phần ra công chúng đầu tiên; phát hành bổ sung là phát hành thêm cổ phần bởi công ty đã niêm yết."],
+["Market order vs. limit order","A market order executes immediately at the best available price; a limit order executes only at a specified price or better.","Lệnh thị trường và lệnh giới hạn","Lệnh thị trường khớp ngay tại giá tốt nhất hiện có; lệnh giới hạn chỉ khớp tại giá đã định hoặc tốt hơn."],
+["Bid-ask spread","The difference between the highest bid and lowest ask; a measure of liquidity and transaction cost.","Chênh lệch giá mua-bán","Chênh lệch giữa giá đặt mua cao nhất và giá chào bán thấp nhất; thước đo thanh khoản và chi phí giao dịch."],
+["Long vs. short position","A long position profits when the price rises; a short seller borrows and sells shares, profiting if the price falls.","Vị thế mua và bán khống","Vị thế mua có lãi khi giá tăng; bán khống là vay và bán cổ phiếu, có lãi nếu giá giảm."],
+["Margin transaction","Buying securities partly with borrowed funds; leverage magnifies gains and losses. A margin call occurs if equity falls below maintenance.","Giao dịch ký quỹ","Mua chứng khoán một phần bằng vốn vay; đòn bẩy khuếch đại lãi và lỗ. Lệnh gọi ký quỹ xảy ra nếu vốn chủ dưới mức duy trì."],
+["Market index","A portfolio representing a market or segment; price-weighted, value(cap)-weighted, or equal-weighted construction affects behavior.","Chỉ số thị trường","Danh mục đại diện cho một thị trường hoặc phân khúc; cách xây dựng theo giá, theo vốn hóa hay đều nhau ảnh hưởng hành vi chỉ số."],
+["Free-float market cap","Shares available for public trading (excluding closely held shares) × price; the basis of most modern index weighting.","Vốn hóa theo cổ phiếu tự do","Cổ phiếu có thể giao dịch công khai (loại trừ cổ phiếu nắm giữ chặt) × giá; cơ sở cho phần lớn cách tính trọng số chỉ số hiện đại."],
+["Market efficiency (EMH)","Prices reflect available information. Weak form (past prices), semi-strong (public info), strong form (all info incl. private).","Hiệu quả thị trường (EMH)","Giá phản ánh thông tin sẵn có. Dạng yếu (giá quá khứ), bán mạnh (thông tin công khai), mạnh (mọi thông tin kể cả nội bộ)."],
+["Common vs. preferred stock","Common holders have voting rights and residual claims; preferred holders get fixed dividends and priority but usually no vote.","Cổ phiếu phổ thông và ưu đãi","Cổ đông phổ thông có quyền biểu quyết và quyền lợi còn lại; cổ đông ưu đãi nhận cổ tức cố định và ưu tiên nhưng thường không biểu quyết."],
+["Cumulative preferred stock","Preferred shares whose unpaid (in-arrears) dividends must be paid before any common dividend.","Cổ phiếu ưu đãi tích lũy","Cổ phiếu ưu đãi mà cổ tức chưa trả (còn nợ) phải được trả trước bất kỳ cổ tức phổ thông nào."],
+["Depository receipt (ADR/GDR)","A negotiable certificate representing foreign shares that trades on a local exchange, easing cross-border investing.","Chứng chỉ lưu ký (ADR/GDR)","Chứng chỉ chuyển nhượng đại diện cho cổ phiếu nước ngoài, giao dịch trên sàn nội địa, giúp đầu tư xuyên biên giới dễ dàng hơn."],
+["Dividend discount model (DDM)","Values a stock as the present value of expected future dividends discounted at the required return.","Mô hình chiết khấu cổ tức (DDM)","Định giá cổ phiếu bằng giá trị hiện tại của cổ tức tương lai kỳ vọng, chiết khấu theo lợi suất yêu cầu."],
+["Gordon growth model","V₀ = D₁ ÷ (r − g); values a stock assuming dividends grow at a constant rate g forever, with r > g.","Mô hình tăng trưởng Gordon","V₀ = D₁ ÷ (r − g); định giá cổ phiếu giả định cổ tức tăng đều với tốc độ g mãi mãi, với r > g."],
+["Multistage DDM","Values firms with changing growth by discounting explicit near-term dividends plus a terminal value at the mature stage.","DDM nhiều giai đoạn","Định giá công ty có tăng trưởng thay đổi bằng cách chiết khấu cổ tức gần hạn cụ thể cộng giá trị cuối ở giai đoạn ổn định."],
+["Free cash flow to equity (FCFE)","Cash available to equity holders after operating expenses, reinvestment, and debt payments; discounted at the cost of equity.","Dòng tiền tự do vốn chủ (FCFE)","Tiền còn lại cho cổ đông sau chi phí hoạt động, tái đầu tư và thanh toán nợ; chiết khấu theo chi phí vốn chủ."],
+["Price multiples (P/E, P/B, P/S)","Relative valuation ratios comparing price to earnings, book value, or sales; used for peer comparison.","Các hệ số giá (P/E, P/B, P/S)","Các tỷ số định giá tương đối so sánh giá với lợi nhuận, giá trị sổ sách hoặc doanh thu; dùng so sánh với đối thủ."],
+["Justified P/E","P/E implied by fundamentals: leading P/E = payout ratio ÷ (r − g), derived from the Gordon growth model.","P/E hợp lý","P/E suy ra từ nền tảng cơ bản: P/E dự phóng = tỷ lệ chi trả ÷ (r − g), rút ra từ mô hình tăng trưởng Gordon."],
+["Enterprise value (EV)","Market cap + debt + preferred − cash; the takeover value of the whole firm, used in EV/EBITDA multiples.","Giá trị doanh nghiệp (EV)","Vốn hóa + nợ + cổ phần ưu đãi − tiền mặt; giá trị thâu tóm cả doanh nghiệp, dùng trong hệ số EV/EBITDA."],
+["Book value vs. market value","Book value is accounting net worth; market value is the price investors assign. P/B compares them.","Giá trị sổ sách và thị trường","Giá trị sổ sách là giá trị ròng theo kế toán; giá trị thị trường là mức giá nhà đầu tư định. P/B so sánh hai giá trị này."],
+["Sustainable growth rate","g = retention ratio × ROE; the rate a firm can grow without external equity financing.","Tốc độ tăng trưởng bền vững","g = tỷ lệ giữ lại × ROE; tốc độ doanh nghiệp có thể tăng trưởng mà không cần huy động vốn chủ bên ngoài."],
+["Required return (equity risk premium)","Expected market return minus the risk-free rate; compensation for bearing equity (systematic) risk.","Lợi suất yêu cầu (phần bù rủi ro vốn cổ phần)","Lợi suất thị trường kỳ vọng trừ lãi suất phi rủi ro; khoản đền bù cho việc gánh rủi ro cổ phần (hệ thống)."],
+["Cyclical vs. defensive stocks","Cyclicals (high earnings sensitivity to the economy) vs. defensives (stable demand, e.g., utilities, staples).","Cổ phiếu chu kỳ và phòng thủ","Cổ phiếu chu kỳ (lợi nhuận nhạy với nền kinh tế) so với cổ phiếu phòng thủ (cầu ổn định, ví dụ tiện ích, hàng thiết yếu)."],
+["Industry life cycle","Stages of embryonic, growth, shakeout, mature, and decline shape margins, competition, and investment needs.","Vòng đời ngành","Các giai đoạn phôi thai, tăng trưởng, sàng lọc, trưởng thành và suy thoái định hình biên lợi nhuận, cạnh tranh và nhu cầu đầu tư."],
+["Porter's five forces","Framework assessing industry attractiveness: rivalry, new entrants, substitutes, supplier power, and buyer power.","Năm áp lực cạnh tranh của Porter","Khung đánh giá sức hấp dẫn của ngành: cạnh tranh nội bộ, đối thủ mới, sản phẩm thay thế, quyền lực nhà cung cấp và người mua."],
+["Absolute vs. relative valuation","Absolute derives intrinsic value (DDM, FCF); relative compares price multiples against peers or history.","Định giá tuyệt đối và tương đối","Tuyệt đối tìm giá trị nội tại (DDM, FCF); tương đối so sánh các hệ số giá với đối thủ hoặc lịch sử."]
+],
+"Fixed Income":[
+["Bond indenture","The legal contract between issuer and bondholders specifying terms, covenants, and the trustee's role.","Hợp đồng trái phiếu (indenture)","Hợp đồng pháp lý giữa tổ chức phát hành và trái chủ, quy định điều khoản, cam kết và vai trò của người ủy thác."],
+["Coupon rate vs. yield","The coupon is the fixed annual interest as a % of par; the yield (YTM) is the market return reflecting price, coupon, and time to maturity.","Lãi suất coupon và lợi suất","Coupon là lãi suất năm cố định theo % mệnh giá; lợi suất (YTM) là lợi suất thị trường phản ánh giá, coupon và thời gian đến đáo hạn."],
+["Par, premium, discount","A bond trades at par when coupon = market yield, at a premium when coupon > yield, and at a discount when coupon < yield.","Ngang giá, phụ trội, chiết khấu","Trái phiếu giao dịch ngang giá khi coupon = lợi suất thị trường, phụ trội khi coupon > lợi suất, chiết khấu khi coupon < lợi suất."],
+["Yield to maturity (YTM)","The internal rate of return on a bond held to maturity, assuming coupons are reinvested at the YTM and no default.","Lợi suất đáo hạn (YTM)","Tỷ suất hoàn vốn nội bộ của trái phiếu nắm đến đáo hạn, giả định coupon tái đầu tư ở YTM và không vỡ nợ."],
+["Current yield","Annual coupon ÷ current bond price; a simple income measure that ignores capital gains/losses and reinvestment.","Lợi suất hiện hành","Coupon năm ÷ giá trái phiếu hiện tại; thước đo thu nhập đơn giản, bỏ qua lãi/lỗ vốn và tái đầu tư."],
+["Spot rate","The yield on a zero-coupon bond for a given maturity; used to discount each cash flow at its own rate.","Lãi suất giao ngay (spot)","Lợi suất của trái phiếu zero-coupon cho một kỳ hạn nhất định; dùng để chiết khấu mỗi dòng tiền theo lãi suất riêng."],
+["Forward rate","An interest rate agreed today for a loan/investment beginning in the future, derived from spot rates.","Lãi suất kỳ hạn (forward)","Lãi suất thỏa thuận hôm nay cho khoản vay/đầu tư bắt đầu trong tương lai, suy ra từ các lãi suất giao ngay."],
+["Accrued interest","Interest earned since the last coupon date; the buyer pays it, so dirty price = clean price + accrued interest.","Lãi dồn tích","Lãi phát sinh kể từ ngày trả coupon gần nhất; người mua trả khoản này, nên giá gộp = giá sạch + lãi dồn tích."],
+["Duration (Macaulay)","The weighted-average time to receive a bond's cash flows, in years; a measure of interest-rate sensitivity.","Thời hạn Macaulay","Thời gian bình quân gia quyền để nhận dòng tiền của trái phiếu, tính bằng năm; thước đo độ nhạy với lãi suất."],
+["Modified duration","Approximate % change in a bond's price for a 1% change in yield; = Macaulay duration ÷ (1 + periodic yield).","Thời hạn điều chỉnh","% thay đổi xấp xỉ của giá trái phiếu khi lợi suất đổi 1%; = thời hạn Macaulay ÷ (1 + lợi suất kỳ)."],
+["Effective duration","Duration for bonds with embedded options, measured from actual price changes under yield-curve shifts.","Thời hạn hiệu dụng","Thời hạn cho trái phiếu có quyền chọn kèm theo, đo từ thay đổi giá thực tế khi đường cong lợi suất dịch chuyển."],
+["Convexity","The curvature of the price-yield relationship; adds a second-order correction so duration alone understates price gains and overstates losses.","Độ lồi (Convexity)","Độ cong của quan hệ giá-lợi suất; hiệu chỉnh bậc hai vì chỉ dùng duration sẽ đánh giá thấp mức tăng giá và cao mức giảm giá."],
+["Credit spread","The yield difference between a risky bond and a comparable risk-free bond; compensation for default and liquidity risk.","Chênh lệch tín dụng","Chênh lệch lợi suất giữa trái phiếu rủi ro và trái phiếu phi rủi ro tương đương; đền bù cho rủi ro vỡ nợ và thanh khoản."],
+["Credit ratings","Agency assessments (e.g., AAA to D) of default risk; investment grade (≥ BBB−) vs. high-yield/junk (below).","Xếp hạng tín nhiệm","Đánh giá của tổ chức xếp hạng (AAA đến D) về rủi ro vỡ nợ; hạng đầu tư (≥ BBB−) so với hạng cao lợi suất/rác (dưới)."],
+["Callable bond","Allows the issuer to redeem early, usually when rates fall; carries reinvestment risk and negative convexity for investors.","Trái phiếu có quyền mua lại","Cho phép tổ chức phát hành mua lại sớm, thường khi lãi suất giảm; mang rủi ro tái đầu tư và độ lồi âm cho nhà đầu tư."],
+["Putable bond","Allows the holder to sell the bond back to the issuer at set dates, protecting against rising rates.","Trái phiếu có quyền bán lại","Cho phép người nắm giữ bán trái phiếu lại cho tổ chức phát hành vào các ngày định trước, bảo vệ khi lãi suất tăng."],
+["Convertible bond","Can be exchanged for a set number of the issuer's shares; combines bond value with an equity call option.","Trái phiếu chuyển đổi","Có thể đổi lấy một số cổ phiếu định trước của tổ chức phát hành; kết hợp giá trị trái phiếu với quyền chọn mua cổ phiếu."],
+["Interest rate risk","The risk that rising rates lower bond prices; larger for long-maturity, low-coupon bonds.","Rủi ro lãi suất","Rủi ro lãi suất tăng làm giảm giá trái phiếu; lớn hơn với trái phiếu kỳ hạn dài, coupon thấp."],
+["Reinvestment risk","The risk that coupons or principal are reinvested at lower rates; higher for high-coupon and callable bonds.","Rủi ro tái đầu tư","Rủi ro coupon hoặc gốc được tái đầu tư ở lãi suất thấp hơn; cao hơn với trái phiếu coupon cao và có quyền mua lại."],
+["Yield curve","A plot of yields against maturities; shapes (normal upward, flat, inverted) reflect expectations, risk premia, and policy.","Đường cong lợi suất","Đồ thị lợi suất theo kỳ hạn; hình dạng (dốc lên bình thường, phẳng, đảo ngược) phản ánh kỳ vọng, phần bù rủi ro và chính sách."],
+["Money market instruments","Short-term debt: T-bills, commercial paper, CDs, repos; typically quoted on a discount or add-on yield basis.","Công cụ thị trường tiền tệ","Nợ ngắn hạn: tín phiếu kho bạc, thương phiếu, chứng chỉ tiền gửi, repo; thường yết theo lợi suất chiết khấu hoặc cộng thêm."],
+["Repurchase agreement (repo)","A short-term collateralized loan: sell a security with an agreement to repurchase it later at a higher price (the repo rate).","Hợp đồng mua lại (repo)","Khoản vay ngắn hạn có tài sản đảm bảo: bán chứng khoán kèm thỏa thuận mua lại sau ở giá cao hơn (lãi suất repo)."],
+["Securitization / ABS","Pooling assets (e.g., mortgages, loans) into tradable securities; MBS are backed by mortgages, with prepayment risk.","Chứng khoán hóa / ABS","Gộp các tài sản (thế chấp, khoản vay) thành chứng khoán giao dịch được; MBS được bảo đảm bằng khoản vay thế chấp, có rủi ro trả trước."],
+["Tranching (CMOs)","Redistributing cash-flow and prepayment risk among bond classes (tranches) with different priorities and maturities.","Phân lớp (CMO)","Phân bổ lại dòng tiền và rủi ro trả trước giữa các lớp trái phiếu (tranche) có mức ưu tiên và kỳ hạn khác nhau."],
+["Zero-coupon bond","Pays no periodic interest; issued at a discount and redeemed at par, so return is entirely price appreciation.","Trái phiếu zero-coupon","Không trả lãi định kỳ; phát hành với giá chiết khấu và hoàn trả theo mệnh giá, nên lợi suất hoàn toàn từ tăng giá."],
+["Matrix pricing","Estimating the price/yield of an illiquid bond using yields of comparable, actively traded bonds.","Định giá ma trận","Ước tính giá/lợi suất của trái phiếu kém thanh khoản dựa trên lợi suất của các trái phiếu tương đương đang giao dịch tích cực."],
+["Yield spread measures (G, I, Z, OAS)","G-spread (vs. government), I-spread (vs. swaps), Z-spread (constant spread over spot curve), OAS (Z-spread adjusted for options).","Các thước đo chênh lệch lợi suất","G-spread (so với trái phiếu chính phủ), I-spread (so với swap), Z-spread (chênh lệch không đổi trên đường spot), OAS (Z-spread đã điều chỉnh quyền chọn)."]
+],
+"Derivatives":[
+["Derivative","A financial instrument deriving its value from an underlying asset, rate, or index; used to hedge, speculate, or arbitrage.","Công cụ phái sinh","Công cụ tài chính có giá trị bắt nguồn từ tài sản, lãi suất hoặc chỉ số cơ sở; dùng để phòng ngừa, đầu cơ hoặc kinh doanh chênh lệch giá."],
+["Forward contract","A customized OTC agreement to buy/sell an asset at a set price on a future date; no upfront payment, settled at maturity.","Hợp đồng kỳ hạn (forward)","Thỏa thuận OTC tùy chỉnh để mua/bán tài sản ở giá định trước vào ngày tương lai; không thanh toán trước, tất toán khi đáo hạn."],
+["Futures contract","A standardized, exchange-traded forward with daily mark-to-market and a clearinghouse guarantee, reducing counterparty risk.","Hợp đồng tương lai","Hợp đồng kỳ hạn chuẩn hóa, giao dịch trên sàn với định giá theo thị trường hằng ngày và bảo lãnh của trung tâm thanh toán, giảm rủi ro đối tác."],
+["Mark-to-market","Daily settlement of futures gains/losses through the margin account, resetting the contract value to zero each day.","Định giá theo thị trường","Tất toán lãi/lỗ hợp đồng tương lai hằng ngày qua tài khoản ký quỹ, đưa giá trị hợp đồng về 0 mỗi ngày."],
+["Initial vs. maintenance margin","Initial margin is the deposit to open a futures position; a margin call restores it when equity falls below the maintenance level.","Ký quỹ ban đầu và duy trì","Ký quỹ ban đầu là khoản đặt cọc để mở vị thế; lệnh gọi ký quỹ khôi phục lại khi vốn chủ giảm dưới mức duy trì."],
+["Swap","An OTC agreement to exchange cash flows over time, e.g., a plain-vanilla interest-rate swap exchanges fixed for floating payments.","Hợp đồng hoán đổi (swap)","Thỏa thuận OTC để trao đổi dòng tiền theo thời gian, ví dụ swap lãi suất cơ bản đổi thanh toán cố định lấy thả nổi."],
+["Option (call/put)","A call gives the right to buy, a put the right to sell, the underlying at the strike price; the buyer pays a premium.","Quyền chọn (mua/bán)","Quyền chọn mua cho quyền mua, quyền chọn bán cho quyền bán tài sản cơ sở ở giá thực hiện; người mua trả phí quyền chọn."],
+["American vs. European option","American options can be exercised any time up to expiry; European options only at expiration.","Quyền chọn kiểu Mỹ và Âu","Quyền chọn kiểu Mỹ có thể thực hiện bất kỳ lúc nào đến khi đáo hạn; kiểu Âu chỉ thực hiện tại thời điểm đáo hạn."],
+["Moneyness","In-the-money (exercise is profitable), at-the-money (strike ≈ price), out-of-the-money (exercise unprofitable).","Trạng thái giá (moneyness)","Có lãi (thực hiện có lời), ngang giá (giá thực hiện ≈ giá), lỗ (thực hiện không có lời)."],
+["Intrinsic value vs. time value","Intrinsic value is the immediate exercise payoff; time value is the extra premium for the chance of future gains before expiry.","Giá trị nội tại và giá trị thời gian","Giá trị nội tại là khoản lời khi thực hiện ngay; giá trị thời gian là phần phí thêm cho khả năng sinh lời trong tương lai trước đáo hạn."],
+["Put-call parity","C + PV(X) = P + S₀; links the prices of European calls and puts with the same strike and expiry to prevent arbitrage.","Ngang giá quyền mua-bán","C + PV(X) = P + S₀; liên kết giá quyền chọn mua và bán kiểu Âu cùng giá thực hiện và kỳ hạn để ngăn kinh doanh chênh lệch giá."],
+["Option payoff vs. profit","Payoff is the value at expiry; profit subtracts the premium paid or adds the premium received.","Khoản trả và lợi nhuận quyền chọn","Khoản trả là giá trị tại đáo hạn; lợi nhuận trừ phí đã trả hoặc cộng phí đã nhận."],
+["Covered call","Owning the underlying and selling a call; generates income but caps upside above the strike.","Covered call","Nắm giữ tài sản cơ sở và bán quyền chọn mua; tạo thu nhập nhưng giới hạn phần tăng giá trên giá thực hiện."],
+["Protective put","Owning the underlying and buying a put; provides downside insurance while keeping upside, at the cost of the premium.","Protective put","Nắm giữ tài sản cơ sở và mua quyền chọn bán; bảo hiểm cho phần giảm giá trong khi vẫn giữ phần tăng, đổi lại là phí quyền chọn."],
+["Arbitrage","Simultaneous trades exploiting a mispricing for a riskless profit; its absence underpins derivative pricing (law of one price).","Kinh doanh chênh lệch giá","Các giao dịch đồng thời khai thác định giá sai để có lợi nhuận phi rủi ro; sự vắng mặt của nó là nền tảng định giá phái sinh (luật một giá)."],
+["Replication","Constructing a portfolio of the underlying and risk-free asset that mimics a derivative's payoff; the basis of no-arbitrage pricing.","Sao chép (replication)","Xây dựng danh mục gồm tài sản cơ sở và tài sản phi rủi ro để mô phỏng khoản trả của phái sinh; cơ sở của định giá không chênh lệch giá."],
+["Cost of carry","Net cost of holding the underlying (storage, financing) less income (dividends, coupons); determines forward/futures prices.","Chi phí nắm giữ (cost of carry)","Chi phí ròng để nắm giữ tài sản cơ sở (lưu kho, tài trợ) trừ thu nhập (cổ tức, coupon); quyết định giá kỳ hạn/tương lai."],
+["Forward price formula","F₀ = S₀ × (1 + r)^T adjusted for carry costs and benefits; ensures no arbitrage between spot and forward.","Công thức giá kỳ hạn","F₀ = S₀ × (1 + r)^T điều chỉnh theo chi phí và lợi ích nắm giữ; đảm bảo không chênh lệch giá giữa giao ngay và kỳ hạn."],
+["Value vs. price of a forward","The forward price is set at initiation; the contract's value changes over time as the spot price and time to maturity move.","Giá trị và giá của hợp đồng kỳ hạn","Giá kỳ hạn được ấn định khi lập hợp đồng; giá trị hợp đồng thay đổi theo thời gian khi giá giao ngay và thời gian đến đáo hạn biến động."],
+["Notional principal","The reference amount used to calculate swap/derivative payments; it is generally not exchanged in a swap.","Vốn danh nghĩa","Số tiền tham chiếu dùng để tính các khoản thanh toán swap/phái sinh; thường không được trao đổi trong một swap."],
+["Credit derivative / CDS","A contract transferring credit risk; a credit default swap pays the buyer if the reference entity defaults, like insurance.","Phái sinh tín dụng / CDS","Hợp đồng chuyển giao rủi ro tín dụng; hợp đồng hoán đổi rủi ro vỡ nợ trả cho người mua nếu bên tham chiếu vỡ nợ, như bảo hiểm."],
+["Binomial option model","Prices an option by modeling up/down moves of the underlying and using risk-neutral probabilities to discount expected payoffs.","Mô hình quyền chọn nhị thức","Định giá quyền chọn bằng cách mô hình hóa bước tăng/giảm của tài sản cơ sở và dùng xác suất trung tính rủi ro để chiết khấu khoản trả kỳ vọng."],
+["Risk-neutral pricing","Valuing derivatives as if investors are risk-neutral, discounting expected payoffs at the risk-free rate.","Định giá trung tính rủi ro","Định giá phái sinh như thể nhà đầu tư trung tính với rủi ro, chiết khấu khoản trả kỳ vọng theo lãi suất phi rủi ro."],
+["Hedging","Taking an offsetting derivative position to reduce or eliminate exposure to price movements in an asset.","Phòng ngừa rủi ro (hedging)","Mở một vị thế phái sinh đối ứng để giảm hoặc loại bỏ mức phơi nhiễm với biến động giá của một tài sản."],
+["Basis risk","The risk that the hedge instrument's price and the hedged item's price do not move perfectly together.","Rủi ro cơ sở (basis)","Rủi ro giá công cụ phòng ngừa và giá tài sản được phòng ngừa không biến động khớp hoàn toàn với nhau."],
+["Contingent claim","A derivative (like an option) whose payoff depends on whether a future condition is met, giving asymmetric payoffs.","Quyền lợi có điều kiện","Phái sinh (như quyền chọn) mà khoản trả phụ thuộc vào việc một điều kiện tương lai có xảy ra hay không, tạo khoản trả bất đối xứng."],
+["Interest rate swap valuation","At initiation value is zero; thereafter it equals the difference in present values of the fixed and floating legs.","Định giá hoán đổi lãi suất","Tại thời điểm lập giá trị bằng 0; sau đó bằng chênh lệch giá trị hiện tại giữa nhánh cố định và nhánh thả nổi."]
+],
+"Alternative Investments":[
+["Alternative investments","Assets outside traditional stocks, bonds, and cash — including hedge funds, private equity, real estate, commodities, and infrastructure.","Đầu tư thay thế","Tài sản ngoài cổ phiếu, trái phiếu và tiền mặt truyền thống — gồm quỹ phòng hộ, vốn cổ phần tư nhân, bất động sản, hàng hóa và hạ tầng."],
+["Hedge fund","A privately pooled fund using flexible strategies (leverage, shorting, derivatives) seeking absolute returns for accredited investors.","Quỹ phòng hộ (hedge fund)","Quỹ gộp vốn tư nhân dùng chiến lược linh hoạt (đòn bẩy, bán khống, phái sinh) tìm lợi suất tuyệt đối cho nhà đầu tư đủ điều kiện."],
+["2 and 20 fee structure","A common alternative-fund fee: a 2% annual management fee on assets plus a 20% incentive fee on profits.","Cấu trúc phí 2 và 20","Cấu trúc phí phổ biến của quỹ thay thế: phí quản lý 2%/năm trên tài sản cộng phí thưởng 20% trên lợi nhuận."],
+["High-water mark","A performance-fee provision ensuring managers earn incentive fees only on new net profits above the prior peak value.","Mốc giá cao nhất (high-water mark)","Điều khoản phí hiệu quả đảm bảo nhà quản lý chỉ thu phí thưởng trên lợi nhuận ròng mới vượt đỉnh giá trước đó."],
+["Hurdle rate","The minimum return a fund must earn before the manager can collect an incentive/performance fee.","Tỷ suất ngưỡng (hurdle rate)","Lợi suất tối thiểu quỹ phải đạt trước khi nhà quản lý được thu phí thưởng/hiệu quả."],
+["Private equity","Equity investments in non-public companies via buyouts or venture capital, aiming to improve and later exit the businesses.","Vốn cổ phần tư nhân","Đầu tư vốn vào công ty chưa niêm yết qua thâu tóm hoặc đầu tư mạo hiểm, nhằm cải thiện rồi thoái vốn khỏi doanh nghiệp."],
+["Leveraged buyout (LBO)","Acquiring a company using significant debt, with the target's assets/cash flows servicing the debt; equity returns are amplified.","Thâu tóm bằng đòn bẩy (LBO)","Mua lại công ty bằng lượng nợ lớn, dùng tài sản/dòng tiền của mục tiêu để trả nợ; lợi suất vốn chủ được khuếch đại."],
+["Venture capital","Financing early-stage, high-growth private companies in exchange for equity, with high risk and illiquidity.","Vốn đầu tư mạo hiểm","Tài trợ cho công ty tư nhân giai đoạn đầu, tăng trưởng cao để đổi lấy cổ phần, với rủi ro cao và tính kém thanh khoản."],
+["Carried interest","The share of a private fund's profits (often ~20%) paid to the general partner as a performance incentive.","Lợi nhuận chia cho GP (carried interest)","Phần lợi nhuận của quỹ tư nhân (thường ~20%) trả cho đối tác điều hành như khoản thưởng hiệu quả."],
+["Committed capital vs. drawdown","Committed capital is the total investors pledge; capital is called (drawn down) over time as deals close.","Vốn cam kết và giải ngân","Vốn cam kết là tổng số nhà đầu tư hứa góp; vốn được gọi (giải ngân) dần theo thời gian khi các thương vụ hoàn tất."],
+["J-curve","The tendency of private-equity returns to be negative early (fees, costs) before turning positive as investments mature.","Đường cong chữ J","Xu hướng lợi suất vốn cổ phần tư nhân âm ở giai đoạn đầu (phí, chi phí) trước khi chuyển dương khi các khoản đầu tư trưởng thành."],
+["Real estate investment approaches","Direct ownership, REITs, mortgage-backed securities, and private real estate funds, each with different liquidity and risk.","Các cách đầu tư bất động sản","Sở hữu trực tiếp, REIT, chứng khoán bảo đảm bằng thế chấp và quỹ bất động sản tư nhân, mỗi loại có thanh khoản và rủi ro khác nhau."],
+["REIT","A Real Estate Investment Trust that owns/finances income property and distributes most income to shareholders; publicly traded and liquid.","Quỹ tín thác BĐS (REIT)","Quỹ đầu tư bất động sản sở hữu/tài trợ bất động sản sinh lời và phân phối phần lớn thu nhập cho cổ đông; niêm yết và có thanh khoản."],
+["Capitalization rate","Net operating income ÷ property value; a real-estate yield measure used to value income properties.","Tỷ suất vốn hóa (cap rate)","Thu nhập hoạt động ròng ÷ giá trị bất động sản; thước đo lợi suất bất động sản dùng để định giá bất động sản sinh lời."],
+["Commodities exposure","Gained via physical assets, futures, or commodity indices; returns come from spot changes, roll yield, and collateral return.","Đầu tư hàng hóa","Tiếp cận qua tài sản vật chất, hợp đồng tương lai hoặc chỉ số hàng hóa; lợi suất đến từ biến động giá giao ngay, lợi suất đảo hạn và lợi suất tài sản đảm bảo."],
+["Contango vs. backwardation","Contango: futures price above spot (negative roll yield); backwardation: futures below spot (positive roll yield).","Contango và backwardation","Contango: giá tương lai cao hơn giao ngay (lợi suất đảo hạn âm); backwardation: giá tương lai thấp hơn giao ngay (lợi suất đảo hạn dương)."],
+["Infrastructure investing","Investing in long-lived physical assets (roads, utilities) offering stable, often inflation-linked cash flows.","Đầu tư hạ tầng","Đầu tư vào tài sản vật chất tuổi thọ dài (đường sá, tiện ích) tạo dòng tiền ổn định, thường gắn với lạm phát."],
+["Managed futures / CTAs","Funds trading futures and options across markets, often trend-following, offering diversification from traditional assets.","Managed futures / CTA","Quỹ giao dịch hợp đồng tương lai và quyền chọn trên nhiều thị trường, thường theo xu hướng, giúp đa dạng hóa so với tài sản truyền thống."],
+["Fund of funds","A fund investing in multiple hedge or private-equity funds for diversification, at the cost of an added layer of fees.","Quỹ của các quỹ (fund of funds)","Quỹ đầu tư vào nhiều quỹ phòng hộ hoặc vốn tư nhân để đa dạng hóa, đổi lại là một lớp phí tăng thêm."],
+["Illiquidity premium","Extra expected return demanded for holding assets that cannot be quickly sold without a price concession.","Phần bù kém thanh khoản","Lợi suất kỳ vọng tăng thêm đòi hỏi khi nắm giữ tài sản không thể bán nhanh mà không phải nhượng giá."],
+["Survivorship bias","Upward bias in reported alternative-fund returns because failed funds drop out of databases and indices.","Thiên lệch sống sót","Sai lệch làm tăng lợi suất báo cáo của quỹ thay thế vì các quỹ thất bại bị loại khỏi cơ sở dữ liệu và chỉ số."],
+["Backfill bias","Overstated index returns when a fund's historical (often strong) results are added upon joining a database.","Thiên lệch điền lùi (backfill)","Lợi suất chỉ số bị thổi phồng khi kết quả quá khứ (thường tốt) của quỹ được thêm vào lúc gia nhập cơ sở dữ liệu."],
+["Lock-up and notice periods","Restrictions limiting when investors can redeem hedge-fund capital, protecting the manager's strategy and liquidity.","Thời gian khóa và báo trước","Các hạn chế giới hạn thời điểm nhà đầu tư có thể rút vốn khỏi quỹ phòng hộ, bảo vệ chiến lược và thanh khoản của nhà quản lý."],
+["Distressed investing","Buying the securities of companies in or near bankruptcy, seeking gains from restructuring or recovery.","Đầu tư vào doanh nghiệp khó khăn","Mua chứng khoán của công ty đang hoặc gần phá sản, tìm lợi nhuận từ tái cấu trúc hoặc phục hồi."],
+["Merger arbitrage","A strategy capturing the spread between a target's market price and the announced acquisition price, betting the deal closes.","Kinh doanh chênh lệch giá sáp nhập","Chiến lược nắm bắt chênh lệch giữa giá thị trường của mục tiêu và giá thâu tóm công bố, đặt cược thương vụ hoàn tất."],
+["Digital assets","Cryptocurrencies and tokens recorded on distributed ledgers (blockchain); highly volatile with evolving regulation.","Tài sản số","Tiền mã hóa và token ghi trên sổ cái phân tán (blockchain); biến động cao với quy định đang thay đổi."],
+["Roll yield","The return from rolling expiring futures into new contracts; positive in backwardation, negative in contango.","Lợi suất đảo hạn (roll yield)","Lợi suất từ việc đảo hợp đồng tương lai sắp đáo hạn sang hợp đồng mới; dương khi backwardation, âm khi contango."]
+],
+"Portfolio Management":[
+["Portfolio perspective","Evaluating investments by their contribution to overall portfolio risk and return, not in isolation; diversification is central.","Góc nhìn danh mục","Đánh giá khoản đầu tư theo đóng góp của nó vào rủi ro và lợi suất tổng thể của danh mục, không xét riêng lẻ; đa dạng hóa là trọng tâm."],
+["Risk aversion","The preference for lower risk at a given return; risk-averse investors require higher expected returns for greater risk.","Sự e ngại rủi ro","Ưa thích rủi ro thấp hơn ở cùng mức lợi suất; nhà đầu tư e ngại rủi ro đòi hỏi lợi suất kỳ vọng cao hơn cho rủi ro lớn hơn."],
+["Utility & indifference curves","Utility captures risk-return preferences; indifference curves connect portfolios giving equal satisfaction to an investor.","Hàm hữu dụng và đường bàng quan","Hữu dụng thể hiện sở thích rủi ro-lợi suất; đường bàng quan nối các danh mục mang lại mức thỏa mãn bằng nhau cho nhà đầu tư."],
+["Diversification","Combining imperfectly correlated assets to reduce portfolio risk below the weighted average of individual risks.","Đa dạng hóa","Kết hợp các tài sản tương quan không hoàn hảo để giảm rủi ro danh mục xuống dưới mức bình quân gia quyền của rủi ro từng tài sản."],
+["Correlation & portfolio risk","Portfolio variance depends on asset weights, variances, and covariances; lower correlations yield greater risk reduction.","Tương quan và rủi ro danh mục","Phương sai danh mục phụ thuộc trọng số, phương sai và hiệp phương sai của tài sản; tương quan càng thấp thì giảm rủi ro càng nhiều."],
+["Efficient frontier","The set of portfolios offering the highest expected return for each level of risk; rational investors choose from it.","Đường biên hiệu quả","Tập hợp các danh mục cho lợi suất kỳ vọng cao nhất ở mỗi mức rủi ro; nhà đầu tư hợp lý lựa chọn từ đó."],
+["Capital allocation line (CAL)","The risk-return line combining the risk-free asset with a risky portfolio; its slope is the Sharpe ratio.","Đường phân bổ vốn (CAL)","Đường rủi ro-lợi suất kết hợp tài sản phi rủi ro với một danh mục rủi ro; độ dốc chính là tỷ số Sharpe."],
+["Capital market line (CML)","The CAL using the market portfolio; relates expected return to total risk (standard deviation) for efficient portfolios.","Đường thị trường vốn (CML)","CAL sử dụng danh mục thị trường; liên hệ lợi suất kỳ vọng với rủi ro tổng (độ lệch chuẩn) cho các danh mục hiệu quả."],
+["Systematic vs. unsystematic risk","Systematic (market) risk is undiversifiable and priced; unsystematic (firm-specific) risk can be diversified away.","Rủi ro hệ thống và phi hệ thống","Rủi ro hệ thống (thị trường) không thể đa dạng hóa và được định giá; rủi ro phi hệ thống (riêng công ty) có thể loại bỏ bằng đa dạng hóa."],
+["Beta","A measure of an asset's systematic risk — its sensitivity to market returns; the market beta is 1.0.","Hệ số beta","Thước đo rủi ro hệ thống của tài sản — độ nhạy với lợi suất thị trường; beta của thị trường bằng 1,0."],
+["Capital asset pricing model (CAPM)","E(R) = R_f + β(E(R_m) − R_f); relates required return to systematic risk via the security market line.","Mô hình định giá tài sản vốn (CAPM)","E(R) = R_f + β(E(R_m) − R_f); liên hệ lợi suất yêu cầu với rủi ro hệ thống qua đường thị trường chứng khoán."],
+["Security market line (SML)","The graphical CAPM: expected return plotted against beta; assets above it are undervalued, below it overvalued.","Đường thị trường chứng khoán (SML)","Biểu diễn đồ thị của CAPM: lợi suất kỳ vọng theo beta; tài sản nằm trên đường bị định giá thấp, dưới đường bị định giá cao."],
+["Sharpe ratio","(Portfolio return − risk-free rate) ÷ standard deviation; excess return per unit of total risk.","Tỷ số Sharpe","(Lợi suất danh mục − lãi suất phi rủi ro) ÷ độ lệch chuẩn; lợi suất vượt trội trên mỗi đơn vị rủi ro tổng."],
+["Treynor ratio","(Portfolio return − risk-free rate) ÷ beta; excess return per unit of systematic risk.","Tỷ số Treynor","(Lợi suất danh mục − lãi suất phi rủi ro) ÷ beta; lợi suất vượt trội trên mỗi đơn vị rủi ro hệ thống."],
+["Jensen's alpha","A portfolio's return in excess of the CAPM-predicted return; positive alpha indicates outperformance for the risk taken.","Alpha Jensen","Lợi suất danh mục vượt trên mức mà CAPM dự báo; alpha dương cho thấy hiệu suất vượt trội so với rủi ro đã gánh."],
+["M-squared (M²)","Risk-adjusted performance expressed as a return, comparing a portfolio to the market at the same total risk.","M bình phương (M²)","Hiệu suất điều chỉnh rủi ro biểu diễn dưới dạng lợi suất, so sánh danh mục với thị trường ở cùng mức rủi ro tổng."],
+["Investment policy statement (IPS)","A document specifying an investor's objectives (return, risk) and constraints (liquidity, horizon, taxes, legal, unique).","Tuyên bố chính sách đầu tư (IPS)","Tài liệu nêu mục tiêu của nhà đầu tư (lợi suất, rủi ro) và các ràng buộc (thanh khoản, thời gian, thuế, pháp lý, đặc thù)."],
+["Return objective vs. risk tolerance","The IPS balances the investor's required/desired return against their ability and willingness to bear risk.","Mục tiêu lợi suất và mức chịu rủi ro","IPS cân bằng lợi suất yêu cầu/mong muốn của nhà đầu tư với khả năng và sự sẵn lòng chịu rủi ro."],
+["Strategic vs. tactical asset allocation","Strategic sets long-run target weights per the IPS; tactical makes short-term shifts to exploit market opportunities.","Phân bổ tài sản chiến lược và chiến thuật","Chiến lược đặt trọng số mục tiêu dài hạn theo IPS; chiến thuật điều chỉnh ngắn hạn để khai thác cơ hội thị trường."],
+["Rebalancing","Realigning portfolio weights to targets after market moves; disciplines buying low and selling high.","Tái cân bằng danh mục","Đưa trọng số danh mục về mục tiêu sau biến động thị trường; tạo kỷ luật mua thấp bán cao."],
+["Risk budgeting","Allocating a portfolio's total risk across positions or strategies to align with objectives.","Phân bổ ngân sách rủi ro","Phân bổ tổng rủi ro của danh mục cho các vị thế hoặc chiến lược để phù hợp với mục tiêu."],
+["Value at Risk (VaR)","An estimate of the minimum loss expected over a period at a given confidence level (e.g., 5% VaR).","Giá trị chịu rủi ro (VaR)","Ước tính mức lỗ tối thiểu kỳ vọng trong một kỳ ở mức độ tin cậy cho trước (ví dụ VaR 5%)."],
+["Behavioral biases","Systematic errors (overconfidence, loss aversion, anchoring, herding) that cause investors to deviate from rationality.","Thiên lệch hành vi","Các sai lầm hệ thống (tự tin thái quá, e ngại thua lỗ, mỏ neo, bầy đàn) khiến nhà đầu tư lệch khỏi tính hợp lý."],
+["Loss aversion","The tendency to feel losses more strongly than equivalent gains, leading to risk-seeking to avoid realizing losses.","E ngại thua lỗ","Xu hướng cảm nhận thua lỗ mạnh hơn khoản lời tương đương, dẫn đến tìm kiếm rủi ro để tránh phải ghi nhận lỗ."],
+["Pooled investment vehicles","Mutual funds, ETFs, and closed-end funds that combine investor capital; ETFs trade intraday and are often tax-efficient.","Các quỹ đầu tư gộp vốn","Quỹ tương hỗ, ETF và quỹ đóng gộp vốn của nhà đầu tư; ETF giao dịch trong ngày và thường hiệu quả về thuế."],
+["Risk management process","Identifying, measuring, and modifying exposures relative to risk tolerance through governance and appropriate tools.","Quy trình quản trị rủi ro","Xác định, đo lường và điều chỉnh mức phơi nhiễm so với mức chịu rủi ro thông qua quản trị và các công cụ phù hợp."],
+["Fintech in investment management","Technologies (big data, AI, robo-advisers, blockchain) reshaping analysis, trading, and portfolio management.","Fintech trong quản lý đầu tư","Các công nghệ (dữ liệu lớn, AI, cố vấn robot, blockchain) định hình lại phân tích, giao dịch và quản lý danh mục."]
+],
+"Ethics & Professional Standards":[
+["Code of Ethics","CFA Institute's set of ethical principles requiring members to act with integrity, competence, and respect for the profession and clients.","Quy tắc đạo đức","Bộ nguyên tắc đạo đức của Viện CFA yêu cầu thành viên hành động chính trực, năng lực và tôn trọng nghề nghiệp lẫn khách hàng."],
+["Standards of Professional Conduct","Seven standards operationalizing the Code, covering professionalism, markets, client duties, employer duties, analysis, conflicts, and program conduct.","Các chuẩn mực ứng xử nghề nghiệp","Bảy chuẩn mực cụ thể hóa Quy tắc, bao gồm tính chuyên nghiệp, thị trường, nghĩa vụ với khách hàng, với chủ lao động, phân tích, xung đột và ứng xử trong chương trình."],
+["Standard I: Professionalism","Requires knowledge of the law, independence and objectivity, no misrepresentation, and no misconduct reflecting on integrity.","Chuẩn mực I: Tính chuyên nghiệp","Yêu cầu hiểu biết pháp luật, độc lập và khách quan, không xuyên tạc và không có hành vi sai trái ảnh hưởng đến sự chính trực."],
+["Independence and objectivity","Members must maintain independence and objectivity, avoiding gifts or pressures that could compromise their judgment.","Độc lập và khách quan","Thành viên phải giữ tính độc lập và khách quan, tránh quà tặng hay áp lực có thể làm tổn hại phán đoán."],
+["Misrepresentation","Prohibits any untrue statement or omission of fact in investment analysis, recommendations, or performance; includes plagiarism.","Xuyên tạc","Cấm mọi phát biểu sai sự thật hoặc bỏ sót sự kiện trong phân tích, khuyến nghị hay hiệu suất đầu tư; bao gồm cả đạo văn."],
+["Standard II: Integrity of capital markets","Prohibits acting on material nonpublic information (insider trading) and market manipulation.","Chuẩn mực II: Toàn vẹn thị trường vốn","Cấm hành động dựa trên thông tin trọng yếu chưa công bố (giao dịch nội gián) và thao túng thị trường."],
+["Material nonpublic information","Information likely to affect a security's price that has not been disseminated; trading on it violates the Standards (mosaic theory is permitted).","Thông tin trọng yếu chưa công bố","Thông tin có khả năng ảnh hưởng giá chứng khoán mà chưa được công bố; giao dịch dựa trên nó vi phạm chuẩn mực (lý thuyết ghép mảnh được phép)."],
+["Mosaic theory","Reaching investment conclusions by combining public and nonmaterial-nonpublic information; this does not violate the Standards.","Lý thuyết ghép mảnh (mosaic)","Đưa ra kết luận đầu tư bằng cách kết hợp thông tin công khai và thông tin phi trọng yếu chưa công bố; điều này không vi phạm chuẩn mực."],
+["Market manipulation","Prohibited practices that distort prices or trading volume to mislead participants, including transaction- and information-based manipulation.","Thao túng thị trường","Các hành vi bị cấm làm sai lệch giá hoặc khối lượng giao dịch nhằm đánh lừa người tham gia, gồm thao túng qua giao dịch và qua thông tin."],
+["Standard III: Duties to clients","Requires loyalty, prudence, and care; fair dealing; suitability; performance presentation; and confidentiality.","Chuẩn mực III: Nghĩa vụ với khách hàng","Yêu cầu trung thành, thận trọng và cẩn trọng; đối xử công bằng; tính phù hợp; trình bày hiệu suất; và bảo mật."],
+["Loyalty, prudence, and care","Members must place client interests first, act with the care of a prudent person, and manage assets per the client's mandate.","Trung thành, thận trọng và cẩn trọng","Thành viên phải đặt lợi ích khách hàng lên trên, hành động cẩn trọng như người thận trọng và quản lý tài sản theo ủy thác của khách hàng."],
+["Fair dealing","Members must treat all clients fairly when disseminating recommendations or taking investment action — not favoring some over others.","Đối xử công bằng","Thành viên phải đối xử công bằng với mọi khách hàng khi phổ biến khuyến nghị hoặc thực hiện hành động đầu tư — không thiên vị ai."],
+["Suitability","Recommendations must fit the client's financial situation, objectives, constraints, and risk profile as set out in the IPS.","Tính phù hợp","Khuyến nghị phải phù hợp với tình hình tài chính, mục tiêu, ràng buộc và hồ sơ rủi ro của khách hàng như nêu trong IPS."],
+["Performance presentation","Communications about performance must be fair, accurate, and complete, without misleading or cherry-picked results.","Trình bày hiệu suất","Thông tin về hiệu suất phải công bằng, chính xác và đầy đủ, không gây hiểu lầm hay chọn lọc kết quả có lợi."],
+["Preservation of confidentiality","Members must keep client information confidential unless disclosure is required by law, permitted by the client, or concerns illegal activities.","Bảo mật thông tin","Thành viên phải giữ bí mật thông tin khách hàng trừ khi pháp luật yêu cầu tiết lộ, khách hàng cho phép, hoặc liên quan hoạt động bất hợp pháp."],
+["Standard IV: Duties to employers","Requires loyalty to the employer, arrangement for additional compensation only with consent, and responsibilities of supervisors.","Chuẩn mực IV: Nghĩa vụ với chủ lao động","Yêu cầu trung thành với chủ lao động, chỉ nhận thù lao thêm khi có sự đồng ý, và trách nhiệm của người giám sát."],
+["Loyalty to employer","Members must act for their employer's benefit, not deprive it of their skills, and not harm it before or after leaving.","Trung thành với chủ lao động","Thành viên phải hành động vì lợi ích của chủ lao động, không tước đi kỹ năng của họ, và không gây hại trước hoặc sau khi nghỉ việc."],
+["Additional compensation arrangements","Members must obtain written consent from all parties before accepting outside compensation that competes with the employer's interest.","Thỏa thuận thù lao bổ sung","Thành viên phải có sự đồng ý bằng văn bản của tất cả các bên trước khi nhận thù lao bên ngoài cạnh tranh với lợi ích của chủ lao động."],
+["Responsibilities of supervisors","Members in supervisory roles must make reasonable efforts to detect and prevent violations by those under their supervision.","Trách nhiệm của người giám sát","Thành viên ở vai trò giám sát phải nỗ lực hợp lý để phát hiện và ngăn chặn vi phạm của những người dưới quyền."],
+["Standard V: Investment analysis & recommendations","Requires diligence and reasonable basis, clear communication, and retention of records supporting analysis.","Chuẩn mực V: Phân tích và khuyến nghị đầu tư","Yêu cầu sự cần mẫn và cơ sở hợp lý, truyền đạt rõ ràng, và lưu giữ hồ sơ hỗ trợ phân tích."],
+["Diligence and reasonable basis","Investment actions must rest on thorough research and a reasonable, adequate basis supported by appropriate diligence.","Cần mẫn và cơ sở hợp lý","Hành động đầu tư phải dựa trên nghiên cứu kỹ lưỡng và cơ sở hợp lý, đầy đủ, được hỗ trợ bằng sự cần mẫn phù hợp."],
+["Communication with clients","Members must distinguish fact from opinion, disclose the investment process and its risks, and identify material limitations.","Truyền đạt với khách hàng","Thành viên phải phân biệt sự kiện với ý kiến, công bố quy trình đầu tư và rủi ro của nó, và nêu rõ các giới hạn trọng yếu."],
+["Record retention","Members must keep records supporting their analyses, recommendations, and actions; records are the firm's property.","Lưu giữ hồ sơ","Thành viên phải lưu giữ hồ sơ hỗ trợ phân tích, khuyến nghị và hành động; hồ sơ là tài sản của công ty."],
+["Standard VI: Conflicts of interest","Requires full disclosure of conflicts, priority of client transactions over personal ones, and disclosure of referral fees.","Chuẩn mực VI: Xung đột lợi ích","Yêu cầu công bố đầy đủ xung đột, ưu tiên giao dịch của khách hàng hơn cá nhân, và công bố phí giới thiệu."],
+["Priority of transactions","Client and employer transactions take precedence over a member's personal (beneficial-ownership) transactions.","Ưu tiên giao dịch","Giao dịch của khách hàng và chủ lao động được ưu tiên hơn giao dịch cá nhân (sở hữu hưởng lợi) của thành viên."],
+["Standard VII: Responsibilities as a member/candidate","Prohibits conduct compromising the CFA Program's integrity and misrepresenting the CFA designation.","Chuẩn mực VII: Trách nhiệm của thành viên/thí sinh","Cấm hành vi làm tổn hại tính toàn vẹn của Chương trình CFA và xuyên tạc về danh hiệu CFA."],
+["Global Investment Performance Standards (GIPS)","Voluntary ethical standards for calculating and presenting investment performance to ensure fair representation and full disclosure.","Chuẩn GIPS","Bộ chuẩn mực đạo đức tự nguyện về tính toán và trình bày hiệu suất đầu tư nhằm đảm bảo trình bày công bằng và công bố đầy đủ."]
+]
+};
+
+/* ============ APP ============ */
+const KEY='cfa_l1_flash_v1';
+let state=JSON.parse(localStorage.getItem(KEY)||'{}');
+let cards=[]; let id=0;
+const topicColors={};
+const palette=['#0f6e56','#b07514','#b6442a','#6b3d6e','#1f5d99','#2f8f4f','#08423a','#9d3a1e','#4d2950','#15395e'];
+Object.keys(DATA).forEach((t,i)=>{topicColors[t]=palette[i%palette.length];});
+for(const topic in DATA){DATA[topic].forEach(([en,ed,vn,vd])=>{cards.push({id:id++,topic,en,ed,vn,vd});});}
+let order=cards.map(c=>c.id);
+
+const $=s=>document.querySelector(s);
+const deck=$('#deck'), topicsEl=$('#topics');
+const UIK='cfa_l1_ui_v1';
+const ui=JSON.parse(localStorage.getItem(UIK)||'{}');
+let activeTopic=ui.topic||'All', q=ui.q||'', statusFilter=ui.status||'all';
+let allFlipped=false;
+function saveUI(){localStorage.setItem(UIK,JSON.stringify({topic:activeTopic,q,status:statusFilter}));}
+const langCycle=['both','en','vi']; const langLabel={both:'🌐 EN + VN',en:'🇬🇧 EN only',vi:'🇻🇳 VN only'};
+
+function save(){localStorage.setItem(KEY,JSON.stringify(state));}
+function st(cid){return state[cid]||{};}
+
+const allTopics=['All',...Object.keys(DATA)];
+function shortTopic(t){return t.replace('Financial Statement Analysis','FSA').replace('Ethics & Professional Standards','Ethics').replace('Alternative Investments','Alternatives').replace('Quantitative Methods','Quant').replace('Portfolio Management','Portfolio Mgmt');}
+topicsEl.innerHTML=allTopics.map(t=>`<span class="chip${t===activeTopic?' active':''}" data-t="${t}">${t==='All'?'All topics':shortTopic(t)}</span>`).join('');
+topicsEl.querySelectorAll('.chip').forEach(c=>c.onclick=()=>{
+  topicsEl.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+  c.classList.add('active'); activeTopic=c.dataset.t; saveUI(); render();
+});
+
+function filtered(){
+  return order.map(i=>cards[i]).filter(c=>{
+    if(activeTopic!=='All' && c.topic!==activeTopic) return false;
+    if(q){const s=(c.en+' '+c.ed+' '+c.vn+' '+c.vd).toLowerCase(); if(!s.includes(q)) return false;}
+    const s=st(c.id);
+    if(statusFilter==='known'&&s.s!=='k') return false;
+    if(statusFilter==='unknown'&&s.s!=='u') return false;
+    if(statusFilter==='unseen'&&s.s) return false;
+    if(statusFilter==='noted'&&!(s.n&&s.n.trim())) return false;
+    return true;
+  });
+}
+
+/* ----- highlight helpers ----- */
+function mergeRanges(rs){
+  if(!rs||!rs.length) return [];
+  rs=rs.map(r=>[Math.min(r[0],r[1]),Math.max(r[0],r[1])]).sort((a,b)=>a[0]-b[0]);
+  const out=[rs[0].slice()];
+  for(let i=1;i<rs.length;i++){const last=out[out.length-1];
+    if(rs[i][0]<=last[1]) last[1]=Math.max(last[1],rs[i][1]); else out.push(rs[i].slice());}
+  return out;
+}
+function hlHTML(text,ranges){
+  ranges=mergeRanges(ranges);
+  if(!ranges.length) return esc(text);
+  let out='',i=0;
+  for(const [s,e] of ranges){
+    if(s>i) out+=esc(text.slice(i,s));
+    out+='<mark data-s="'+s+'" data-e="'+e+'" title="Bấm để xoá tô sáng">'+esc(text.slice(s,e))+'</mark>';
+    i=e;
+  }
+  out+=esc(text.slice(i));
+  return out;
+}
+function spanOffset(span,node,off){
+  const w=document.createTreeWalker(span,NodeFilter.SHOW_TEXT);let total=0,n;
+  while((n=w.nextNode())){ if(n===node) return total+off; total+=n.nodeValue.length; }
+  return total;
+}
+function getHL(cid){const h=(state[cid]||{}).hl;return {en:(h&&h.en)?h.en.slice():[],vi:(h&&h.vi)?h.vi.slice():[]};}
+function setHL(cid,hl){const cur=state[cid]||{};state[cid]={...cur,hl};save();}
+
+function render(){
+  const list=filtered();
+  deck.innerHTML='';
+  $('#empty').style.display=list.length?'none':'block';
+  list.forEach(c=>{
+    const s=st(c.id);
+    const col=topicColors[c.topic];
+    const el=document.createElement('div');
+    el.className='card'+(allFlipped?' flipped':'');
+    el.innerHTML=`
+      <div class="inner">
+        <div class="face front">
+          <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><span class="num">#${c.id+1}</span><span class="hint">tap to flip ↻</span></div>
+          <div class="term"><span class="en">${esc(c.en)}</span><span class="vi">${esc(c.vn)}</span></div>
+        </div>
+        <div class="face back">
+          <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><span class="hint">tap to flip ↻</span></div>
+          <div class="def"><span class="en"></span><span class="vi"></span></div>
+          <div class="selhint">Bôi đen một đoạn để <b>tô sáng</b> · bấm vào chỗ đã tô để xoá</div>
+          <div class="cardfoot" data-stop>
+            <button class="sbtn k${s.s==='k'?' on':''}" data-act="k">✓ Known</button>
+            <button class="sbtn u${s.s==='u'?' on':''}" data-act="u">↻ Learning</button>
+            <button class="sbtn erase" data-act="clr">🧽 Xoá tô sáng</button>
+          </div>
+          <div class="notewrap" data-stop><textarea class="note" placeholder="Ghi chú / Add a note…">${s.n?esc(s.n):''}</textarea></div>
+        </div>
+      </div>`;
+    const enSpan=el.querySelector('.def .en'), viSpan=el.querySelector('.def .vi');
+    function paint(){const hl=getHL(c.id);enSpan.innerHTML=hlHTML(c.ed,hl.en);viSpan.innerHTML=hlHTML(c.vd,hl.vi);}
+    paint();
+
+    // flip only on genuine tap (not drag / text-selection / interactive area)
+    const inner=el.querySelector('.inner');
+    inner.addEventListener('mousedown',e=>{el._dx=e.clientX;el._dy=e.clientY;});
+    inner.addEventListener('click',ev=>{
+      if(el._sup){el._sup=false;return;}
+      if(ev.target.closest('[data-stop]')||ev.target.closest('mark')) return;
+      const sel=window.getSelection();
+      if(sel&&sel.toString().length>0) return;
+      const dx=Math.abs(ev.clientX-(el._dx??ev.clientX)), dy=Math.abs(ev.clientY-(el._dy??ev.clientY));
+      if(dx>6||dy>6) return;
+      el.classList.toggle('flipped');
+    });
+
+    // select-to-highlight
+    function addSel(span,lang){
+      const sel=window.getSelection();
+      if(!sel||sel.rangeCount===0||sel.isCollapsed) return false;
+      const r=sel.getRangeAt(0);
+      if(!span.contains(r.startContainer)||!span.contains(r.endContainer)) return false;
+      let a=spanOffset(span,r.startContainer,r.startOffset), b=spanOffset(span,r.endContainer,r.endOffset);
+      if(a>b)[a,b]=[b,a];
+      if(b-a<1) return false;
+      const hl=getHL(c.id); hl[lang]=mergeRanges([...hl[lang],[a,b]]); setHL(c.id,hl);
+      sel.removeAllRanges(); paint(); return true;
+    }
+    enSpan.addEventListener('mouseup',()=>{ if(addSel(enSpan,'en')) el._sup=true; });
+    viSpan.addEventListener('mouseup',()=>{ if(addSel(viSpan,'vi')) el._sup=true; });
+    el.querySelector('.def').addEventListener('click',ev=>{
+      const m=ev.target.closest('mark'); if(!m) return;
+      ev.stopPropagation(); el._sup=true;
+      const span=m.parentElement, lang=span.classList.contains('en')?'en':'vi';
+      const a=+m.dataset.s, b=+m.dataset.e;
+      const hl=getHL(c.id); hl[lang]=hl[lang].filter(r=>!(r[0]===a&&r[1]===b)); setHL(c.id,hl); paint();
+    });
+
+    el.querySelectorAll('.sbtn').forEach(btn=>btn.onclick=e=>{
+      e.stopPropagation();
+      const a=btn.dataset.act, cur=st(c.id), ns={...cur};
+      if(a==='clr'){ setHL(c.id,{en:[],vi:[]}); paint(); return; }
+      if(a==='k') ns.s=ns.s==='k'?null:'k';
+      if(a==='u') ns.s=ns.s==='u'?null:'u';
+      state[c.id]=ns; save(); updateStats();
+      btn.parentElement.querySelector('.k').classList.toggle('on',ns.s==='k');
+      btn.parentElement.querySelector('.u').classList.toggle('on',ns.s==='u');
+      if(statusFilter!=='all') render();
+    });
+    const ta=el.querySelector('.note');
+    ta.addEventListener('input',()=>{const cur=st(c.id);state[c.id]={...cur,n:ta.value};save();});
+    deck.appendChild(el);
+  });
+  $('#count').textContent=`${list.length} / ${cards.length} cards`;
+  updateStats();
+}
+
+function updateStats(){
+  let k=0,u=0;
+  cards.forEach(c=>{const s=st(c.id).s; if(s==='k')k++; else if(s==='u')u++;});
+  $('#pk').textContent='Known '+k;
+  $('#pu').textContent='Learning '+u;
+  const pct=Math.round(k/cards.length*100);
+  $('#barfill').style.width=pct+'%';
+  $('#pct').textContent=pct+'%';
+}
+
+function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+
+const searchEl=$('#search'); searchEl.value=q;
+searchEl.addEventListener('input',e=>{q=e.target.value.trim().toLowerCase();saveUI();render();});
+const filterEl=$('#filterStatus'); filterEl.value=statusFilter;
+filterEl.addEventListener('change',e=>{statusFilter=e.target.value;saveUI();render();});
+$('#shuffle').onclick=()=>{for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}render();};
+$('#reset').onclick=()=>{if(confirm('Xoá toàn bộ tiến độ, ghi chú và tô sáng? / Clear all progress, notes and highlights?')){state={};save();render();}};
+$('#flipall').onclick=()=>{allFlipped=!allFlipped;
+  document.querySelectorAll('.card').forEach(c=>c.classList.toggle('flipped',allFlipped));
+  $('#flipall').textContent=allFlipped?'🙈 Ẩn nghĩa':'👁 Hiện nghĩa';};
+
+// language toggle
+let langIdx=parseInt(localStorage.getItem('cfa_lang_idx')||'0');
+function applyLang(){const m=langCycle[langIdx];document.body.setAttribute('data-lang',m);$('#lang').textContent=langLabel[m];}
+$('#lang').onclick=()=>{langIdx=(langIdx+1)%langCycle.length;localStorage.setItem('cfa_lang_idx',langIdx);applyLang();};
+applyLang();
+
+// theme
+const savedTheme=localStorage.getItem('cfa_theme')||'light';
+if(savedTheme==='dark'){document.documentElement.setAttribute('data-theme','dark');$('#theme').textContent='☀️ Light';}
+$('#theme').onclick=()=>{
+  const dark=document.documentElement.getAttribute('data-theme')==='dark';
+  if(dark){document.documentElement.removeAttribute('data-theme');$('#theme').textContent='🌙 Dark';localStorage.setItem('cfa_theme','light');}
+  else{document.documentElement.setAttribute('data-theme','dark');$('#theme').textContent='☀️ Light';localStorage.setItem('cfa_theme','dark');}
+};
+
+render();
+</script>
+</body>
+</html>
