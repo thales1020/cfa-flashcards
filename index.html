@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>CFA Level 1 — Flashcards (EN/VN)</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icons/favicon-32.png" sizes="32x32">
@@ -35,12 +35,14 @@
   --shadow:0 8px 24px rgba(0,0,0,.42);
 }
 *{box-sizing:border-box}
+html,body{-webkit-tap-highlight-color:transparent;}
 body{margin:0;font-family:'Be Vietnam Pro',system-ui,-apple-system,sans-serif;
   background:var(--bg);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased;
-  transition:background .25s,color .25s;}
+  transition:background .25s,color .25s;-webkit-text-size-adjust:100%;}
 header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,var(--panel),var(--bg));
   border-bottom:1px solid var(--line);box-shadow:var(--shadow);}
-.hwrap{max-width:1120px;margin:0 auto;padding:18px 22px 14px;}
+.hwrap{max-width:1120px;margin:0 auto;
+  padding:calc(18px + env(safe-area-inset-top,0px)) max(22px,env(safe-area-inset-right,0px)) 14px max(22px,env(safe-area-inset-left,0px));}
 .titlerow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
 .brand{display:flex;flex-direction:column;}
 .chap{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:600;}
@@ -48,6 +50,7 @@ h1{font-family:'Playfair Display',serif;font-size:1.5rem;margin:.1rem 0 0;font-w
   letter-spacing:-.2px;color:var(--accent-deep);}
 h1 span{color:var(--accent);}
 .spacer{flex:1;}
+.btn,.chip,.sbtn,select,input[type=search]{touch-action:manipulation;}
 .btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;
   padding:8px 14px;font-size:12.5px;cursor:pointer;font-weight:600;transition:.18s;white-space:nowrap;}
 .btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft);}
@@ -120,6 +123,25 @@ footer{max-width:1120px;margin:0 auto;padding:14px 22px 44px;color:var(--muted);
 [data-lang="en"] .vi{display:none!important;}
 [data-lang="vi"] .en{display:none!important;}
 [data-lang="vi"] .def .vi{border-top:none;margin-top:0;padding-top:0;}
+
+/* ---- mobile / touch tuning (≤720px) ---- */
+@media(max-width:720px){
+  /* 16px on form controls stops iOS Safari from auto-zooming on focus */
+  input[type=search]{font-size:16px;padding:12px 16px;}
+  select{font-size:16px;padding:11px 14px;}
+  /* comfortable ≥44px thumb targets */
+  .btn{padding:11px 15px;font-size:13px;}
+  .sbtn{padding:10px 15px;font-size:13px;}
+  .chip{padding:9px 15px;font-size:13px;}
+  /* topic chips: one horizontal swipe strip instead of 3 wrapped rows */
+  .topics{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;margin-inline:-22px;padding-inline:22px;scroll-padding-left:22px;}
+  .topics::-webkit-scrollbar{display:none;}
+  .chip{flex:0 0 auto;}
+  /* give tapped cards a touch of breathing room */
+  main{padding:16px;}
+  .face{padding:20px;}
+}
 @media(min-width:720px){.deck{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
@@ -590,6 +612,9 @@ function render(){
     }
     enSpan.addEventListener('mouseup',()=>{ if(addSel(enSpan,'en')) el._sup=true; });
     viSpan.addEventListener('mouseup',()=>{ if(addSel(viSpan,'vi')) el._sup=true; });
+    // touch: selection settles after the touchend event, so defer a tick before reading it
+    enSpan.addEventListener('touchend',()=>setTimeout(()=>{ if(addSel(enSpan,'en')) el._sup=true; },0));
+    viSpan.addEventListener('touchend',()=>setTimeout(()=>{ if(addSel(viSpan,'vi')) el._sup=true; },0));
     el.querySelector('.def').addEventListener('click',ev=>{
       const m=ev.target.closest('mark'); if(!m) return;
       ev.stopPropagation(); el._sup=true;
