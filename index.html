@@ -97,6 +97,7 @@ main{max-width:1120px;margin:0 auto;padding:22px;}
 .term .vi{display:block;font-family:'Be Vietnam Pro',sans-serif;font-size:1.02rem;font-weight:600;
   color:var(--vi);margin-top:8px;}
 .def{font-size:15.5px;line-height:1.72;margin:2px 0 auto;cursor:text;}
+.def sup,.def sub,.term sup,.term sub{font-size:.72em;line-height:0;}
 .def .en{color:var(--ink);}
 .def .vi{display:block;color:var(--vi);margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);}
 .def mark{background:var(--hl-bg);color:var(--hl-ink);border-radius:4px;padding:.02em .16em;cursor:pointer;
@@ -295,6 +296,13 @@ function hlHTML(text,ranges){
   out+=esc(text.slice(i));
   return out;
 }
+// render formula notation: x^(a) / x^n -> superscript, x_(a) / x_i -> subscript
+function fmtMath(html){
+  const strip=g=>(g[0]==='('&&g[g.length-1]===')')?g.slice(1,-1):g;
+  return html
+    .replace(/\^(\([^()]*\)|[A-Za-z0-9+\-−]+)/g,(m,g)=>'<sup>'+strip(g)+'</sup>')
+    .replace(/_(\([^()]*\)|[A-Za-z0-9+\-−]+)/g,(m,g)=>'<sub>'+strip(g)+'</sub>');
+}
 function spanOffset(span,node,off){
   const w=document.createTreeWalker(span,NodeFilter.SHOW_TEXT);let total=0,n;
   while((n=w.nextNode())){ if(n===node) return total+off; total+=n.nodeValue.length; }
@@ -316,7 +324,7 @@ function render(){
       <div class="inner">
         <div class="face front">
           <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><span class="num">#${c.num}</span><span class="hint">tap to flip ↻</span></div>
-          <div class="term"><span class="en">${esc(c.en)}</span><span class="vi">${esc(c.vn)}</span></div>
+          <div class="term"><span class="en">${fmtMath(esc(c.en))}</span><span class="vi">${fmtMath(esc(c.vn))}</span></div>
         </div>
         <div class="face back">
           <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><span class="hint">tap to flip ↻</span></div>
@@ -331,7 +339,9 @@ function render(){
         </div>
       </div>`;
     const enSpan=el.querySelector('.def .en'), viSpan=el.querySelector('.def .vi');
-    function paint(){const hl=getHL(c.id);enSpan.innerHTML=hlHTML(c.ed,hl.en);viSpan.innerHTML=hlHTML(c.vd,hl.vi);}
+    function paint(){const hl=getHL(c.id);
+      enSpan.innerHTML = hl.en.length ? hlHTML(c.ed,hl.en) : fmtMath(esc(c.ed));
+      viSpan.innerHTML = hl.vi.length ? hlHTML(c.vd,hl.vi) : fmtMath(esc(c.vd));}
     paint();
 
     // flip only on genuine tap (not drag / text-selection / interactive area)
