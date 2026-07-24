@@ -1,0 +1,2215 @@
+{
+ "version": 1,
+ "topics": [
+  {
+   "name": "Quantitative Methods",
+   "cards": [
+    {
+     "id": "qm-time-value-of-money-tvm",
+     "reading": null,
+     "en": "Time value of money (TVM)",
+     "ed": "The principle that a unit of currency today is worth more than the same unit in the future because of its earning capacity; the basis for discounting and compounding.",
+     "vn": "Giá trị thời gian của tiền",
+     "vd": "Nguyên tắc rằng một đồng tiền hôm nay có giá trị hơn cùng số tiền đó trong tương lai vì khả năng sinh lời; là nền tảng của chiết khấu và lãi kép."
+    },
+    {
+     "id": "qm-effective-annual-rate-ear",
+     "reading": null,
+     "en": "Effective annual rate (EAR)",
+     "ed": "The actual annual return accounting for compounding: EAR = (1 + periodic rate)^m − 1, where m is the number of compounding periods per year.",
+     "vn": "Lãi suất thực hàng năm",
+     "vd": "Lợi suất năm thực tế có tính gộp lãi: EAR = (1 + lãi suất kỳ)^m − 1, với m là số kỳ ghép lãi mỗi năm."
+    },
+    {
+     "id": "qm-nominal-vs-real-interest-rate",
+     "reading": null,
+     "en": "Nominal vs. real interest rate",
+     "ed": "Nominal rate includes expected inflation; real rate ≈ nominal − expected inflation (Fisher relation). Real reflects purchasing-power growth.",
+     "vn": "Lãi suất danh nghĩa và thực",
+     "vd": "Lãi suất danh nghĩa gồm lạm phát kỳ vọng; lãi suất thực ≈ danh nghĩa − lạm phát kỳ vọng. Lãi suất thực phản ánh tăng trưởng sức mua."
+    },
+    {
+     "id": "qm-required-rate-of-return",
+     "reading": null,
+     "en": "Required rate of return",
+     "ed": "The minimum return investors demand = real risk-free rate + inflation premium + risk premiums (default, liquidity, maturity).",
+     "vn": "Tỷ suất sinh lời yêu cầu",
+     "vd": "Lợi suất tối thiểu nhà đầu tư đòi hỏi = lãi suất phi rủi ro thực + phần bù lạm phát + các phần bù rủi ro (vỡ nợ, thanh khoản, kỳ hạn)."
+    },
+    {
+     "id": "qm-net-present-value-npv",
+     "reading": null,
+     "en": "Net present value (NPV)",
+     "ed": "Sum of present values of all cash flows discounted at the required rate; positive NPV adds value. Accept if NPV > 0.",
+     "vn": "Giá trị hiện tại ròng",
+     "vd": "Tổng giá trị hiện tại của toàn bộ dòng tiền chiết khấu theo tỷ suất yêu cầu; NPV dương tạo giá trị. Chấp nhận nếu NPV > 0."
+    },
+    {
+     "id": "qm-internal-rate-of-return-irr",
+     "reading": null,
+     "en": "Internal rate of return (IRR)",
+     "ed": "The discount rate that makes NPV = 0. Accept a project if IRR > required rate; can give conflicting rankings vs. NPV.",
+     "vn": "Tỷ suất hoàn vốn nội bộ",
+     "vd": "Tỷ lệ chiết khấu làm NPV = 0. Chấp nhận dự án nếu IRR > tỷ suất yêu cầu; đôi khi xếp hạng mâu thuẫn với NPV."
+    },
+    {
+     "id": "qm-money-weighted-return",
+     "reading": null,
+     "en": "Money-weighted return",
+     "ed": "An IRR of a portfolio that reflects the timing and size of cash inflows/outflows; sensitive to when the investor adds or withdraws funds.",
+     "vn": "Lợi suất trọng số theo tiền",
+     "vd": "IRR của danh mục, phản ánh thời điểm và quy mô dòng tiền vào/ra; nhạy cảm với thời điểm nhà đầu tư nạp hay rút vốn."
+    },
+    {
+     "id": "qm-time-weighted-return",
+     "reading": null,
+     "en": "Time-weighted return",
+     "ed": "Geometric mean of period returns; removes the effect of cash-flow timing, so it is preferred for evaluating manager performance.",
+     "vn": "Lợi suất trọng số theo thời gian",
+     "vd": "Trung bình nhân của lợi suất từng kỳ; loại bỏ ảnh hưởng thời điểm dòng tiền, nên được ưu tiên để đánh giá hiệu quả nhà quản lý."
+    },
+    {
+     "id": "qm-harmonic-mean",
+     "reading": null,
+     "en": "Harmonic mean",
+     "ed": "Used to average ratios such as cost per share (dollar-cost averaging): n ÷ Σ(1/xᵢ). Always ≤ geometric ≤ arithmetic mean.",
+     "vn": "Trung bình điều hòa",
+     "vd": "Dùng để lấy trung bình các tỷ số như giá bình quân mỗi cổ phiếu: n ÷ Σ(1/xᵢ). Luôn ≤ trung bình nhân ≤ trung bình cộng."
+    },
+    {
+     "id": "qm-standard-deviation-variance",
+     "reading": null,
+     "en": "Standard deviation & variance",
+     "ed": "Variance is the average squared deviation from the mean; standard deviation is its square root — a measure of total dispersion/risk.",
+     "vn": "Độ lệch chuẩn và phương sai",
+     "vd": "Phương sai là trung bình bình phương độ lệch so với giá trị trung bình; độ lệch chuẩn là căn bậc hai của nó — thước đo mức phân tán/rủi ro tổng."
+    },
+    {
+     "id": "qm-coefficient-of-variation-cv",
+     "reading": null,
+     "en": "Coefficient of variation (CV)",
+     "ed": "Standard deviation ÷ mean; a scale-free measure of risk per unit of return — lower CV is preferred.",
+     "vn": "Hệ số biến thiên",
+     "vd": "Độ lệch chuẩn ÷ trung bình; thước đo không phụ thuộc đơn vị về rủi ro trên mỗi đơn vị lợi suất — CV thấp hơn tốt hơn."
+    },
+    {
+     "id": "qm-skewness",
+     "reading": null,
+     "en": "Skewness",
+     "ed": "Asymmetry of a distribution. Positive (right) skew: mean > median > mode; negative (left) skew: mean < median < mode.",
+     "vn": "Độ lệch (Skewness)",
+     "vd": "Tính bất đối xứng của phân phối. Lệch phải (dương): trung bình > trung vị > mode; lệch trái (âm): trung bình < trung vị < mode."
+    },
+    {
+     "id": "qm-kurtosis",
+     "reading": null,
+     "en": "Kurtosis",
+     "ed": "Degree of peakedness/fat tails. Leptokurtic (excess kurtosis > 0) has fatter tails than normal, implying more extreme outcomes.",
+     "vn": "Độ nhọn (Kurtosis)",
+     "vd": "Mức độ nhọn/đuôi dày. Leptokurtic (độ nhọn dư > 0) có đuôi dày hơn phân phối chuẩn, hàm ý nhiều kết quả cực đoan hơn."
+    },
+    {
+     "id": "qm-normal-distribution",
+     "reading": null,
+     "en": "Normal distribution",
+     "ed": "Symmetric, bell-shaped, fully described by mean and variance; ~68/95/99% of observations fall within 1/2/3 standard deviations.",
+     "vn": "Phân phối chuẩn",
+     "vd": "Đối xứng, hình chuông, được xác định đầy đủ bởi trung bình và phương sai; ~68/95/99% quan sát nằm trong 1/2/3 độ lệch chuẩn."
+    },
+    {
+     "id": "qm-confidence-interval",
+     "reading": null,
+     "en": "Confidence interval",
+     "ed": "A range expected to contain a parameter with a stated probability, e.g. 90% CI = mean ± 1.65σ; 95% = ±1.96σ; 99% = ±2.58σ.",
+     "vn": "Khoảng tin cậy",
+     "vd": "Khoảng kỳ vọng chứa tham số với xác suất cho trước, ví dụ 90% = trung bình ± 1.65σ; 95% = ±1.96σ; 99% = ±2.58σ."
+    },
+    {
+     "id": "qm-central-limit-theorem",
+     "reading": null,
+     "en": "Central limit theorem",
+     "ed": "For a large sample (n ≥ 30), the sampling distribution of the mean is approximately normal regardless of the population's shape.",
+     "vn": "Định lý giới hạn trung tâm",
+     "vd": "Với mẫu lớn (n ≥ 30), phân phối mẫu của trung bình xấp xỉ chuẩn bất kể hình dạng của tổng thể."
+    },
+    {
+     "id": "qm-standard-error",
+     "reading": null,
+     "en": "Standard error",
+     "ed": "The standard deviation of the sampling distribution of the mean = σ/√n; falls as sample size rises.",
+     "vn": "Sai số chuẩn",
+     "vd": "Độ lệch chuẩn của phân phối mẫu của trung bình = σ/√n; giảm khi cỡ mẫu tăng."
+    },
+    {
+     "id": "qm-null-vs-alternative-hypothesis",
+     "reading": null,
+     "en": "Null vs. alternative hypothesis",
+     "ed": "Null (H₀) is the statement tested (often 'no effect'); alternative (Hₐ) is accepted if H₀ is rejected. You never 'accept' H₀.",
+     "vn": "Giả thuyết không và giả thuyết đối",
+     "vd": "Giả thuyết không (H₀) là điều được kiểm định (thường 'không có tác động'); giả thuyết đối (Hₐ) được chấp nhận nếu bác bỏ H₀. Không bao giờ 'chấp nhận' H₀."
+    },
+    {
+     "id": "qm-type-i-vs-type-ii-error",
+     "reading": null,
+     "en": "Type I vs. Type II error",
+     "ed": "Type I: rejecting a true null (probability = significance level α). Type II: failing to reject a false null.",
+     "vn": "Sai lầm loại I và loại II",
+     "vd": "Loại I: bác bỏ H₀ đúng (xác suất = mức ý nghĩa α). Loại II: không bác bỏ H₀ sai."
+    },
+    {
+     "id": "qm-p-value",
+     "reading": null,
+     "en": "p-value",
+     "ed": "The smallest significance level at which the null can be rejected; reject H₀ if p-value < α.",
+     "vn": "Giá trị p",
+     "vd": "Mức ý nghĩa nhỏ nhất mà tại đó có thể bác bỏ H₀; bác bỏ H₀ nếu p-value < α."
+    },
+    {
+     "id": "qm-correlation-coefficient",
+     "reading": null,
+     "en": "Correlation coefficient",
+     "ed": "Standardized measure of linear association between two variables, ranging from −1 to +1; correlation does not imply causation.",
+     "vn": "Hệ số tương quan",
+     "vd": "Thước đo chuẩn hóa mức liên hệ tuyến tính giữa hai biến, từ −1 đến +1; tương quan không hàm ý quan hệ nhân quả."
+    },
+    {
+     "id": "qm-linear-regression",
+     "reading": null,
+     "en": "Linear regression",
+     "ed": "Models a dependent variable as a linear function of independent variable(s): Y = b₀ + b₁X + ε; b₁ is the slope/sensitivity.",
+     "vn": "Hồi quy tuyến tính",
+     "vd": "Mô hình hóa biến phụ thuộc như hàm tuyến tính của biến độc lập: Y = b₀ + b₁X + ε; b₁ là độ dốc/độ nhạy."
+    },
+    {
+     "id": "qm-coefficient-of-determination-r2",
+     "reading": null,
+     "en": "Coefficient of determination (R²)",
+     "ed": "Proportion of the variation in the dependent variable explained by the independent variable(s); equals the squared correlation in simple regression.",
+     "vn": "Hệ số xác định (R²)",
+     "vd": "Tỷ lệ biến thiên của biến phụ thuộc được giải thích bởi biến độc lập; bằng bình phương hệ số tương quan trong hồi quy đơn."
+    },
+    {
+     "id": "qm-permutations-vs-combinations",
+     "reading": null,
+     "en": "Permutations vs. combinations",
+     "ed": "Permutations count ordered arrangements (nPr); combinations count unordered selections (nCr). Order matters only for permutations.",
+     "vn": "Chỉnh hợp và tổ hợp",
+     "vd": "Chỉnh hợp đếm các sắp xếp có thứ tự (nPr); tổ hợp đếm các lựa chọn không thứ tự (nCr). Thứ tự chỉ quan trọng với chỉnh hợp."
+    },
+    {
+     "id": "qm-bayes-formula",
+     "reading": null,
+     "en": "Bayes' formula",
+     "ed": "Updates a prior probability with new information: P(A|B) = P(B|A)·P(A) / P(B).",
+     "vn": "Công thức Bayes",
+     "vd": "Cập nhật xác suất tiên nghiệm bằng thông tin mới: P(A|B) = P(B|A)·P(A) / P(B)."
+    },
+    {
+     "id": "qm-simulation-monte-carlo",
+     "reading": null,
+     "en": "Simulation / Monte Carlo",
+     "ed": "Generates thousands of random outcomes from assumed distributions to estimate the distribution of a result; complements analytical methods.",
+     "vn": "Mô phỏng / Monte Carlo",
+     "vd": "Tạo hàng nghìn kết quả ngẫu nhiên từ các phân phối giả định để ước lượng phân phối của một kết quả; bổ trợ cho phương pháp giải tích."
+    },
+    {
+     "id": "qm-covariance",
+     "reading": null,
+     "en": "Covariance",
+     "ed": "A measure of how two variables move together; its sign shows direction but its magnitude is not standardized (unlike correlation).",
+     "vn": "Hiệp phương sai",
+     "vd": "Thước đo mức độ hai biến biến động cùng nhau; dấu cho biết chiều nhưng độ lớn không được chuẩn hóa (khác với tương quan)."
+    },
+    {
+     "id": "qm-roy-s-safety-first-ratio",
+     "reading": null,
+     "en": "Roy's safety-first ratio",
+     "ed": "(E[Rₚ] − R_threshold) / σₚ; investors prefer the portfolio with the highest ratio to minimize the chance of returns below a threshold.",
+     "vn": "Tỷ số an toàn trước của Roy",
+     "vd": "(E[Rₚ] − R_ngưỡng) / σₚ; nhà đầu tư chọn danh mục có tỷ số cao nhất để giảm khả năng lợi suất rơi dưới ngưỡng."
+    }
+   ]
+  },
+  {
+   "name": "Economics",
+   "cards": [
+    {
+     "id": "econ-law-of-demand",
+     "reading": null,
+     "en": "Law of demand",
+     "ed": "Holding other factors constant, the quantity demanded of a good falls as its price rises, tracing a downward-sloping demand curve.",
+     "vn": "Quy luật cầu",
+     "vd": "Giữ các yếu tố khác không đổi, lượng cầu của một hàng hóa giảm khi giá tăng, tạo nên đường cầu dốc xuống."
+    },
+    {
+     "id": "econ-price-elasticity-of-demand",
+     "reading": null,
+     "en": "Price elasticity of demand",
+     "ed": "%Δ quantity demanded ÷ %Δ price. Elastic (>1), inelastic (<1); determined by substitutes, income share, and time horizon.",
+     "vn": "Độ co giãn của cầu theo giá",
+     "vd": "%Δ lượng cầu ÷ %Δ giá. Co giãn (>1), kém co giãn (<1); phụ thuộc hàng thay thế, tỷ trọng chi tiêu và thời gian."
+    },
+    {
+     "id": "econ-income-elasticity",
+     "reading": null,
+     "en": "Income elasticity",
+     "ed": "%Δ quantity ÷ %Δ income. Positive for normal goods, negative for inferior goods.",
+     "vn": "Độ co giãn theo thu nhập",
+     "vd": "%Δ lượng ÷ %Δ thu nhập. Dương với hàng thông thường, âm với hàng thứ cấp."
+    },
+    {
+     "id": "econ-cross-price-elasticity",
+     "reading": null,
+     "en": "Cross-price elasticity",
+     "ed": "%Δ quantity of one good ÷ %Δ price of another; positive for substitutes, negative for complements.",
+     "vn": "Độ co giãn chéo theo giá",
+     "vd": "%Δ lượng của một hàng ÷ %Δ giá của hàng khác; dương với hàng thay thế, âm với hàng bổ sung."
+    },
+    {
+     "id": "econ-substitution-income-effects",
+     "reading": null,
+     "en": "Substitution & income effects",
+     "ed": "A price change alters consumption via substitution (relative price) and income (real purchasing power) effects.",
+     "vn": "Hiệu ứng thay thế và thu nhập",
+     "vd": "Thay đổi giá làm thay đổi tiêu dùng qua hiệu ứng thay thế (giá tương đối) và hiệu ứng thu nhập (sức mua thực)."
+    },
+    {
+     "id": "econ-marginal-cost-marginal-revenue",
+     "reading": null,
+     "en": "Marginal cost & marginal revenue",
+     "ed": "MC is the cost of one more unit; MR is the revenue from one more unit. Profit is maximized where MR = MC.",
+     "vn": "Chi phí biên và doanh thu biên",
+     "vd": "MC là chi phí cho một đơn vị thêm; MR là doanh thu từ một đơn vị thêm. Lợi nhuận tối đa khi MR = MC."
+    },
+    {
+     "id": "econ-economies-of-scale",
+     "reading": null,
+     "en": "Economies of scale",
+     "ed": "Long-run average total cost falls as output rises (spreading fixed costs, specialization); diseconomies raise cost at very high output.",
+     "vn": "Lợi thế kinh tế theo quy mô",
+     "vd": "Chi phí bình quân dài hạn giảm khi sản lượng tăng (dàn trải chi phí cố định, chuyên môn hóa); phi kinh tế làm chi phí tăng ở sản lượng rất cao."
+    },
+    {
+     "id": "econ-perfect-competition",
+     "reading": null,
+     "en": "Perfect competition",
+     "ed": "Many firms, identical products, price takers, free entry/exit; long-run economic profit is zero, price = marginal cost.",
+     "vn": "Cạnh tranh hoàn hảo",
+     "vd": "Nhiều doanh nghiệp, sản phẩm giống hệt, chấp nhận giá, tự do gia nhập/rời bỏ; lợi nhuận kinh tế dài hạn bằng 0, giá = chi phí biên."
+    },
+    {
+     "id": "econ-monopoly",
+     "reading": null,
+     "en": "Monopoly",
+     "ed": "A single seller with high barriers to entry and pricing power; produces where MR = MC and can earn long-run economic profit.",
+     "vn": "Độc quyền",
+     "vd": "Một người bán duy nhất với rào cản gia nhập cao và quyền định giá; sản xuất tại MR = MC và có thể có lợi nhuận kinh tế dài hạn."
+    },
+    {
+     "id": "econ-monopolistic-competition",
+     "reading": null,
+     "en": "Monopolistic competition",
+     "ed": "Many firms with differentiated products and some pricing power; long-run economic profit tends to zero due to free entry.",
+     "vn": "Cạnh tranh độc quyền",
+     "vd": "Nhiều doanh nghiệp với sản phẩm khác biệt và ít quyền định giá; lợi nhuận kinh tế dài hạn tiến về 0 do tự do gia nhập."
+    },
+    {
+     "id": "econ-oligopoly",
+     "reading": null,
+     "en": "Oligopoly",
+     "ed": "A few interdependent firms; outcomes analyzed with game theory (e.g., Nash equilibrium, kinked demand, Cournot).",
+     "vn": "Độc quyền nhóm",
+     "vd": "Một số ít doanh nghiệp phụ thuộc lẫn nhau; kết quả phân tích bằng lý thuyết trò chơi (cân bằng Nash, đường cầu gãy, Cournot)."
+    },
+    {
+     "id": "econ-gdp",
+     "reading": null,
+     "en": "GDP",
+     "ed": "The market value of all final goods and services produced within a country in a period; measured via expenditure, income, or value-added.",
+     "vn": "Tổng sản phẩm quốc nội (GDP)",
+     "vd": "Giá trị thị trường của tất cả hàng hóa và dịch vụ cuối cùng sản xuất trong một nước trong một kỳ; đo bằng chi tiêu, thu nhập hoặc giá trị gia tăng."
+    },
+    {
+     "id": "econ-nominal-vs-real-gdp",
+     "reading": null,
+     "en": "Nominal vs. real GDP",
+     "ed": "Nominal is at current prices; real is inflation-adjusted using a base year. The GDP deflator = nominal/real × 100.",
+     "vn": "GDP danh nghĩa và thực",
+     "vd": "Danh nghĩa theo giá hiện hành; thực đã điều chỉnh lạm phát theo năm gốc. Chỉ số giảm phát GDP = danh nghĩa/thực × 100."
+    },
+    {
+     "id": "econ-aggregate-demand-supply",
+     "reading": null,
+     "en": "Aggregate demand & supply",
+     "ed": "AD relates total spending to price level; SRAS/LRAS relate output supplied. Equilibrium sets price level and real output.",
+     "vn": "Tổng cầu và tổng cung",
+     "vd": "AD liên hệ tổng chi tiêu với mức giá; SRAS/LRAS liên hệ sản lượng cung. Cân bằng xác định mức giá và sản lượng thực."
+    },
+    {
+     "id": "econ-fiscal-policy",
+     "reading": null,
+     "en": "Fiscal policy",
+     "ed": "Government use of spending and taxation to influence the economy; expansionary policy raises deficits to boost demand.",
+     "vn": "Chính sách tài khóa",
+     "vd": "Chính phủ dùng chi tiêu và thuế để tác động nền kinh tế; chính sách mở rộng làm tăng thâm hụt để kích cầu."
+    },
+    {
+     "id": "econ-monetary-policy",
+     "reading": null,
+     "en": "Monetary policy",
+     "ed": "Central-bank management of money supply and interest rates to achieve price stability and growth; tools include open-market operations.",
+     "vn": "Chính sách tiền tệ",
+     "vd": "Ngân hàng trung ương quản lý cung tiền và lãi suất để đạt ổn định giá và tăng trưởng; công cụ gồm nghiệp vụ thị trường mở."
+    },
+    {
+     "id": "econ-quantity-theory-of-money",
+     "reading": null,
+     "en": "Quantity theory of money",
+     "ed": "MV = PY: money supply × velocity = price level × real output; underpins monetarist views that inflation is a monetary phenomenon.",
+     "vn": "Thuyết số lượng tiền tệ",
+     "vd": "MV = PY: cung tiền × vòng quay = mức giá × sản lượng thực; nền tảng cho quan điểm rằng lạm phát là hiện tượng tiền tệ."
+    },
+    {
+     "id": "econ-inflation-disinflation-deflation",
+     "reading": null,
+     "en": "Inflation, disinflation, deflation",
+     "ed": "Inflation = rising prices; disinflation = a slower rate of inflation; deflation = falling prices.",
+     "vn": "Lạm phát, giảm lạm phát, giảm phát",
+     "vd": "Lạm phát = giá tăng; giảm lạm phát = tốc độ lạm phát chậm lại; giảm phát = giá giảm."
+    },
+    {
+     "id": "econ-demand-pull-vs-cost-push-inflation",
+     "reading": null,
+     "en": "Demand-pull vs. cost-push inflation",
+     "ed": "Demand-pull comes from excess aggregate demand; cost-push from rising input costs (e.g., wages, energy).",
+     "vn": "Lạm phát do cầu kéo và chi phí đẩy",
+     "vd": "Cầu kéo do tổng cầu vượt mức; chi phí đẩy do chi phí đầu vào tăng (lương, năng lượng)."
+    },
+    {
+     "id": "econ-business-cycle",
+     "reading": null,
+     "en": "Business cycle",
+     "ed": "Recurring expansion and contraction in economic activity; phases: expansion, peak, contraction/recession, trough.",
+     "vn": "Chu kỳ kinh tế",
+     "vd": "Sự mở rộng và thu hẹp lặp lại của hoạt động kinh tế; các pha: mở rộng, đỉnh, thu hẹp/suy thoái, đáy."
+    },
+    {
+     "id": "econ-unemployment-types",
+     "reading": null,
+     "en": "Unemployment types",
+     "ed": "Frictional (job search), structural (skills mismatch), cyclical (downturn). Natural rate excludes cyclical unemployment.",
+     "vn": "Các loại thất nghiệp",
+     "vd": "Cọ xát (tìm việc), cơ cấu (lệch kỹ năng), chu kỳ (suy thoái). Tỷ lệ tự nhiên không tính thất nghiệp chu kỳ."
+    },
+    {
+     "id": "econ-fisher-effect",
+     "reading": null,
+     "en": "Fisher effect",
+     "ed": "Nominal interest rate ≈ real rate + expected inflation; links interest rates to inflation expectations.",
+     "vn": "Hiệu ứng Fisher",
+     "vd": "Lãi suất danh nghĩa ≈ lãi suất thực + lạm phát kỳ vọng; liên kết lãi suất với kỳ vọng lạm phát."
+    },
+    {
+     "id": "econ-exchange-rate-regimes",
+     "reading": null,
+     "en": "Exchange rate regimes",
+     "ed": "Range from fixed pegs to free floats, with intermediate managed floats, crawling pegs, and currency boards.",
+     "vn": "Chế độ tỷ giá hối đoái",
+     "vd": "Từ neo cố định đến thả nổi tự do, với các dạng trung gian như thả nổi có quản lý, neo trượt và ủy ban tiền tệ."
+    },
+    {
+     "id": "econ-purchasing-power-parity-ppp",
+     "reading": null,
+     "en": "Purchasing power parity (PPP)",
+     "ed": "Exchange rates should adjust so identical goods cost the same across countries; relative PPP links currency moves to inflation differentials.",
+     "vn": "Ngang giá sức mua (PPP)",
+     "vd": "Tỷ giá điều chỉnh để hàng hóa giống nhau có giá bằng nhau giữa các nước; PPP tương đối liên hệ biến động tiền tệ với chênh lệch lạm phát."
+    },
+    {
+     "id": "econ-balance-of-payments",
+     "reading": null,
+     "en": "Balance of payments",
+     "ed": "Records a country's transactions with the world: current account (trade/income) plus capital and financial accounts.",
+     "vn": "Cán cân thanh toán",
+     "vd": "Ghi nhận giao dịch của một nước với thế giới: tài khoản vãng lai (thương mại/thu nhập) cùng tài khoản vốn và tài chính."
+    },
+    {
+     "id": "econ-comparative-advantage",
+     "reading": null,
+     "en": "Comparative advantage",
+     "ed": "A country should specialize in goods it produces at lower opportunity cost, gaining from trade even without absolute advantage.",
+     "vn": "Lợi thế so sánh",
+     "vd": "Một nước nên chuyên môn hóa vào hàng hóa có chi phí cơ hội thấp hơn, thu lợi từ thương mại ngay cả khi không có lợi thế tuyệt đối."
+    },
+    {
+     "id": "econ-money-multiplier",
+     "reading": null,
+     "en": "Money multiplier",
+     "ed": "1 ÷ reserve requirement; the maximum expansion of the money supply from new reserves in a fractional-reserve banking system.",
+     "vn": "Số nhân tiền tệ",
+     "vd": "1 ÷ tỷ lệ dự trữ bắt buộc; mức mở rộng tối đa của cung tiền từ dự trữ mới trong hệ thống ngân hàng dự trữ một phần."
+    }
+   ]
+  },
+  {
+   "name": "Financial Statement Analysis",
+   "cards": [
+    {
+     "id": "fsa-balance-sheet",
+     "reading": null,
+     "en": "Balance sheet",
+     "ed": "A snapshot at a point in time of assets, liabilities, and owners' equity, satisfying Assets = Liabilities + Equity.",
+     "vn": "Bảng cân đối kế toán",
+     "vd": "Ảnh chụp tại một thời điểm về tài sản, nợ phải trả và vốn chủ sở hữu, thỏa mãn Tài sản = Nợ phải trả + Vốn chủ."
+    },
+    {
+     "id": "fsa-income-statement",
+     "reading": null,
+     "en": "Income statement",
+     "ed": "Reports revenues, expenses, and profit over a period; 'the top line' is revenue and 'the bottom line' is net income.",
+     "vn": "Báo cáo kết quả kinh doanh",
+     "vd": "Trình bày doanh thu, chi phí và lợi nhuận trong một kỳ; 'dòng trên' là doanh thu, 'dòng dưới' là lợi nhuận ròng."
+    },
+    {
+     "id": "fsa-statement-of-cash-flows",
+     "reading": null,
+     "en": "Statement of cash flows",
+     "ed": "Classifies cash movements into operating, investing, and financing activities, reconciling beginning and ending cash.",
+     "vn": "Báo cáo lưu chuyển tiền tệ",
+     "vd": "Phân loại dòng tiền thành hoạt động kinh doanh, đầu tư và tài chính, đối chiếu tiền đầu kỳ và cuối kỳ."
+    },
+    {
+     "id": "fsa-accrual-accounting",
+     "reading": null,
+     "en": "Accrual accounting",
+     "ed": "Recognizes revenue when earned and expenses when incurred, regardless of cash timing; the basis of the matching principle.",
+     "vn": "Kế toán dồn tích",
+     "vd": "Ghi nhận doanh thu khi phát sinh và chi phí khi phát sinh, không phụ thuộc thời điểm tiền; nền tảng của nguyên tắc phù hợp."
+    },
+    {
+     "id": "fsa-cfo-cfi-cff",
+     "reading": null,
+     "en": "CFO / CFI / CFF",
+     "ed": "Cash from Operations (core business), Investing (long-term assets), and Financing (debt/equity/dividends).",
+     "vn": "CFO / CFI / CFF",
+     "vd": "Tiền từ hoạt động kinh doanh (cốt lõi), đầu tư (tài sản dài hạn) và tài chính (nợ/vốn/cổ tức)."
+    },
+    {
+     "id": "fsa-direct-vs-indirect-method",
+     "reading": null,
+     "en": "Direct vs. indirect method",
+     "ed": "Direct lists actual operating cash receipts/payments; indirect starts from net income and adjusts for non-cash items and working capital.",
+     "vn": "Phương pháp trực tiếp và gián tiếp",
+     "vd": "Trực tiếp liệt kê các khoản thu/chi tiền hoạt động thực tế; gián tiếp bắt đầu từ lợi nhuận ròng và điều chỉnh các khoản phi tiền và vốn lưu động."
+    },
+    {
+     "id": "fsa-fifo-vs-lifo",
+     "reading": null,
+     "en": "FIFO vs. LIFO",
+     "ed": "Inventory cost-flow assumptions. In rising prices, FIFO gives higher ending inventory and net income; LIFO (US GAAP only) gives lower taxes.",
+     "vn": "FIFO và LIFO",
+     "vd": "Giả định luồng chi phí hàng tồn kho. Khi giá tăng, FIFO cho tồn kho cuối và lợi nhuận cao hơn; LIFO (chỉ US GAAP) cho thuế thấp hơn."
+    },
+    {
+     "id": "fsa-lifo-reserve",
+     "reading": null,
+     "en": "LIFO reserve",
+     "ed": "The difference between FIFO and LIFO inventory; used to convert LIFO statements to a FIFO basis for comparison.",
+     "vn": "Dự trữ LIFO",
+     "vd": "Chênh lệch giữa tồn kho theo FIFO và LIFO; dùng để chuyển báo cáo LIFO sang cơ sở FIFO nhằm so sánh."
+    },
+    {
+     "id": "fsa-straight-line-vs-accelerated-depreciation",
+     "reading": null,
+     "en": "Straight-line vs. accelerated depreciation",
+     "ed": "Straight-line spreads cost evenly; accelerated (e.g., double-declining) front-loads expense, lowering early net income.",
+     "vn": "Khấu hao đường thẳng và nhanh",
+     "vd": "Đường thẳng phân bổ chi phí đều; khấu hao nhanh (ví dụ số dư giảm dần kép) dồn chi phí về đầu, làm giảm lợi nhuận những năm đầu."
+    },
+    {
+     "id": "fsa-deferred-tax-liability-asset",
+     "reading": null,
+     "en": "Deferred tax liability/asset",
+     "ed": "Arises from temporary differences between accounting and tax reporting; DTL when tax is postponed, DTA when tax is prepaid.",
+     "vn": "Thuế hoãn lại phải trả/tài sản",
+     "vd": "Phát sinh từ chênh lệch tạm thời giữa kế toán và thuế; DTL khi thuế bị hoãn, DTA khi thuế trả trước."
+    },
+    {
+     "id": "fsa-goodwill",
+     "reading": null,
+     "en": "Goodwill",
+     "ed": "The excess of purchase price over the fair value of identifiable net assets in an acquisition; not amortized but tested for impairment.",
+     "vn": "Lợi thế thương mại",
+     "vd": "Phần vượt của giá mua so với giá trị hợp lý của tài sản thuần nhận diện được trong thương vụ; không khấu hao nhưng kiểm tra suy giảm giá trị."
+    },
+    {
+     "id": "fsa-current-ratio",
+     "reading": null,
+     "en": "Current ratio",
+     "ed": "Current assets ÷ current liabilities; a liquidity measure of ability to meet short-term obligations.",
+     "vn": "Hệ số thanh toán hiện hành",
+     "vd": "Tài sản ngắn hạn ÷ nợ ngắn hạn; thước đo thanh khoản về khả năng đáp ứng nghĩa vụ ngắn hạn."
+    },
+    {
+     "id": "fsa-quick-acid-test-ratio",
+     "reading": null,
+     "en": "Quick (acid-test) ratio",
+     "ed": "(Cash + marketable securities + receivables) ÷ current liabilities; a stricter liquidity test excluding inventory.",
+     "vn": "Hệ số thanh toán nhanh",
+     "vd": "(Tiền + chứng khoán ngắn hạn + phải thu) ÷ nợ ngắn hạn; phép đo thanh khoản chặt hơn, loại trừ hàng tồn kho."
+    },
+    {
+     "id": "fsa-inventory-turnover",
+     "reading": null,
+     "en": "Inventory turnover",
+     "ed": "Cost of goods sold ÷ average inventory; measures how efficiently inventory is managed. Days = 365 ÷ turnover.",
+     "vn": "Vòng quay hàng tồn kho",
+     "vd": "Giá vốn hàng bán ÷ tồn kho bình quân; đo mức hiệu quả quản lý tồn kho. Số ngày = 365 ÷ vòng quay."
+    },
+    {
+     "id": "fsa-receivables-turnover",
+     "reading": null,
+     "en": "Receivables turnover",
+     "ed": "Revenue ÷ average receivables; days sales outstanding = 365 ÷ turnover indicates collection speed.",
+     "vn": "Vòng quay khoản phải thu",
+     "vd": "Doanh thu ÷ phải thu bình quân; số ngày thu tiền = 365 ÷ vòng quay cho biết tốc độ thu hồi công nợ."
+    },
+    {
+     "id": "fsa-gross-operating-net-margin",
+     "reading": null,
+     "en": "Gross / operating / net margin",
+     "ed": "Profitability at successive levels: gross (after COGS), operating (after operating costs), net (after all costs and taxes).",
+     "vn": "Biên lợi nhuận gộp/hoạt động/ròng",
+     "vd": "Khả năng sinh lời ở từng cấp: gộp (sau giá vốn), hoạt động (sau chi phí hoạt động), ròng (sau mọi chi phí và thuế)."
+    },
+    {
+     "id": "fsa-return-on-equity-roe",
+     "reading": null,
+     "en": "Return on equity (ROE)",
+     "ed": "Net income ÷ average shareholders' equity; the return generated on owners' capital.",
+     "vn": "Tỷ suất lợi nhuận trên vốn chủ (ROE)",
+     "vd": "Lợi nhuận ròng ÷ vốn chủ bình quân; lợi nhuận tạo ra trên vốn của chủ sở hữu."
+    },
+    {
+     "id": "fsa-dupont-analysis",
+     "reading": null,
+     "en": "DuPont analysis",
+     "ed": "Decomposes ROE into net profit margin × asset turnover × financial leverage (and further into 5 factors).",
+     "vn": "Phân tích DuPont",
+     "vd": "Phân rã ROE thành biên lợi nhuận ròng × vòng quay tài sản × đòn bẩy tài chính (và mở rộng thành 5 nhân tố)."
+    },
+    {
+     "id": "fsa-financial-leverage-ratio",
+     "reading": null,
+     "en": "Financial leverage ratio",
+     "ed": "Average total assets ÷ average equity; higher leverage magnifies both returns and risk.",
+     "vn": "Hệ số đòn bẩy tài chính",
+     "vd": "Tổng tài sản bình quân ÷ vốn chủ bình quân; đòn bẩy cao khuếch đại cả lợi nhuận lẫn rủi ro."
+    },
+    {
+     "id": "fsa-interest-coverage-ratio",
+     "reading": null,
+     "en": "Interest coverage ratio",
+     "ed": "EBIT ÷ interest expense; measures ability to service debt from operating earnings.",
+     "vn": "Hệ số khả năng trả lãi",
+     "vd": "EBIT ÷ chi phí lãi vay; đo khả năng trả nợ lãi từ lợi nhuận hoạt động."
+    },
+    {
+     "id": "fsa-basic-vs-diluted-eps",
+     "reading": null,
+     "en": "Basic vs. diluted EPS",
+     "ed": "Basic = (net income − preferred dividends) ÷ weighted average shares; diluted includes potentially dilutive securities (options, convertibles).",
+     "vn": "EPS cơ bản và pha loãng",
+     "vd": "Cơ bản = (lợi nhuận ròng − cổ tức ưu đãi) ÷ số cổ phiếu bình quân gia quyền; pha loãng gồm cả chứng khoán có thể pha loãng (quyền chọn, trái phiếu chuyển đổi)."
+    },
+    {
+     "id": "fsa-operating-vs-finance-lease",
+     "reading": null,
+     "en": "Operating vs. finance lease",
+     "ed": "Under IFRS lessees capitalize most leases; classification affects whether payments hit operating vs. financing cash flow and the balance sheet.",
+     "vn": "Thuê hoạt động và thuê tài chính",
+     "vd": "Theo IFRS bên thuê vốn hóa hầu hết hợp đồng thuê; cách phân loại ảnh hưởng khoản chi vào dòng tiền hoạt động hay tài chính và bảng cân đối."
+    },
+    {
+     "id": "fsa-impairment",
+     "reading": null,
+     "en": "Impairment",
+     "ed": "A write-down when an asset's carrying value exceeds its recoverable amount; reduces net income but is often non-cash.",
+     "vn": "Suy giảm giá trị tài sản",
+     "vd": "Ghi giảm khi giá trị ghi sổ của tài sản vượt giá trị có thể thu hồi; làm giảm lợi nhuận ròng nhưng thường là khoản phi tiền."
+    },
+    {
+     "id": "fsa-common-size-analysis",
+     "reading": null,
+     "en": "Common-size analysis",
+     "ed": "Expresses income-statement items as a % of revenue and balance-sheet items as a % of total assets to enable comparison across firms/time.",
+     "vn": "Phân tích theo tỷ trọng",
+     "vd": "Biểu diễn khoản mục trên báo cáo KQKD theo % doanh thu và bảng cân đối theo % tổng tài sản để so sánh giữa các công ty/kỳ."
+    },
+    {
+     "id": "fsa-accruals-ratio-earnings-quality",
+     "reading": null,
+     "en": "Accruals ratio & earnings quality",
+     "ed": "High accruals relative to cash flow can signal lower-quality, less sustainable earnings and possible manipulation.",
+     "vn": "Tỷ lệ dồn tích và chất lượng lợi nhuận",
+     "vd": "Dồn tích cao so với dòng tiền có thể báo hiệu lợi nhuận chất lượng thấp, kém bền vững và có thể bị thao túng."
+    },
+    {
+     "id": "fsa-capitalizing-vs-expensing",
+     "reading": null,
+     "en": "Capitalizing vs. expensing",
+     "ed": "Capitalizing spreads a cost over future periods (higher early income, an asset); expensing recognizes it immediately.",
+     "vn": "Vốn hóa và ghi nhận chi phí",
+     "vd": "Vốn hóa phân bổ chi phí qua các kỳ tương lai (lợi nhuận đầu cao hơn, tạo tài sản); ghi nhận chi phí thì tính ngay lập tức."
+    },
+    {
+     "id": "fsa-revenue-recognition-5-step-model",
+     "reading": null,
+     "en": "Revenue recognition (5-step model)",
+     "ed": "Identify the contract, performance obligations, transaction price, allocate the price, and recognize revenue as obligations are satisfied.",
+     "vn": "Ghi nhận doanh thu (mô hình 5 bước)",
+     "vd": "Xác định hợp đồng, nghĩa vụ thực hiện, giá giao dịch, phân bổ giá, và ghi nhận doanh thu khi hoàn thành nghĩa vụ."
+    }
+   ]
+  },
+  {
+   "name": "Corporate Issuers",
+   "cards": [
+    {
+     "id": "ci-stakeholders-vs-shareholders",
+     "reading": null,
+     "en": "Stakeholders vs. shareholders",
+     "ed": "Stakeholders include employees, creditors, customers, suppliers, and government; shareholders are the equity owners with residual claims.",
+     "vn": "Các bên liên quan và cổ đông",
+     "vd": "Các bên liên quan gồm nhân viên, chủ nợ, khách hàng, nhà cung cấp và chính phủ; cổ đông là chủ sở hữu vốn với quyền lợi còn lại."
+    },
+    {
+     "id": "ci-principal-agent-problem",
+     "reading": null,
+     "en": "Principal-agent problem",
+     "ed": "Conflict when managers (agents) act in their own interest rather than that of owners (principals); mitigated by governance and incentives.",
+     "vn": "Vấn đề người chủ - người đại diện",
+     "vd": "Xung đột khi nhà quản lý (đại diện) hành động vì lợi ích riêng thay vì của chủ sở hữu; giảm nhẹ bằng quản trị và cơ chế khuyến khích."
+    },
+    {
+     "id": "ci-corporate-governance",
+     "reading": null,
+     "en": "Corporate governance",
+     "ed": "The system of controls and incentives aligning management with stakeholder interests; includes the board, audits, and shareholder rights.",
+     "vn": "Quản trị công ty",
+     "vd": "Hệ thống kiểm soát và khuyến khích gắn kết ban quản lý với lợi ích các bên; gồm hội đồng quản trị, kiểm toán và quyền cổ đông."
+    },
+    {
+     "id": "ci-business-structures",
+     "reading": null,
+     "en": "Business structures",
+     "ed": "Sole proprietorship, general/limited partnership, and corporation differ in liability, taxation, and access to capital.",
+     "vn": "Các loại hình doanh nghiệp",
+     "vd": "Doanh nghiệp tư nhân, hợp danh (trách nhiệm chung/hữu hạn) và công ty cổ phần khác nhau về trách nhiệm, thuế và khả năng huy động vốn."
+    },
+    {
+     "id": "ci-capital-budgeting",
+     "reading": null,
+     "en": "Capital budgeting",
+     "ed": "The process of evaluating long-term investment projects using NPV, IRR, payback, and profitability index.",
+     "vn": "Hoạch định ngân sách vốn",
+     "vd": "Quá trình đánh giá dự án đầu tư dài hạn bằng NPV, IRR, thời gian hoàn vốn và chỉ số sinh lời."
+    },
+    {
+     "id": "ci-opportunity-cost",
+     "reading": null,
+     "en": "Opportunity cost",
+     "ed": "The value of the next-best forgone alternative; relevant cash flows in capital budgeting must reflect it.",
+     "vn": "Chi phí cơ hội",
+     "vd": "Giá trị của phương án tốt nhất bị bỏ qua; dòng tiền liên quan trong hoạch định vốn phải phản ánh nó."
+    },
+    {
+     "id": "ci-sunk-cost",
+     "reading": null,
+     "en": "Sunk cost",
+     "ed": "A cost already incurred and unrecoverable; it should be ignored in investment decisions.",
+     "vn": "Chi phí chìm",
+     "vd": "Chi phí đã phát sinh và không thể thu hồi; cần bỏ qua khi ra quyết định đầu tư."
+    },
+    {
+     "id": "ci-cost-of-capital-wacc",
+     "reading": null,
+     "en": "Cost of capital (WACC)",
+     "ed": "Weighted average cost of debt and equity by market-value weights, with debt cost adjusted for taxes; the hurdle rate for projects.",
+     "vn": "Chi phí vốn bình quân (WACC)",
+     "vd": "Bình quân gia quyền chi phí nợ và vốn chủ theo giá trị thị trường, chi phí nợ đã điều chỉnh thuế; là ngưỡng sinh lời cho dự án."
+    },
+    {
+     "id": "ci-cost-of-debt",
+     "reading": null,
+     "en": "Cost of debt",
+     "ed": "The after-tax yield to maturity a firm pays on borrowing: r_d × (1 − tax rate).",
+     "vn": "Chi phí nợ vay",
+     "vd": "Lợi suất đáo hạn sau thuế mà công ty trả cho khoản vay: r_d × (1 − thuế suất)."
+    },
+    {
+     "id": "ci-cost-of-equity-capm",
+     "reading": null,
+     "en": "Cost of equity (CAPM)",
+     "ed": "r_e = risk-free rate + β × (market risk premium); the return required by equity holders for systematic risk.",
+     "vn": "Chi phí vốn chủ (CAPM)",
+     "vd": "r_e = lãi suất phi rủi ro + β × (phần bù rủi ro thị trường); lợi suất cổ đông yêu cầu cho rủi ro hệ thống."
+    },
+    {
+     "id": "ci-weighted-average-cost-of-capital-use",
+     "reading": null,
+     "en": "Weighted average cost of capital use",
+     "ed": "The appropriate discount rate for a project of average risk; should be adjusted upward/downward for riskier/safer projects.",
+     "vn": "Cách dùng WACC",
+     "vd": "Tỷ lệ chiết khấu phù hợp cho dự án rủi ro trung bình; cần điều chỉnh tăng/giảm cho dự án rủi ro cao/thấp hơn."
+    },
+    {
+     "id": "ci-operating-leverage",
+     "reading": null,
+     "en": "Operating leverage",
+     "ed": "Sensitivity of operating income to changes in sales, driven by fixed operating costs; measured by DOL.",
+     "vn": "Đòn bẩy hoạt động",
+     "vd": "Độ nhạy của lợi nhuận hoạt động với thay đổi doanh thu, do chi phí hoạt động cố định; đo bằng DOL."
+    },
+    {
+     "id": "ci-financial-leverage",
+     "reading": null,
+     "en": "Financial leverage",
+     "ed": "Use of debt to finance assets; magnifies EPS changes from operating income, measured by DFL.",
+     "vn": "Đòn bẩy tài chính",
+     "vd": "Dùng nợ để tài trợ tài sản; khuếch đại thay đổi EPS từ lợi nhuận hoạt động, đo bằng DFL."
+    },
+    {
+     "id": "ci-total-leverage-dtl",
+     "reading": null,
+     "en": "Total leverage (DTL)",
+     "ed": "DOL × DFL; the combined sensitivity of net income/EPS to a change in sales.",
+     "vn": "Đòn bẩy tổng (DTL)",
+     "vd": "DOL × DFL; độ nhạy kết hợp của lợi nhuận ròng/EPS với thay đổi doanh thu."
+    },
+    {
+     "id": "ci-capital-structure",
+     "reading": null,
+     "en": "Capital structure",
+     "ed": "The mix of debt and equity financing; the target structure balances tax benefits of debt against financial distress costs.",
+     "vn": "Cơ cấu vốn",
+     "vd": "Tỷ lệ tài trợ giữa nợ và vốn chủ; cơ cấu mục tiêu cân bằng lợi ích thuế của nợ với chi phí kiệt quệ tài chính."
+    },
+    {
+     "id": "ci-modigliani-miller-propositions",
+     "reading": null,
+     "en": "Modigliani-Miller propositions",
+     "ed": "Under no taxes, capital structure is irrelevant to firm value; with taxes, debt adds value via the interest tax shield.",
+     "vn": "Các định đề Modigliani-Miller",
+     "vd": "Không có thuế, cơ cấu vốn không ảnh hưởng giá trị doanh nghiệp; có thuế, nợ tạo giá trị qua lá chắn thuế lãi vay."
+    },
+    {
+     "id": "ci-static-trade-off-theory",
+     "reading": null,
+     "en": "Static trade-off theory",
+     "ed": "Optimal capital structure balances the tax shield of debt against the present value of expected financial distress costs.",
+     "vn": "Lý thuyết đánh đổi tĩnh",
+     "vd": "Cơ cấu vốn tối ưu cân bằng lá chắn thuế của nợ với giá trị hiện tại của chi phí kiệt quệ tài chính kỳ vọng."
+    },
+    {
+     "id": "ci-pecking-order-theory",
+     "reading": null,
+     "en": "Pecking order theory",
+     "ed": "Firms prefer internal financing first, then debt, and issue equity last, reflecting information asymmetry.",
+     "vn": "Lý thuyết trật tự phân hạng",
+     "vd": "Doanh nghiệp ưu tiên vốn nội bộ trước, rồi đến nợ, và phát hành cổ phần sau cùng, phản ánh bất cân xứng thông tin."
+    },
+    {
+     "id": "ci-working-capital-management",
+     "reading": null,
+     "en": "Working capital management",
+     "ed": "Managing current assets and liabilities to ensure liquidity and operating efficiency.",
+     "vn": "Quản lý vốn lưu động",
+     "vd": "Quản lý tài sản và nợ ngắn hạn để đảm bảo thanh khoản và hiệu quả hoạt động."
+    },
+    {
+     "id": "ci-cash-conversion-cycle",
+     "reading": null,
+     "en": "Cash conversion cycle",
+     "ed": "Days inventory + days receivables − days payables; the time to convert investments in inventory back into cash.",
+     "vn": "Chu kỳ chuyển đổi tiền mặt",
+     "vd": "Số ngày tồn kho + số ngày phải thu − số ngày phải trả; thời gian để biến đầu tư vào tồn kho trở lại thành tiền."
+    },
+    {
+     "id": "ci-sources-of-short-term-financing",
+     "reading": null,
+     "en": "Sources of short-term financing",
+     "ed": "Trade credit, bank lines of credit, commercial paper, and factoring of receivables.",
+     "vn": "Nguồn tài trợ ngắn hạn",
+     "vd": "Tín dụng thương mại, hạn mức tín dụng ngân hàng, thương phiếu và bao thanh toán khoản phải thu."
+    },
+    {
+     "id": "ci-dividend-policy",
+     "reading": null,
+     "en": "Dividend policy",
+     "ed": "Decisions on paying cash dividends, share repurchases, or retaining earnings; signaling and clientele effects matter.",
+     "vn": "Chính sách cổ tức",
+     "vd": "Quyết định trả cổ tức tiền mặt, mua lại cổ phần hay giữ lại lợi nhuận; hiệu ứng tín hiệu và nhóm nhà đầu tư có ý nghĩa."
+    },
+    {
+     "id": "ci-share-repurchase",
+     "reading": null,
+     "en": "Share repurchase",
+     "ed": "A firm buying back its own shares; reduces share count, can raise EPS, and is an alternative to dividends.",
+     "vn": "Mua lại cổ phần",
+     "vd": "Công ty mua lại cổ phiếu của chính mình; giảm số cổ phiếu, có thể tăng EPS và là phương án thay cho cổ tức."
+    },
+    {
+     "id": "ci-business-risk-vs-financial-risk",
+     "reading": null,
+     "en": "Business risk vs. financial risk",
+     "ed": "Business risk stems from operations and demand variability; financial risk arises from the use of debt (fixed charges).",
+     "vn": "Rủi ro kinh doanh và rủi ro tài chính",
+     "vd": "Rủi ro kinh doanh đến từ hoạt động và biến động cầu; rủi ro tài chính phát sinh từ việc dùng nợ (chi phí cố định)."
+    },
+    {
+     "id": "ci-esg-considerations",
+     "reading": null,
+     "en": "ESG considerations",
+     "ed": "Environmental, social, and governance factors integrated into investment and corporate analysis for risk and value.",
+     "vn": "Yếu tố ESG",
+     "vd": "Các yếu tố môi trường, xã hội và quản trị được tích hợp vào phân tích đầu tư và doanh nghiệp về rủi ro và giá trị."
+    },
+    {
+     "id": "ci-marginal-cost-of-capital",
+     "reading": null,
+     "en": "Marginal cost of capital",
+     "ed": "The cost of raising the next dollar of new capital; it typically rises as a firm exhausts cheaper sources.",
+     "vn": "Chi phí vốn biên",
+     "vd": "Chi phí huy động đồng vốn mới tiếp theo; thường tăng khi doanh nghiệp cạn các nguồn rẻ hơn."
+    },
+    {
+     "id": "ci-net-working-capital",
+     "reading": null,
+     "en": "Net working capital",
+     "ed": "Current assets minus current liabilities; positive NWC generally indicates short-term financial health.",
+     "vn": "Vốn lưu động ròng",
+     "vd": "Tài sản ngắn hạn trừ nợ ngắn hạn; NWC dương thường cho thấy sức khỏe tài chính ngắn hạn tốt."
+    }
+   ]
+  },
+  {
+   "name": "Equity",
+   "cards": [
+    {
+     "id": "eq-primary-vs-secondary-market",
+     "reading": null,
+     "en": "Primary vs. secondary market",
+     "ed": "Primary markets issue new securities (IPOs); secondary markets trade existing securities among investors.",
+     "vn": "Thị trường sơ cấp và thứ cấp",
+     "vd": "Thị trường sơ cấp phát hành chứng khoán mới (IPO); thị trường thứ cấp giao dịch chứng khoán đã có giữa các nhà đầu tư."
+    },
+    {
+     "id": "eq-ipo-vs-seasoned-offering",
+     "reading": null,
+     "en": "IPO vs. seasoned offering",
+     "ed": "An IPO is a company's first public share sale; a seasoned (secondary) offering issues additional shares by an already-public firm.",
+     "vn": "IPO và phát hành bổ sung",
+     "vd": "IPO là lần bán cổ phần ra công chúng đầu tiên; phát hành bổ sung là phát hành thêm cổ phần bởi công ty đã niêm yết."
+    },
+    {
+     "id": "eq-market-order-vs-limit-order",
+     "reading": null,
+     "en": "Market order vs. limit order",
+     "ed": "A market order executes immediately at the best available price; a limit order executes only at a specified price or better.",
+     "vn": "Lệnh thị trường và lệnh giới hạn",
+     "vd": "Lệnh thị trường khớp ngay tại giá tốt nhất hiện có; lệnh giới hạn chỉ khớp tại giá đã định hoặc tốt hơn."
+    },
+    {
+     "id": "eq-bid-ask-spread",
+     "reading": null,
+     "en": "Bid-ask spread",
+     "ed": "The difference between the highest bid and lowest ask; a measure of liquidity and transaction cost.",
+     "vn": "Chênh lệch giá mua-bán",
+     "vd": "Chênh lệch giữa giá đặt mua cao nhất và giá chào bán thấp nhất; thước đo thanh khoản và chi phí giao dịch."
+    },
+    {
+     "id": "eq-long-vs-short-position",
+     "reading": null,
+     "en": "Long vs. short position",
+     "ed": "A long position profits when the price rises; a short seller borrows and sells shares, profiting if the price falls.",
+     "vn": "Vị thế mua và bán khống",
+     "vd": "Vị thế mua có lãi khi giá tăng; bán khống là vay và bán cổ phiếu, có lãi nếu giá giảm."
+    },
+    {
+     "id": "eq-margin-transaction",
+     "reading": null,
+     "en": "Margin transaction",
+     "ed": "Buying securities partly with borrowed funds; leverage magnifies gains and losses. A margin call occurs if equity falls below maintenance.",
+     "vn": "Giao dịch ký quỹ",
+     "vd": "Mua chứng khoán một phần bằng vốn vay; đòn bẩy khuếch đại lãi và lỗ. Lệnh gọi ký quỹ xảy ra nếu vốn chủ dưới mức duy trì."
+    },
+    {
+     "id": "eq-market-index",
+     "reading": null,
+     "en": "Market index",
+     "ed": "A portfolio representing a market or segment; price-weighted, value(cap)-weighted, or equal-weighted construction affects behavior.",
+     "vn": "Chỉ số thị trường",
+     "vd": "Danh mục đại diện cho một thị trường hoặc phân khúc; cách xây dựng theo giá, theo vốn hóa hay đều nhau ảnh hưởng hành vi chỉ số."
+    },
+    {
+     "id": "eq-free-float-market-cap",
+     "reading": null,
+     "en": "Free-float market cap",
+     "ed": "Shares available for public trading (excluding closely held shares) × price; the basis of most modern index weighting.",
+     "vn": "Vốn hóa theo cổ phiếu tự do",
+     "vd": "Cổ phiếu có thể giao dịch công khai (loại trừ cổ phiếu nắm giữ chặt) × giá; cơ sở cho phần lớn cách tính trọng số chỉ số hiện đại."
+    },
+    {
+     "id": "eq-market-efficiency-emh",
+     "reading": null,
+     "en": "Market efficiency (EMH)",
+     "ed": "Prices reflect available information. Weak form (past prices), semi-strong (public info), strong form (all info incl. private).",
+     "vn": "Hiệu quả thị trường (EMH)",
+     "vd": "Giá phản ánh thông tin sẵn có. Dạng yếu (giá quá khứ), bán mạnh (thông tin công khai), mạnh (mọi thông tin kể cả nội bộ)."
+    },
+    {
+     "id": "eq-common-vs-preferred-stock",
+     "reading": null,
+     "en": "Common vs. preferred stock",
+     "ed": "Common holders have voting rights and residual claims; preferred holders get fixed dividends and priority but usually no vote.",
+     "vn": "Cổ phiếu phổ thông và ưu đãi",
+     "vd": "Cổ đông phổ thông có quyền biểu quyết và quyền lợi còn lại; cổ đông ưu đãi nhận cổ tức cố định và ưu tiên nhưng thường không biểu quyết."
+    },
+    {
+     "id": "eq-cumulative-preferred-stock",
+     "reading": null,
+     "en": "Cumulative preferred stock",
+     "ed": "Preferred shares whose unpaid (in-arrears) dividends must be paid before any common dividend.",
+     "vn": "Cổ phiếu ưu đãi tích lũy",
+     "vd": "Cổ phiếu ưu đãi mà cổ tức chưa trả (còn nợ) phải được trả trước bất kỳ cổ tức phổ thông nào."
+    },
+    {
+     "id": "eq-depository-receipt-adr-gdr",
+     "reading": null,
+     "en": "Depository receipt (ADR/GDR)",
+     "ed": "A negotiable certificate representing foreign shares that trades on a local exchange, easing cross-border investing.",
+     "vn": "Chứng chỉ lưu ký (ADR/GDR)",
+     "vd": "Chứng chỉ chuyển nhượng đại diện cho cổ phiếu nước ngoài, giao dịch trên sàn nội địa, giúp đầu tư xuyên biên giới dễ dàng hơn."
+    },
+    {
+     "id": "eq-dividend-discount-model-ddm",
+     "reading": null,
+     "en": "Dividend discount model (DDM)",
+     "ed": "Values a stock as the present value of expected future dividends discounted at the required return.",
+     "vn": "Mô hình chiết khấu cổ tức (DDM)",
+     "vd": "Định giá cổ phiếu bằng giá trị hiện tại của cổ tức tương lai kỳ vọng, chiết khấu theo lợi suất yêu cầu."
+    },
+    {
+     "id": "eq-gordon-growth-model",
+     "reading": null,
+     "en": "Gordon growth model",
+     "ed": "V₀ = D₁ ÷ (r − g); values a stock assuming dividends grow at a constant rate g forever, with r > g.",
+     "vn": "Mô hình tăng trưởng Gordon",
+     "vd": "V₀ = D₁ ÷ (r − g); định giá cổ phiếu giả định cổ tức tăng đều với tốc độ g mãi mãi, với r > g."
+    },
+    {
+     "id": "eq-multistage-ddm",
+     "reading": null,
+     "en": "Multistage DDM",
+     "ed": "Values firms with changing growth by discounting explicit near-term dividends plus a terminal value at the mature stage.",
+     "vn": "DDM nhiều giai đoạn",
+     "vd": "Định giá công ty có tăng trưởng thay đổi bằng cách chiết khấu cổ tức gần hạn cụ thể cộng giá trị cuối ở giai đoạn ổn định."
+    },
+    {
+     "id": "eq-free-cash-flow-to-equity-fcfe",
+     "reading": null,
+     "en": "Free cash flow to equity (FCFE)",
+     "ed": "Cash available to equity holders after operating expenses, reinvestment, and debt payments; discounted at the cost of equity.",
+     "vn": "Dòng tiền tự do vốn chủ (FCFE)",
+     "vd": "Tiền còn lại cho cổ đông sau chi phí hoạt động, tái đầu tư và thanh toán nợ; chiết khấu theo chi phí vốn chủ."
+    },
+    {
+     "id": "eq-price-multiples-p-e-p-b-p-s",
+     "reading": null,
+     "en": "Price multiples (P/E, P/B, P/S)",
+     "ed": "Relative valuation ratios comparing price to earnings, book value, or sales; used for peer comparison.",
+     "vn": "Các hệ số giá (P/E, P/B, P/S)",
+     "vd": "Các tỷ số định giá tương đối so sánh giá với lợi nhuận, giá trị sổ sách hoặc doanh thu; dùng so sánh với đối thủ."
+    },
+    {
+     "id": "eq-justified-p-e",
+     "reading": null,
+     "en": "Justified P/E",
+     "ed": "P/E implied by fundamentals: leading P/E = payout ratio ÷ (r − g), derived from the Gordon growth model.",
+     "vn": "P/E hợp lý",
+     "vd": "P/E suy ra từ nền tảng cơ bản: P/E dự phóng = tỷ lệ chi trả ÷ (r − g), rút ra từ mô hình tăng trưởng Gordon."
+    },
+    {
+     "id": "eq-enterprise-value-ev",
+     "reading": null,
+     "en": "Enterprise value (EV)",
+     "ed": "Market cap + debt + preferred − cash; the takeover value of the whole firm, used in EV/EBITDA multiples.",
+     "vn": "Giá trị doanh nghiệp (EV)",
+     "vd": "Vốn hóa + nợ + cổ phần ưu đãi − tiền mặt; giá trị thâu tóm cả doanh nghiệp, dùng trong hệ số EV/EBITDA."
+    },
+    {
+     "id": "eq-book-value-vs-market-value",
+     "reading": null,
+     "en": "Book value vs. market value",
+     "ed": "Book value is accounting net worth; market value is the price investors assign. P/B compares them.",
+     "vn": "Giá trị sổ sách và thị trường",
+     "vd": "Giá trị sổ sách là giá trị ròng theo kế toán; giá trị thị trường là mức giá nhà đầu tư định. P/B so sánh hai giá trị này."
+    },
+    {
+     "id": "eq-sustainable-growth-rate",
+     "reading": null,
+     "en": "Sustainable growth rate",
+     "ed": "g = retention ratio × ROE; the rate a firm can grow without external equity financing.",
+     "vn": "Tốc độ tăng trưởng bền vững",
+     "vd": "g = tỷ lệ giữ lại × ROE; tốc độ doanh nghiệp có thể tăng trưởng mà không cần huy động vốn chủ bên ngoài."
+    },
+    {
+     "id": "eq-required-return-equity-risk-premium",
+     "reading": null,
+     "en": "Required return (equity risk premium)",
+     "ed": "Expected market return minus the risk-free rate; compensation for bearing equity (systematic) risk.",
+     "vn": "Lợi suất yêu cầu (phần bù rủi ro vốn cổ phần)",
+     "vd": "Lợi suất thị trường kỳ vọng trừ lãi suất phi rủi ro; khoản đền bù cho việc gánh rủi ro cổ phần (hệ thống)."
+    },
+    {
+     "id": "eq-cyclical-vs-defensive-stocks",
+     "reading": null,
+     "en": "Cyclical vs. defensive stocks",
+     "ed": "Cyclicals (high earnings sensitivity to the economy) vs. defensives (stable demand, e.g., utilities, staples).",
+     "vn": "Cổ phiếu chu kỳ và phòng thủ",
+     "vd": "Cổ phiếu chu kỳ (lợi nhuận nhạy với nền kinh tế) so với cổ phiếu phòng thủ (cầu ổn định, ví dụ tiện ích, hàng thiết yếu)."
+    },
+    {
+     "id": "eq-industry-life-cycle",
+     "reading": null,
+     "en": "Industry life cycle",
+     "ed": "Stages of embryonic, growth, shakeout, mature, and decline shape margins, competition, and investment needs.",
+     "vn": "Vòng đời ngành",
+     "vd": "Các giai đoạn phôi thai, tăng trưởng, sàng lọc, trưởng thành và suy thoái định hình biên lợi nhuận, cạnh tranh và nhu cầu đầu tư."
+    },
+    {
+     "id": "eq-porter-s-five-forces",
+     "reading": null,
+     "en": "Porter's five forces",
+     "ed": "Framework assessing industry attractiveness: rivalry, new entrants, substitutes, supplier power, and buyer power.",
+     "vn": "Năm áp lực cạnh tranh của Porter",
+     "vd": "Khung đánh giá sức hấp dẫn của ngành: cạnh tranh nội bộ, đối thủ mới, sản phẩm thay thế, quyền lực nhà cung cấp và người mua."
+    },
+    {
+     "id": "eq-absolute-vs-relative-valuation",
+     "reading": null,
+     "en": "Absolute vs. relative valuation",
+     "ed": "Absolute derives intrinsic value (DDM, FCF); relative compares price multiples against peers or history.",
+     "vn": "Định giá tuyệt đối và tương đối",
+     "vd": "Tuyệt đối tìm giá trị nội tại (DDM, FCF); tương đối so sánh các hệ số giá với đối thủ hoặc lịch sử."
+    }
+   ]
+  },
+  {
+   "name": "Fixed Income",
+   "cards": [
+    {
+     "id": "fi-bond-indenture",
+     "reading": null,
+     "en": "Bond indenture",
+     "ed": "The legal contract between issuer and bondholders specifying terms, covenants, and the trustee's role.",
+     "vn": "Hợp đồng trái phiếu (indenture)",
+     "vd": "Hợp đồng pháp lý giữa tổ chức phát hành và trái chủ, quy định điều khoản, cam kết và vai trò của người ủy thác."
+    },
+    {
+     "id": "fi-coupon-rate-vs-yield",
+     "reading": null,
+     "en": "Coupon rate vs. yield",
+     "ed": "The coupon is the fixed annual interest as a % of par; the yield (YTM) is the market return reflecting price, coupon, and time to maturity.",
+     "vn": "Lãi suất coupon và lợi suất",
+     "vd": "Coupon là lãi suất năm cố định theo % mệnh giá; lợi suất (YTM) là lợi suất thị trường phản ánh giá, coupon và thời gian đến đáo hạn."
+    },
+    {
+     "id": "fi-par-premium-discount",
+     "reading": null,
+     "en": "Par, premium, discount",
+     "ed": "A bond trades at par when coupon = market yield, at a premium when coupon > yield, and at a discount when coupon < yield.",
+     "vn": "Ngang giá, phụ trội, chiết khấu",
+     "vd": "Trái phiếu giao dịch ngang giá khi coupon = lợi suất thị trường, phụ trội khi coupon > lợi suất, chiết khấu khi coupon < lợi suất."
+    },
+    {
+     "id": "fi-yield-to-maturity-ytm",
+     "reading": null,
+     "en": "Yield to maturity (YTM)",
+     "ed": "The internal rate of return on a bond held to maturity, assuming coupons are reinvested at the YTM and no default.",
+     "vn": "Lợi suất đáo hạn (YTM)",
+     "vd": "Tỷ suất hoàn vốn nội bộ của trái phiếu nắm đến đáo hạn, giả định coupon tái đầu tư ở YTM và không vỡ nợ."
+    },
+    {
+     "id": "fi-current-yield",
+     "reading": null,
+     "en": "Current yield",
+     "ed": "Annual coupon ÷ current bond price; a simple income measure that ignores capital gains/losses and reinvestment.",
+     "vn": "Lợi suất hiện hành",
+     "vd": "Coupon năm ÷ giá trái phiếu hiện tại; thước đo thu nhập đơn giản, bỏ qua lãi/lỗ vốn và tái đầu tư."
+    },
+    {
+     "id": "fi-spot-rate",
+     "reading": null,
+     "en": "Spot rate",
+     "ed": "The yield on a zero-coupon bond for a given maturity; used to discount each cash flow at its own rate.",
+     "vn": "Lãi suất giao ngay (spot)",
+     "vd": "Lợi suất của trái phiếu zero-coupon cho một kỳ hạn nhất định; dùng để chiết khấu mỗi dòng tiền theo lãi suất riêng."
+    },
+    {
+     "id": "fi-forward-rate",
+     "reading": null,
+     "en": "Forward rate",
+     "ed": "An interest rate agreed today for a loan/investment beginning in the future, derived from spot rates.",
+     "vn": "Lãi suất kỳ hạn (forward)",
+     "vd": "Lãi suất thỏa thuận hôm nay cho khoản vay/đầu tư bắt đầu trong tương lai, suy ra từ các lãi suất giao ngay."
+    },
+    {
+     "id": "fi-accrued-interest",
+     "reading": null,
+     "en": "Accrued interest",
+     "ed": "Interest earned since the last coupon date; the buyer pays it, so dirty price = clean price + accrued interest.",
+     "vn": "Lãi dồn tích",
+     "vd": "Lãi phát sinh kể từ ngày trả coupon gần nhất; người mua trả khoản này, nên giá gộp = giá sạch + lãi dồn tích."
+    },
+    {
+     "id": "fi-duration-macaulay",
+     "reading": null,
+     "en": "Duration (Macaulay)",
+     "ed": "The weighted-average time to receive a bond's cash flows, in years; a measure of interest-rate sensitivity.",
+     "vn": "Thời hạn Macaulay",
+     "vd": "Thời gian bình quân gia quyền để nhận dòng tiền của trái phiếu, tính bằng năm; thước đo độ nhạy với lãi suất."
+    },
+    {
+     "id": "fi-modified-duration",
+     "reading": null,
+     "en": "Modified duration",
+     "ed": "Approximate % change in a bond's price for a 1% change in yield; = Macaulay duration ÷ (1 + periodic yield).",
+     "vn": "Thời hạn điều chỉnh",
+     "vd": "% thay đổi xấp xỉ của giá trái phiếu khi lợi suất đổi 1%; = thời hạn Macaulay ÷ (1 + lợi suất kỳ)."
+    },
+    {
+     "id": "fi-effective-duration",
+     "reading": null,
+     "en": "Effective duration",
+     "ed": "Duration for bonds with embedded options, measured from actual price changes under yield-curve shifts.",
+     "vn": "Thời hạn hiệu dụng",
+     "vd": "Thời hạn cho trái phiếu có quyền chọn kèm theo, đo từ thay đổi giá thực tế khi đường cong lợi suất dịch chuyển."
+    },
+    {
+     "id": "fi-convexity",
+     "reading": null,
+     "en": "Convexity",
+     "ed": "The curvature of the price-yield relationship; adds a second-order correction so duration alone understates price gains and overstates losses.",
+     "vn": "Độ lồi (Convexity)",
+     "vd": "Độ cong của quan hệ giá-lợi suất; hiệu chỉnh bậc hai vì chỉ dùng duration sẽ đánh giá thấp mức tăng giá và cao mức giảm giá."
+    },
+    {
+     "id": "fi-credit-spread",
+     "reading": null,
+     "en": "Credit spread",
+     "ed": "The yield difference between a risky bond and a comparable risk-free bond; compensation for default and liquidity risk.",
+     "vn": "Chênh lệch tín dụng",
+     "vd": "Chênh lệch lợi suất giữa trái phiếu rủi ro và trái phiếu phi rủi ro tương đương; đền bù cho rủi ro vỡ nợ và thanh khoản."
+    },
+    {
+     "id": "fi-credit-ratings",
+     "reading": null,
+     "en": "Credit ratings",
+     "ed": "Agency assessments (e.g., AAA to D) of default risk; investment grade (≥ BBB−) vs. high-yield/junk (below).",
+     "vn": "Xếp hạng tín nhiệm",
+     "vd": "Đánh giá của tổ chức xếp hạng (AAA đến D) về rủi ro vỡ nợ; hạng đầu tư (≥ BBB−) so với hạng cao lợi suất/rác (dưới)."
+    },
+    {
+     "id": "fi-callable-bond",
+     "reading": null,
+     "en": "Callable bond",
+     "ed": "Allows the issuer to redeem early, usually when rates fall; carries reinvestment risk and negative convexity for investors.",
+     "vn": "Trái phiếu có quyền mua lại",
+     "vd": "Cho phép tổ chức phát hành mua lại sớm, thường khi lãi suất giảm; mang rủi ro tái đầu tư và độ lồi âm cho nhà đầu tư."
+    },
+    {
+     "id": "fi-putable-bond",
+     "reading": null,
+     "en": "Putable bond",
+     "ed": "Allows the holder to sell the bond back to the issuer at set dates, protecting against rising rates.",
+     "vn": "Trái phiếu có quyền bán lại",
+     "vd": "Cho phép người nắm giữ bán trái phiếu lại cho tổ chức phát hành vào các ngày định trước, bảo vệ khi lãi suất tăng."
+    },
+    {
+     "id": "fi-convertible-bond",
+     "reading": null,
+     "en": "Convertible bond",
+     "ed": "Can be exchanged for a set number of the issuer's shares; combines bond value with an equity call option.",
+     "vn": "Trái phiếu chuyển đổi",
+     "vd": "Có thể đổi lấy một số cổ phiếu định trước của tổ chức phát hành; kết hợp giá trị trái phiếu với quyền chọn mua cổ phiếu."
+    },
+    {
+     "id": "fi-interest-rate-risk",
+     "reading": null,
+     "en": "Interest rate risk",
+     "ed": "The risk that rising rates lower bond prices; larger for long-maturity, low-coupon bonds.",
+     "vn": "Rủi ro lãi suất",
+     "vd": "Rủi ro lãi suất tăng làm giảm giá trái phiếu; lớn hơn với trái phiếu kỳ hạn dài, coupon thấp."
+    },
+    {
+     "id": "fi-reinvestment-risk",
+     "reading": null,
+     "en": "Reinvestment risk",
+     "ed": "The risk that coupons or principal are reinvested at lower rates; higher for high-coupon and callable bonds.",
+     "vn": "Rủi ro tái đầu tư",
+     "vd": "Rủi ro coupon hoặc gốc được tái đầu tư ở lãi suất thấp hơn; cao hơn với trái phiếu coupon cao và có quyền mua lại."
+    },
+    {
+     "id": "fi-yield-curve",
+     "reading": null,
+     "en": "Yield curve",
+     "ed": "A plot of yields against maturities; shapes (normal upward, flat, inverted) reflect expectations, risk premia, and policy.",
+     "vn": "Đường cong lợi suất",
+     "vd": "Đồ thị lợi suất theo kỳ hạn; hình dạng (dốc lên bình thường, phẳng, đảo ngược) phản ánh kỳ vọng, phần bù rủi ro và chính sách."
+    },
+    {
+     "id": "fi-money-market-instruments",
+     "reading": null,
+     "en": "Money market instruments",
+     "ed": "Short-term debt: T-bills, commercial paper, CDs, repos; typically quoted on a discount or add-on yield basis.",
+     "vn": "Công cụ thị trường tiền tệ",
+     "vd": "Nợ ngắn hạn: tín phiếu kho bạc, thương phiếu, chứng chỉ tiền gửi, repo; thường yết theo lợi suất chiết khấu hoặc cộng thêm."
+    },
+    {
+     "id": "fi-repurchase-agreement-repo",
+     "reading": null,
+     "en": "Repurchase agreement (repo)",
+     "ed": "A short-term collateralized loan: sell a security with an agreement to repurchase it later at a higher price (the repo rate).",
+     "vn": "Hợp đồng mua lại (repo)",
+     "vd": "Khoản vay ngắn hạn có tài sản đảm bảo: bán chứng khoán kèm thỏa thuận mua lại sau ở giá cao hơn (lãi suất repo)."
+    },
+    {
+     "id": "fi-securitization-abs",
+     "reading": null,
+     "en": "Securitization / ABS",
+     "ed": "Pooling assets (e.g., mortgages, loans) into tradable securities; MBS are backed by mortgages, with prepayment risk.",
+     "vn": "Chứng khoán hóa / ABS",
+     "vd": "Gộp các tài sản (thế chấp, khoản vay) thành chứng khoán giao dịch được; MBS được bảo đảm bằng khoản vay thế chấp, có rủi ro trả trước."
+    },
+    {
+     "id": "fi-tranching-cmos",
+     "reading": null,
+     "en": "Tranching (CMOs)",
+     "ed": "Redistributing cash-flow and prepayment risk among bond classes (tranches) with different priorities and maturities.",
+     "vn": "Phân lớp (CMO)",
+     "vd": "Phân bổ lại dòng tiền và rủi ro trả trước giữa các lớp trái phiếu (tranche) có mức ưu tiên và kỳ hạn khác nhau."
+    },
+    {
+     "id": "fi-zero-coupon-bond",
+     "reading": null,
+     "en": "Zero-coupon bond",
+     "ed": "Pays no periodic interest; issued at a discount and redeemed at par, so return is entirely price appreciation.",
+     "vn": "Trái phiếu zero-coupon",
+     "vd": "Không trả lãi định kỳ; phát hành với giá chiết khấu và hoàn trả theo mệnh giá, nên lợi suất hoàn toàn từ tăng giá."
+    },
+    {
+     "id": "fi-matrix-pricing",
+     "reading": null,
+     "en": "Matrix pricing",
+     "ed": "Estimating the price/yield of an illiquid bond using yields of comparable, actively traded bonds.",
+     "vn": "Định giá ma trận",
+     "vd": "Ước tính giá/lợi suất của trái phiếu kém thanh khoản dựa trên lợi suất của các trái phiếu tương đương đang giao dịch tích cực."
+    },
+    {
+     "id": "fi-yield-spread-measures-g-i-z-oas",
+     "reading": null,
+     "en": "Yield spread measures (G, I, Z, OAS)",
+     "ed": "G-spread (vs. government), I-spread (vs. swaps), Z-spread (constant spread over spot curve), OAS (Z-spread adjusted for options).",
+     "vn": "Các thước đo chênh lệch lợi suất",
+     "vd": "G-spread (so với trái phiếu chính phủ), I-spread (so với swap), Z-spread (chênh lệch không đổi trên đường spot), OAS (Z-spread đã điều chỉnh quyền chọn)."
+    }
+   ]
+  },
+  {
+   "name": "Derivatives",
+   "cards": [
+    {
+     "id": "deriv-derivative",
+     "reading": null,
+     "en": "Derivative",
+     "ed": "A financial instrument deriving its value from an underlying asset, rate, or index; used to hedge, speculate, or arbitrage.",
+     "vn": "Công cụ phái sinh",
+     "vd": "Công cụ tài chính có giá trị bắt nguồn từ tài sản, lãi suất hoặc chỉ số cơ sở; dùng để phòng ngừa, đầu cơ hoặc kinh doanh chênh lệch giá."
+    },
+    {
+     "id": "deriv-forward-contract",
+     "reading": null,
+     "en": "Forward contract",
+     "ed": "A customized OTC agreement to buy/sell an asset at a set price on a future date; no upfront payment, settled at maturity.",
+     "vn": "Hợp đồng kỳ hạn (forward)",
+     "vd": "Thỏa thuận OTC tùy chỉnh để mua/bán tài sản ở giá định trước vào ngày tương lai; không thanh toán trước, tất toán khi đáo hạn."
+    },
+    {
+     "id": "deriv-futures-contract",
+     "reading": null,
+     "en": "Futures contract",
+     "ed": "A standardized, exchange-traded forward with daily mark-to-market and a clearinghouse guarantee, reducing counterparty risk.",
+     "vn": "Hợp đồng tương lai",
+     "vd": "Hợp đồng kỳ hạn chuẩn hóa, giao dịch trên sàn với định giá theo thị trường hằng ngày và bảo lãnh của trung tâm thanh toán, giảm rủi ro đối tác."
+    },
+    {
+     "id": "deriv-mark-to-market",
+     "reading": null,
+     "en": "Mark-to-market",
+     "ed": "Daily settlement of futures gains/losses through the margin account, resetting the contract value to zero each day.",
+     "vn": "Định giá theo thị trường",
+     "vd": "Tất toán lãi/lỗ hợp đồng tương lai hằng ngày qua tài khoản ký quỹ, đưa giá trị hợp đồng về 0 mỗi ngày."
+    },
+    {
+     "id": "deriv-initial-vs-maintenance-margin",
+     "reading": null,
+     "en": "Initial vs. maintenance margin",
+     "ed": "Initial margin is the deposit to open a futures position; a margin call restores it when equity falls below the maintenance level.",
+     "vn": "Ký quỹ ban đầu và duy trì",
+     "vd": "Ký quỹ ban đầu là khoản đặt cọc để mở vị thế; lệnh gọi ký quỹ khôi phục lại khi vốn chủ giảm dưới mức duy trì."
+    },
+    {
+     "id": "deriv-swap",
+     "reading": null,
+     "en": "Swap",
+     "ed": "An OTC agreement to exchange cash flows over time, e.g., a plain-vanilla interest-rate swap exchanges fixed for floating payments.",
+     "vn": "Hợp đồng hoán đổi (swap)",
+     "vd": "Thỏa thuận OTC để trao đổi dòng tiền theo thời gian, ví dụ swap lãi suất cơ bản đổi thanh toán cố định lấy thả nổi."
+    },
+    {
+     "id": "deriv-option-call-put",
+     "reading": null,
+     "en": "Option (call/put)",
+     "ed": "A call gives the right to buy, a put the right to sell, the underlying at the strike price; the buyer pays a premium.",
+     "vn": "Quyền chọn (mua/bán)",
+     "vd": "Quyền chọn mua cho quyền mua, quyền chọn bán cho quyền bán tài sản cơ sở ở giá thực hiện; người mua trả phí quyền chọn."
+    },
+    {
+     "id": "deriv-american-vs-european-option",
+     "reading": null,
+     "en": "American vs. European option",
+     "ed": "American options can be exercised any time up to expiry; European options only at expiration.",
+     "vn": "Quyền chọn kiểu Mỹ và Âu",
+     "vd": "Quyền chọn kiểu Mỹ có thể thực hiện bất kỳ lúc nào đến khi đáo hạn; kiểu Âu chỉ thực hiện tại thời điểm đáo hạn."
+    },
+    {
+     "id": "deriv-moneyness",
+     "reading": null,
+     "en": "Moneyness",
+     "ed": "In-the-money (exercise is profitable), at-the-money (strike ≈ price), out-of-the-money (exercise unprofitable).",
+     "vn": "Trạng thái giá (moneyness)",
+     "vd": "Có lãi (thực hiện có lời), ngang giá (giá thực hiện ≈ giá), lỗ (thực hiện không có lời)."
+    },
+    {
+     "id": "deriv-intrinsic-value-vs-time-value",
+     "reading": null,
+     "en": "Intrinsic value vs. time value",
+     "ed": "Intrinsic value is the immediate exercise payoff; time value is the extra premium for the chance of future gains before expiry.",
+     "vn": "Giá trị nội tại và giá trị thời gian",
+     "vd": "Giá trị nội tại là khoản lời khi thực hiện ngay; giá trị thời gian là phần phí thêm cho khả năng sinh lời trong tương lai trước đáo hạn."
+    },
+    {
+     "id": "deriv-put-call-parity",
+     "reading": null,
+     "en": "Put-call parity",
+     "ed": "C + PV(X) = P + S₀; links the prices of European calls and puts with the same strike and expiry to prevent arbitrage.",
+     "vn": "Ngang giá quyền mua-bán",
+     "vd": "C + PV(X) = P + S₀; liên kết giá quyền chọn mua và bán kiểu Âu cùng giá thực hiện và kỳ hạn để ngăn kinh doanh chênh lệch giá."
+    },
+    {
+     "id": "deriv-option-payoff-vs-profit",
+     "reading": null,
+     "en": "Option payoff vs. profit",
+     "ed": "Payoff is the value at expiry; profit subtracts the premium paid or adds the premium received.",
+     "vn": "Khoản trả và lợi nhuận quyền chọn",
+     "vd": "Khoản trả là giá trị tại đáo hạn; lợi nhuận trừ phí đã trả hoặc cộng phí đã nhận."
+    },
+    {
+     "id": "deriv-covered-call",
+     "reading": null,
+     "en": "Covered call",
+     "ed": "Owning the underlying and selling a call; generates income but caps upside above the strike.",
+     "vn": "Covered call",
+     "vd": "Nắm giữ tài sản cơ sở và bán quyền chọn mua; tạo thu nhập nhưng giới hạn phần tăng giá trên giá thực hiện."
+    },
+    {
+     "id": "deriv-protective-put",
+     "reading": null,
+     "en": "Protective put",
+     "ed": "Owning the underlying and buying a put; provides downside insurance while keeping upside, at the cost of the premium.",
+     "vn": "Protective put",
+     "vd": "Nắm giữ tài sản cơ sở và mua quyền chọn bán; bảo hiểm cho phần giảm giá trong khi vẫn giữ phần tăng, đổi lại là phí quyền chọn."
+    },
+    {
+     "id": "deriv-arbitrage",
+     "reading": null,
+     "en": "Arbitrage",
+     "ed": "Simultaneous trades exploiting a mispricing for a riskless profit; its absence underpins derivative pricing (law of one price).",
+     "vn": "Kinh doanh chênh lệch giá",
+     "vd": "Các giao dịch đồng thời khai thác định giá sai để có lợi nhuận phi rủi ro; sự vắng mặt của nó là nền tảng định giá phái sinh (luật một giá)."
+    },
+    {
+     "id": "deriv-replication",
+     "reading": null,
+     "en": "Replication",
+     "ed": "Constructing a portfolio of the underlying and risk-free asset that mimics a derivative's payoff; the basis of no-arbitrage pricing.",
+     "vn": "Sao chép (replication)",
+     "vd": "Xây dựng danh mục gồm tài sản cơ sở và tài sản phi rủi ro để mô phỏng khoản trả của phái sinh; cơ sở của định giá không chênh lệch giá."
+    },
+    {
+     "id": "deriv-cost-of-carry",
+     "reading": null,
+     "en": "Cost of carry",
+     "ed": "Net cost of holding the underlying (storage, financing) less income (dividends, coupons); determines forward/futures prices.",
+     "vn": "Chi phí nắm giữ (cost of carry)",
+     "vd": "Chi phí ròng để nắm giữ tài sản cơ sở (lưu kho, tài trợ) trừ thu nhập (cổ tức, coupon); quyết định giá kỳ hạn/tương lai."
+    },
+    {
+     "id": "deriv-forward-price-formula",
+     "reading": null,
+     "en": "Forward price formula",
+     "ed": "F₀ = S₀ × (1 + r)^T adjusted for carry costs and benefits; ensures no arbitrage between spot and forward.",
+     "vn": "Công thức giá kỳ hạn",
+     "vd": "F₀ = S₀ × (1 + r)^T điều chỉnh theo chi phí và lợi ích nắm giữ; đảm bảo không chênh lệch giá giữa giao ngay và kỳ hạn."
+    },
+    {
+     "id": "deriv-value-vs-price-of-a-forward",
+     "reading": null,
+     "en": "Value vs. price of a forward",
+     "ed": "The forward price is set at initiation; the contract's value changes over time as the spot price and time to maturity move.",
+     "vn": "Giá trị và giá của hợp đồng kỳ hạn",
+     "vd": "Giá kỳ hạn được ấn định khi lập hợp đồng; giá trị hợp đồng thay đổi theo thời gian khi giá giao ngay và thời gian đến đáo hạn biến động."
+    },
+    {
+     "id": "deriv-notional-principal",
+     "reading": null,
+     "en": "Notional principal",
+     "ed": "The reference amount used to calculate swap/derivative payments; it is generally not exchanged in a swap.",
+     "vn": "Vốn danh nghĩa",
+     "vd": "Số tiền tham chiếu dùng để tính các khoản thanh toán swap/phái sinh; thường không được trao đổi trong một swap."
+    },
+    {
+     "id": "deriv-credit-derivative-cds",
+     "reading": null,
+     "en": "Credit derivative / CDS",
+     "ed": "A contract transferring credit risk; a credit default swap pays the buyer if the reference entity defaults, like insurance.",
+     "vn": "Phái sinh tín dụng / CDS",
+     "vd": "Hợp đồng chuyển giao rủi ro tín dụng; hợp đồng hoán đổi rủi ro vỡ nợ trả cho người mua nếu bên tham chiếu vỡ nợ, như bảo hiểm."
+    },
+    {
+     "id": "deriv-binomial-option-model",
+     "reading": null,
+     "en": "Binomial option model",
+     "ed": "Prices an option by modeling up/down moves of the underlying and using risk-neutral probabilities to discount expected payoffs.",
+     "vn": "Mô hình quyền chọn nhị thức",
+     "vd": "Định giá quyền chọn bằng cách mô hình hóa bước tăng/giảm của tài sản cơ sở và dùng xác suất trung tính rủi ro để chiết khấu khoản trả kỳ vọng."
+    },
+    {
+     "id": "deriv-risk-neutral-pricing",
+     "reading": null,
+     "en": "Risk-neutral pricing",
+     "ed": "Valuing derivatives as if investors are risk-neutral, discounting expected payoffs at the risk-free rate.",
+     "vn": "Định giá trung tính rủi ro",
+     "vd": "Định giá phái sinh như thể nhà đầu tư trung tính với rủi ro, chiết khấu khoản trả kỳ vọng theo lãi suất phi rủi ro."
+    },
+    {
+     "id": "deriv-hedging",
+     "reading": null,
+     "en": "Hedging",
+     "ed": "Taking an offsetting derivative position to reduce or eliminate exposure to price movements in an asset.",
+     "vn": "Phòng ngừa rủi ro (hedging)",
+     "vd": "Mở một vị thế phái sinh đối ứng để giảm hoặc loại bỏ mức phơi nhiễm với biến động giá của một tài sản."
+    },
+    {
+     "id": "deriv-basis-risk",
+     "reading": null,
+     "en": "Basis risk",
+     "ed": "The risk that the hedge instrument's price and the hedged item's price do not move perfectly together.",
+     "vn": "Rủi ro cơ sở (basis)",
+     "vd": "Rủi ro giá công cụ phòng ngừa và giá tài sản được phòng ngừa không biến động khớp hoàn toàn với nhau."
+    },
+    {
+     "id": "deriv-contingent-claim",
+     "reading": null,
+     "en": "Contingent claim",
+     "ed": "A derivative (like an option) whose payoff depends on whether a future condition is met, giving asymmetric payoffs.",
+     "vn": "Quyền lợi có điều kiện",
+     "vd": "Phái sinh (như quyền chọn) mà khoản trả phụ thuộc vào việc một điều kiện tương lai có xảy ra hay không, tạo khoản trả bất đối xứng."
+    },
+    {
+     "id": "deriv-interest-rate-swap-valuation",
+     "reading": null,
+     "en": "Interest rate swap valuation",
+     "ed": "At initiation value is zero; thereafter it equals the difference in present values of the fixed and floating legs.",
+     "vn": "Định giá hoán đổi lãi suất",
+     "vd": "Tại thời điểm lập giá trị bằng 0; sau đó bằng chênh lệch giá trị hiện tại giữa nhánh cố định và nhánh thả nổi."
+    }
+   ]
+  },
+  {
+   "name": "Alternative Investments",
+   "cards": [
+    {
+     "id": "alt-alternative-investments",
+     "reading": null,
+     "en": "Alternative investments",
+     "ed": "Assets outside traditional stocks, bonds, and cash — including hedge funds, private equity, real estate, commodities, and infrastructure.",
+     "vn": "Đầu tư thay thế",
+     "vd": "Tài sản ngoài cổ phiếu, trái phiếu và tiền mặt truyền thống — gồm quỹ phòng hộ, vốn cổ phần tư nhân, bất động sản, hàng hóa và hạ tầng."
+    },
+    {
+     "id": "alt-hedge-fund",
+     "reading": null,
+     "en": "Hedge fund",
+     "ed": "A privately pooled fund using flexible strategies (leverage, shorting, derivatives) seeking absolute returns for accredited investors.",
+     "vn": "Quỹ phòng hộ (hedge fund)",
+     "vd": "Quỹ gộp vốn tư nhân dùng chiến lược linh hoạt (đòn bẩy, bán khống, phái sinh) tìm lợi suất tuyệt đối cho nhà đầu tư đủ điều kiện."
+    },
+    {
+     "id": "alt-2-and-20-fee-structure",
+     "reading": null,
+     "en": "2 and 20 fee structure",
+     "ed": "A common alternative-fund fee: a 2% annual management fee on assets plus a 20% incentive fee on profits.",
+     "vn": "Cấu trúc phí 2 và 20",
+     "vd": "Cấu trúc phí phổ biến của quỹ thay thế: phí quản lý 2%/năm trên tài sản cộng phí thưởng 20% trên lợi nhuận."
+    },
+    {
+     "id": "alt-high-water-mark",
+     "reading": null,
+     "en": "High-water mark",
+     "ed": "A performance-fee provision ensuring managers earn incentive fees only on new net profits above the prior peak value.",
+     "vn": "Mốc giá cao nhất (high-water mark)",
+     "vd": "Điều khoản phí hiệu quả đảm bảo nhà quản lý chỉ thu phí thưởng trên lợi nhuận ròng mới vượt đỉnh giá trước đó."
+    },
+    {
+     "id": "alt-hurdle-rate",
+     "reading": null,
+     "en": "Hurdle rate",
+     "ed": "The minimum return a fund must earn before the manager can collect an incentive/performance fee.",
+     "vn": "Tỷ suất ngưỡng (hurdle rate)",
+     "vd": "Lợi suất tối thiểu quỹ phải đạt trước khi nhà quản lý được thu phí thưởng/hiệu quả."
+    },
+    {
+     "id": "alt-private-equity",
+     "reading": null,
+     "en": "Private equity",
+     "ed": "Equity investments in non-public companies via buyouts or venture capital, aiming to improve and later exit the businesses.",
+     "vn": "Vốn cổ phần tư nhân",
+     "vd": "Đầu tư vốn vào công ty chưa niêm yết qua thâu tóm hoặc đầu tư mạo hiểm, nhằm cải thiện rồi thoái vốn khỏi doanh nghiệp."
+    },
+    {
+     "id": "alt-leveraged-buyout-lbo",
+     "reading": null,
+     "en": "Leveraged buyout (LBO)",
+     "ed": "Acquiring a company using significant debt, with the target's assets/cash flows servicing the debt; equity returns are amplified.",
+     "vn": "Thâu tóm bằng đòn bẩy (LBO)",
+     "vd": "Mua lại công ty bằng lượng nợ lớn, dùng tài sản/dòng tiền của mục tiêu để trả nợ; lợi suất vốn chủ được khuếch đại."
+    },
+    {
+     "id": "alt-venture-capital",
+     "reading": null,
+     "en": "Venture capital",
+     "ed": "Financing early-stage, high-growth private companies in exchange for equity, with high risk and illiquidity.",
+     "vn": "Vốn đầu tư mạo hiểm",
+     "vd": "Tài trợ cho công ty tư nhân giai đoạn đầu, tăng trưởng cao để đổi lấy cổ phần, với rủi ro cao và tính kém thanh khoản."
+    },
+    {
+     "id": "alt-carried-interest",
+     "reading": null,
+     "en": "Carried interest",
+     "ed": "The share of a private fund's profits (often ~20%) paid to the general partner as a performance incentive.",
+     "vn": "Lợi nhuận chia cho GP (carried interest)",
+     "vd": "Phần lợi nhuận của quỹ tư nhân (thường ~20%) trả cho đối tác điều hành như khoản thưởng hiệu quả."
+    },
+    {
+     "id": "alt-committed-capital-vs-drawdown",
+     "reading": null,
+     "en": "Committed capital vs. drawdown",
+     "ed": "Committed capital is the total investors pledge; capital is called (drawn down) over time as deals close.",
+     "vn": "Vốn cam kết và giải ngân",
+     "vd": "Vốn cam kết là tổng số nhà đầu tư hứa góp; vốn được gọi (giải ngân) dần theo thời gian khi các thương vụ hoàn tất."
+    },
+    {
+     "id": "alt-j-curve",
+     "reading": null,
+     "en": "J-curve",
+     "ed": "The tendency of private-equity returns to be negative early (fees, costs) before turning positive as investments mature.",
+     "vn": "Đường cong chữ J",
+     "vd": "Xu hướng lợi suất vốn cổ phần tư nhân âm ở giai đoạn đầu (phí, chi phí) trước khi chuyển dương khi các khoản đầu tư trưởng thành."
+    },
+    {
+     "id": "alt-real-estate-investment-approaches",
+     "reading": null,
+     "en": "Real estate investment approaches",
+     "ed": "Direct ownership, REITs, mortgage-backed securities, and private real estate funds, each with different liquidity and risk.",
+     "vn": "Các cách đầu tư bất động sản",
+     "vd": "Sở hữu trực tiếp, REIT, chứng khoán bảo đảm bằng thế chấp và quỹ bất động sản tư nhân, mỗi loại có thanh khoản và rủi ro khác nhau."
+    },
+    {
+     "id": "alt-reit",
+     "reading": null,
+     "en": "REIT",
+     "ed": "A Real Estate Investment Trust that owns/finances income property and distributes most income to shareholders; publicly traded and liquid.",
+     "vn": "Quỹ tín thác BĐS (REIT)",
+     "vd": "Quỹ đầu tư bất động sản sở hữu/tài trợ bất động sản sinh lời và phân phối phần lớn thu nhập cho cổ đông; niêm yết và có thanh khoản."
+    },
+    {
+     "id": "alt-capitalization-rate",
+     "reading": null,
+     "en": "Capitalization rate",
+     "ed": "Net operating income ÷ property value; a real-estate yield measure used to value income properties.",
+     "vn": "Tỷ suất vốn hóa (cap rate)",
+     "vd": "Thu nhập hoạt động ròng ÷ giá trị bất động sản; thước đo lợi suất bất động sản dùng để định giá bất động sản sinh lời."
+    },
+    {
+     "id": "alt-commodities-exposure",
+     "reading": null,
+     "en": "Commodities exposure",
+     "ed": "Gained via physical assets, futures, or commodity indices; returns come from spot changes, roll yield, and collateral return.",
+     "vn": "Đầu tư hàng hóa",
+     "vd": "Tiếp cận qua tài sản vật chất, hợp đồng tương lai hoặc chỉ số hàng hóa; lợi suất đến từ biến động giá giao ngay, lợi suất đảo hạn và lợi suất tài sản đảm bảo."
+    },
+    {
+     "id": "alt-contango-vs-backwardation",
+     "reading": null,
+     "en": "Contango vs. backwardation",
+     "ed": "Contango: futures price above spot (negative roll yield); backwardation: futures below spot (positive roll yield).",
+     "vn": "Contango và backwardation",
+     "vd": "Contango: giá tương lai cao hơn giao ngay (lợi suất đảo hạn âm); backwardation: giá tương lai thấp hơn giao ngay (lợi suất đảo hạn dương)."
+    },
+    {
+     "id": "alt-infrastructure-investing",
+     "reading": null,
+     "en": "Infrastructure investing",
+     "ed": "Investing in long-lived physical assets (roads, utilities) offering stable, often inflation-linked cash flows.",
+     "vn": "Đầu tư hạ tầng",
+     "vd": "Đầu tư vào tài sản vật chất tuổi thọ dài (đường sá, tiện ích) tạo dòng tiền ổn định, thường gắn với lạm phát."
+    },
+    {
+     "id": "alt-managed-futures-ctas",
+     "reading": null,
+     "en": "Managed futures / CTAs",
+     "ed": "Funds trading futures and options across markets, often trend-following, offering diversification from traditional assets.",
+     "vn": "Managed futures / CTA",
+     "vd": "Quỹ giao dịch hợp đồng tương lai và quyền chọn trên nhiều thị trường, thường theo xu hướng, giúp đa dạng hóa so với tài sản truyền thống."
+    },
+    {
+     "id": "alt-fund-of-funds",
+     "reading": null,
+     "en": "Fund of funds",
+     "ed": "A fund investing in multiple hedge or private-equity funds for diversification, at the cost of an added layer of fees.",
+     "vn": "Quỹ của các quỹ (fund of funds)",
+     "vd": "Quỹ đầu tư vào nhiều quỹ phòng hộ hoặc vốn tư nhân để đa dạng hóa, đổi lại là một lớp phí tăng thêm."
+    },
+    {
+     "id": "alt-illiquidity-premium",
+     "reading": null,
+     "en": "Illiquidity premium",
+     "ed": "Extra expected return demanded for holding assets that cannot be quickly sold without a price concession.",
+     "vn": "Phần bù kém thanh khoản",
+     "vd": "Lợi suất kỳ vọng tăng thêm đòi hỏi khi nắm giữ tài sản không thể bán nhanh mà không phải nhượng giá."
+    },
+    {
+     "id": "alt-survivorship-bias",
+     "reading": null,
+     "en": "Survivorship bias",
+     "ed": "Upward bias in reported alternative-fund returns because failed funds drop out of databases and indices.",
+     "vn": "Thiên lệch sống sót",
+     "vd": "Sai lệch làm tăng lợi suất báo cáo của quỹ thay thế vì các quỹ thất bại bị loại khỏi cơ sở dữ liệu và chỉ số."
+    },
+    {
+     "id": "alt-backfill-bias",
+     "reading": null,
+     "en": "Backfill bias",
+     "ed": "Overstated index returns when a fund's historical (often strong) results are added upon joining a database.",
+     "vn": "Thiên lệch điền lùi (backfill)",
+     "vd": "Lợi suất chỉ số bị thổi phồng khi kết quả quá khứ (thường tốt) của quỹ được thêm vào lúc gia nhập cơ sở dữ liệu."
+    },
+    {
+     "id": "alt-lock-up-and-notice-periods",
+     "reading": null,
+     "en": "Lock-up and notice periods",
+     "ed": "Restrictions limiting when investors can redeem hedge-fund capital, protecting the manager's strategy and liquidity.",
+     "vn": "Thời gian khóa và báo trước",
+     "vd": "Các hạn chế giới hạn thời điểm nhà đầu tư có thể rút vốn khỏi quỹ phòng hộ, bảo vệ chiến lược và thanh khoản của nhà quản lý."
+    },
+    {
+     "id": "alt-distressed-investing",
+     "reading": null,
+     "en": "Distressed investing",
+     "ed": "Buying the securities of companies in or near bankruptcy, seeking gains from restructuring or recovery.",
+     "vn": "Đầu tư vào doanh nghiệp khó khăn",
+     "vd": "Mua chứng khoán của công ty đang hoặc gần phá sản, tìm lợi nhuận từ tái cấu trúc hoặc phục hồi."
+    },
+    {
+     "id": "alt-merger-arbitrage",
+     "reading": null,
+     "en": "Merger arbitrage",
+     "ed": "A strategy capturing the spread between a target's market price and the announced acquisition price, betting the deal closes.",
+     "vn": "Kinh doanh chênh lệch giá sáp nhập",
+     "vd": "Chiến lược nắm bắt chênh lệch giữa giá thị trường của mục tiêu và giá thâu tóm công bố, đặt cược thương vụ hoàn tất."
+    },
+    {
+     "id": "alt-digital-assets",
+     "reading": null,
+     "en": "Digital assets",
+     "ed": "Cryptocurrencies and tokens recorded on distributed ledgers (blockchain); highly volatile with evolving regulation.",
+     "vn": "Tài sản số",
+     "vd": "Tiền mã hóa và token ghi trên sổ cái phân tán (blockchain); biến động cao với quy định đang thay đổi."
+    },
+    {
+     "id": "alt-roll-yield",
+     "reading": null,
+     "en": "Roll yield",
+     "ed": "The return from rolling expiring futures into new contracts; positive in backwardation, negative in contango.",
+     "vn": "Lợi suất đảo hạn (roll yield)",
+     "vd": "Lợi suất từ việc đảo hợp đồng tương lai sắp đáo hạn sang hợp đồng mới; dương khi backwardation, âm khi contango."
+    }
+   ]
+  },
+  {
+   "name": "Portfolio Management",
+   "cards": [
+    {
+     "id": "pm-portfolio-perspective",
+     "reading": null,
+     "en": "Portfolio perspective",
+     "ed": "Evaluating investments by their contribution to overall portfolio risk and return, not in isolation; diversification is central.",
+     "vn": "Góc nhìn danh mục",
+     "vd": "Đánh giá khoản đầu tư theo đóng góp của nó vào rủi ro và lợi suất tổng thể của danh mục, không xét riêng lẻ; đa dạng hóa là trọng tâm."
+    },
+    {
+     "id": "pm-risk-aversion",
+     "reading": null,
+     "en": "Risk aversion",
+     "ed": "The preference for lower risk at a given return; risk-averse investors require higher expected returns for greater risk.",
+     "vn": "Sự e ngại rủi ro",
+     "vd": "Ưa thích rủi ro thấp hơn ở cùng mức lợi suất; nhà đầu tư e ngại rủi ro đòi hỏi lợi suất kỳ vọng cao hơn cho rủi ro lớn hơn."
+    },
+    {
+     "id": "pm-utility-indifference-curves",
+     "reading": null,
+     "en": "Utility & indifference curves",
+     "ed": "Utility captures risk-return preferences; indifference curves connect portfolios giving equal satisfaction to an investor.",
+     "vn": "Hàm hữu dụng và đường bàng quan",
+     "vd": "Hữu dụng thể hiện sở thích rủi ro-lợi suất; đường bàng quan nối các danh mục mang lại mức thỏa mãn bằng nhau cho nhà đầu tư."
+    },
+    {
+     "id": "pm-diversification",
+     "reading": null,
+     "en": "Diversification",
+     "ed": "Combining imperfectly correlated assets to reduce portfolio risk below the weighted average of individual risks.",
+     "vn": "Đa dạng hóa",
+     "vd": "Kết hợp các tài sản tương quan không hoàn hảo để giảm rủi ro danh mục xuống dưới mức bình quân gia quyền của rủi ro từng tài sản."
+    },
+    {
+     "id": "pm-correlation-portfolio-risk",
+     "reading": null,
+     "en": "Correlation & portfolio risk",
+     "ed": "Portfolio variance depends on asset weights, variances, and covariances; lower correlations yield greater risk reduction.",
+     "vn": "Tương quan và rủi ro danh mục",
+     "vd": "Phương sai danh mục phụ thuộc trọng số, phương sai và hiệp phương sai của tài sản; tương quan càng thấp thì giảm rủi ro càng nhiều."
+    },
+    {
+     "id": "pm-efficient-frontier",
+     "reading": null,
+     "en": "Efficient frontier",
+     "ed": "The set of portfolios offering the highest expected return for each level of risk; rational investors choose from it.",
+     "vn": "Đường biên hiệu quả",
+     "vd": "Tập hợp các danh mục cho lợi suất kỳ vọng cao nhất ở mỗi mức rủi ro; nhà đầu tư hợp lý lựa chọn từ đó."
+    },
+    {
+     "id": "pm-capital-allocation-line-cal",
+     "reading": null,
+     "en": "Capital allocation line (CAL)",
+     "ed": "The risk-return line combining the risk-free asset with a risky portfolio; its slope is the Sharpe ratio.",
+     "vn": "Đường phân bổ vốn (CAL)",
+     "vd": "Đường rủi ro-lợi suất kết hợp tài sản phi rủi ro với một danh mục rủi ro; độ dốc chính là tỷ số Sharpe."
+    },
+    {
+     "id": "pm-capital-market-line-cml",
+     "reading": null,
+     "en": "Capital market line (CML)",
+     "ed": "The CAL using the market portfolio; relates expected return to total risk (standard deviation) for efficient portfolios.",
+     "vn": "Đường thị trường vốn (CML)",
+     "vd": "CAL sử dụng danh mục thị trường; liên hệ lợi suất kỳ vọng với rủi ro tổng (độ lệch chuẩn) cho các danh mục hiệu quả."
+    },
+    {
+     "id": "pm-systematic-vs-unsystematic-risk",
+     "reading": null,
+     "en": "Systematic vs. unsystematic risk",
+     "ed": "Systematic (market) risk is undiversifiable and priced; unsystematic (firm-specific) risk can be diversified away.",
+     "vn": "Rủi ro hệ thống và phi hệ thống",
+     "vd": "Rủi ro hệ thống (thị trường) không thể đa dạng hóa và được định giá; rủi ro phi hệ thống (riêng công ty) có thể loại bỏ bằng đa dạng hóa."
+    },
+    {
+     "id": "pm-beta",
+     "reading": null,
+     "en": "Beta",
+     "ed": "A measure of an asset's systematic risk — its sensitivity to market returns; the market beta is 1.0.",
+     "vn": "Hệ số beta",
+     "vd": "Thước đo rủi ro hệ thống của tài sản — độ nhạy với lợi suất thị trường; beta của thị trường bằng 1,0."
+    },
+    {
+     "id": "pm-capital-asset-pricing-model-capm",
+     "reading": null,
+     "en": "Capital asset pricing model (CAPM)",
+     "ed": "E(R) = R_f + β(E(R_m) − R_f); relates required return to systematic risk via the security market line.",
+     "vn": "Mô hình định giá tài sản vốn (CAPM)",
+     "vd": "E(R) = R_f + β(E(R_m) − R_f); liên hệ lợi suất yêu cầu với rủi ro hệ thống qua đường thị trường chứng khoán."
+    },
+    {
+     "id": "pm-security-market-line-sml",
+     "reading": null,
+     "en": "Security market line (SML)",
+     "ed": "The graphical CAPM: expected return plotted against beta; assets above it are undervalued, below it overvalued.",
+     "vn": "Đường thị trường chứng khoán (SML)",
+     "vd": "Biểu diễn đồ thị của CAPM: lợi suất kỳ vọng theo beta; tài sản nằm trên đường bị định giá thấp, dưới đường bị định giá cao."
+    },
+    {
+     "id": "pm-sharpe-ratio",
+     "reading": null,
+     "en": "Sharpe ratio",
+     "ed": "(Portfolio return − risk-free rate) ÷ standard deviation; excess return per unit of total risk.",
+     "vn": "Tỷ số Sharpe",
+     "vd": "(Lợi suất danh mục − lãi suất phi rủi ro) ÷ độ lệch chuẩn; lợi suất vượt trội trên mỗi đơn vị rủi ro tổng."
+    },
+    {
+     "id": "pm-treynor-ratio",
+     "reading": null,
+     "en": "Treynor ratio",
+     "ed": "(Portfolio return − risk-free rate) ÷ beta; excess return per unit of systematic risk.",
+     "vn": "Tỷ số Treynor",
+     "vd": "(Lợi suất danh mục − lãi suất phi rủi ro) ÷ beta; lợi suất vượt trội trên mỗi đơn vị rủi ro hệ thống."
+    },
+    {
+     "id": "pm-jensen-s-alpha",
+     "reading": null,
+     "en": "Jensen's alpha",
+     "ed": "A portfolio's return in excess of the CAPM-predicted return; positive alpha indicates outperformance for the risk taken.",
+     "vn": "Alpha Jensen",
+     "vd": "Lợi suất danh mục vượt trên mức mà CAPM dự báo; alpha dương cho thấy hiệu suất vượt trội so với rủi ro đã gánh."
+    },
+    {
+     "id": "pm-m-squared-m2",
+     "reading": null,
+     "en": "M-squared (M²)",
+     "ed": "Risk-adjusted performance expressed as a return, comparing a portfolio to the market at the same total risk.",
+     "vn": "M bình phương (M²)",
+     "vd": "Hiệu suất điều chỉnh rủi ro biểu diễn dưới dạng lợi suất, so sánh danh mục với thị trường ở cùng mức rủi ro tổng."
+    },
+    {
+     "id": "pm-investment-policy-statement-ips",
+     "reading": null,
+     "en": "Investment policy statement (IPS)",
+     "ed": "A document specifying an investor's objectives (return, risk) and constraints (liquidity, horizon, taxes, legal, unique).",
+     "vn": "Tuyên bố chính sách đầu tư (IPS)",
+     "vd": "Tài liệu nêu mục tiêu của nhà đầu tư (lợi suất, rủi ro) và các ràng buộc (thanh khoản, thời gian, thuế, pháp lý, đặc thù)."
+    },
+    {
+     "id": "pm-return-objective-vs-risk-tolerance",
+     "reading": null,
+     "en": "Return objective vs. risk tolerance",
+     "ed": "The IPS balances the investor's required/desired return against their ability and willingness to bear risk.",
+     "vn": "Mục tiêu lợi suất và mức chịu rủi ro",
+     "vd": "IPS cân bằng lợi suất yêu cầu/mong muốn của nhà đầu tư với khả năng và sự sẵn lòng chịu rủi ro."
+    },
+    {
+     "id": "pm-strategic-vs-tactical-asset-allocation",
+     "reading": null,
+     "en": "Strategic vs. tactical asset allocation",
+     "ed": "Strategic sets long-run target weights per the IPS; tactical makes short-term shifts to exploit market opportunities.",
+     "vn": "Phân bổ tài sản chiến lược và chiến thuật",
+     "vd": "Chiến lược đặt trọng số mục tiêu dài hạn theo IPS; chiến thuật điều chỉnh ngắn hạn để khai thác cơ hội thị trường."
+    },
+    {
+     "id": "pm-rebalancing",
+     "reading": null,
+     "en": "Rebalancing",
+     "ed": "Realigning portfolio weights to targets after market moves; disciplines buying low and selling high.",
+     "vn": "Tái cân bằng danh mục",
+     "vd": "Đưa trọng số danh mục về mục tiêu sau biến động thị trường; tạo kỷ luật mua thấp bán cao."
+    },
+    {
+     "id": "pm-risk-budgeting",
+     "reading": null,
+     "en": "Risk budgeting",
+     "ed": "Allocating a portfolio's total risk across positions or strategies to align with objectives.",
+     "vn": "Phân bổ ngân sách rủi ro",
+     "vd": "Phân bổ tổng rủi ro của danh mục cho các vị thế hoặc chiến lược để phù hợp với mục tiêu."
+    },
+    {
+     "id": "pm-value-at-risk-var",
+     "reading": null,
+     "en": "Value at Risk (VaR)",
+     "ed": "An estimate of the minimum loss expected over a period at a given confidence level (e.g., 5% VaR).",
+     "vn": "Giá trị chịu rủi ro (VaR)",
+     "vd": "Ước tính mức lỗ tối thiểu kỳ vọng trong một kỳ ở mức độ tin cậy cho trước (ví dụ VaR 5%)."
+    },
+    {
+     "id": "pm-behavioral-biases",
+     "reading": null,
+     "en": "Behavioral biases",
+     "ed": "Systematic errors (overconfidence, loss aversion, anchoring, herding) that cause investors to deviate from rationality.",
+     "vn": "Thiên lệch hành vi",
+     "vd": "Các sai lầm hệ thống (tự tin thái quá, e ngại thua lỗ, mỏ neo, bầy đàn) khiến nhà đầu tư lệch khỏi tính hợp lý."
+    },
+    {
+     "id": "pm-loss-aversion",
+     "reading": null,
+     "en": "Loss aversion",
+     "ed": "The tendency to feel losses more strongly than equivalent gains, leading to risk-seeking to avoid realizing losses.",
+     "vn": "E ngại thua lỗ",
+     "vd": "Xu hướng cảm nhận thua lỗ mạnh hơn khoản lời tương đương, dẫn đến tìm kiếm rủi ro để tránh phải ghi nhận lỗ."
+    },
+    {
+     "id": "pm-pooled-investment-vehicles",
+     "reading": null,
+     "en": "Pooled investment vehicles",
+     "ed": "Mutual funds, ETFs, and closed-end funds that combine investor capital; ETFs trade intraday and are often tax-efficient.",
+     "vn": "Các quỹ đầu tư gộp vốn",
+     "vd": "Quỹ tương hỗ, ETF và quỹ đóng gộp vốn của nhà đầu tư; ETF giao dịch trong ngày và thường hiệu quả về thuế."
+    },
+    {
+     "id": "pm-risk-management-process",
+     "reading": null,
+     "en": "Risk management process",
+     "ed": "Identifying, measuring, and modifying exposures relative to risk tolerance through governance and appropriate tools.",
+     "vn": "Quy trình quản trị rủi ro",
+     "vd": "Xác định, đo lường và điều chỉnh mức phơi nhiễm so với mức chịu rủi ro thông qua quản trị và các công cụ phù hợp."
+    },
+    {
+     "id": "pm-fintech-in-investment-management",
+     "reading": null,
+     "en": "Fintech in investment management",
+     "ed": "Technologies (big data, AI, robo-advisers, blockchain) reshaping analysis, trading, and portfolio management.",
+     "vn": "Fintech trong quản lý đầu tư",
+     "vd": "Các công nghệ (dữ liệu lớn, AI, cố vấn robot, blockchain) định hình lại phân tích, giao dịch và quản lý danh mục."
+    }
+   ]
+  },
+  {
+   "name": "Ethics & Professional Standards",
+   "cards": [
+    {
+     "id": "eth-code-of-ethics",
+     "reading": null,
+     "en": "Code of Ethics",
+     "ed": "CFA Institute's set of ethical principles requiring members to act with integrity, competence, and respect for the profession and clients.",
+     "vn": "Quy tắc đạo đức",
+     "vd": "Bộ nguyên tắc đạo đức của Viện CFA yêu cầu thành viên hành động chính trực, năng lực và tôn trọng nghề nghiệp lẫn khách hàng."
+    },
+    {
+     "id": "eth-standards-of-professional-conduct",
+     "reading": null,
+     "en": "Standards of Professional Conduct",
+     "ed": "Seven standards operationalizing the Code, covering professionalism, markets, client duties, employer duties, analysis, conflicts, and program conduct.",
+     "vn": "Các chuẩn mực ứng xử nghề nghiệp",
+     "vd": "Bảy chuẩn mực cụ thể hóa Quy tắc, bao gồm tính chuyên nghiệp, thị trường, nghĩa vụ với khách hàng, với chủ lao động, phân tích, xung đột và ứng xử trong chương trình."
+    },
+    {
+     "id": "eth-standard-i-professionalism",
+     "reading": null,
+     "en": "Standard I: Professionalism",
+     "ed": "Requires knowledge of the law, independence and objectivity, no misrepresentation, and no misconduct reflecting on integrity.",
+     "vn": "Chuẩn mực I: Tính chuyên nghiệp",
+     "vd": "Yêu cầu hiểu biết pháp luật, độc lập và khách quan, không xuyên tạc và không có hành vi sai trái ảnh hưởng đến sự chính trực."
+    },
+    {
+     "id": "eth-independence-and-objectivity",
+     "reading": null,
+     "en": "Independence and objectivity",
+     "ed": "Members must maintain independence and objectivity, avoiding gifts or pressures that could compromise their judgment.",
+     "vn": "Độc lập và khách quan",
+     "vd": "Thành viên phải giữ tính độc lập và khách quan, tránh quà tặng hay áp lực có thể làm tổn hại phán đoán."
+    },
+    {
+     "id": "eth-misrepresentation",
+     "reading": null,
+     "en": "Misrepresentation",
+     "ed": "Prohibits any untrue statement or omission of fact in investment analysis, recommendations, or performance; includes plagiarism.",
+     "vn": "Xuyên tạc",
+     "vd": "Cấm mọi phát biểu sai sự thật hoặc bỏ sót sự kiện trong phân tích, khuyến nghị hay hiệu suất đầu tư; bao gồm cả đạo văn."
+    },
+    {
+     "id": "eth-standard-ii-integrity-of-capital-markets",
+     "reading": null,
+     "en": "Standard II: Integrity of capital markets",
+     "ed": "Prohibits acting on material nonpublic information (insider trading) and market manipulation.",
+     "vn": "Chuẩn mực II: Toàn vẹn thị trường vốn",
+     "vd": "Cấm hành động dựa trên thông tin trọng yếu chưa công bố (giao dịch nội gián) và thao túng thị trường."
+    },
+    {
+     "id": "eth-material-nonpublic-information",
+     "reading": null,
+     "en": "Material nonpublic information",
+     "ed": "Information likely to affect a security's price that has not been disseminated; trading on it violates the Standards (mosaic theory is permitted).",
+     "vn": "Thông tin trọng yếu chưa công bố",
+     "vd": "Thông tin có khả năng ảnh hưởng giá chứng khoán mà chưa được công bố; giao dịch dựa trên nó vi phạm chuẩn mực (lý thuyết ghép mảnh được phép)."
+    },
+    {
+     "id": "eth-mosaic-theory",
+     "reading": null,
+     "en": "Mosaic theory",
+     "ed": "Reaching investment conclusions by combining public and nonmaterial-nonpublic information; this does not violate the Standards.",
+     "vn": "Lý thuyết ghép mảnh (mosaic)",
+     "vd": "Đưa ra kết luận đầu tư bằng cách kết hợp thông tin công khai và thông tin phi trọng yếu chưa công bố; điều này không vi phạm chuẩn mực."
+    },
+    {
+     "id": "eth-market-manipulation",
+     "reading": null,
+     "en": "Market manipulation",
+     "ed": "Prohibited practices that distort prices or trading volume to mislead participants, including transaction- and information-based manipulation.",
+     "vn": "Thao túng thị trường",
+     "vd": "Các hành vi bị cấm làm sai lệch giá hoặc khối lượng giao dịch nhằm đánh lừa người tham gia, gồm thao túng qua giao dịch và qua thông tin."
+    },
+    {
+     "id": "eth-standard-iii-duties-to-clients",
+     "reading": null,
+     "en": "Standard III: Duties to clients",
+     "ed": "Requires loyalty, prudence, and care; fair dealing; suitability; performance presentation; and confidentiality.",
+     "vn": "Chuẩn mực III: Nghĩa vụ với khách hàng",
+     "vd": "Yêu cầu trung thành, thận trọng và cẩn trọng; đối xử công bằng; tính phù hợp; trình bày hiệu suất; và bảo mật."
+    },
+    {
+     "id": "eth-loyalty-prudence-and-care",
+     "reading": null,
+     "en": "Loyalty, prudence, and care",
+     "ed": "Members must place client interests first, act with the care of a prudent person, and manage assets per the client's mandate.",
+     "vn": "Trung thành, thận trọng và cẩn trọng",
+     "vd": "Thành viên phải đặt lợi ích khách hàng lên trên, hành động cẩn trọng như người thận trọng và quản lý tài sản theo ủy thác của khách hàng."
+    },
+    {
+     "id": "eth-fair-dealing",
+     "reading": null,
+     "en": "Fair dealing",
+     "ed": "Members must treat all clients fairly when disseminating recommendations or taking investment action — not favoring some over others.",
+     "vn": "Đối xử công bằng",
+     "vd": "Thành viên phải đối xử công bằng với mọi khách hàng khi phổ biến khuyến nghị hoặc thực hiện hành động đầu tư — không thiên vị ai."
+    },
+    {
+     "id": "eth-suitability",
+     "reading": null,
+     "en": "Suitability",
+     "ed": "Recommendations must fit the client's financial situation, objectives, constraints, and risk profile as set out in the IPS.",
+     "vn": "Tính phù hợp",
+     "vd": "Khuyến nghị phải phù hợp với tình hình tài chính, mục tiêu, ràng buộc và hồ sơ rủi ro của khách hàng như nêu trong IPS."
+    },
+    {
+     "id": "eth-performance-presentation",
+     "reading": null,
+     "en": "Performance presentation",
+     "ed": "Communications about performance must be fair, accurate, and complete, without misleading or cherry-picked results.",
+     "vn": "Trình bày hiệu suất",
+     "vd": "Thông tin về hiệu suất phải công bằng, chính xác và đầy đủ, không gây hiểu lầm hay chọn lọc kết quả có lợi."
+    },
+    {
+     "id": "eth-preservation-of-confidentiality",
+     "reading": null,
+     "en": "Preservation of confidentiality",
+     "ed": "Members must keep client information confidential unless disclosure is required by law, permitted by the client, or concerns illegal activities.",
+     "vn": "Bảo mật thông tin",
+     "vd": "Thành viên phải giữ bí mật thông tin khách hàng trừ khi pháp luật yêu cầu tiết lộ, khách hàng cho phép, hoặc liên quan hoạt động bất hợp pháp."
+    },
+    {
+     "id": "eth-standard-iv-duties-to-employers",
+     "reading": null,
+     "en": "Standard IV: Duties to employers",
+     "ed": "Requires loyalty to the employer, arrangement for additional compensation only with consent, and responsibilities of supervisors.",
+     "vn": "Chuẩn mực IV: Nghĩa vụ với chủ lao động",
+     "vd": "Yêu cầu trung thành với chủ lao động, chỉ nhận thù lao thêm khi có sự đồng ý, và trách nhiệm của người giám sát."
+    },
+    {
+     "id": "eth-loyalty-to-employer",
+     "reading": null,
+     "en": "Loyalty to employer",
+     "ed": "Members must act for their employer's benefit, not deprive it of their skills, and not harm it before or after leaving.",
+     "vn": "Trung thành với chủ lao động",
+     "vd": "Thành viên phải hành động vì lợi ích của chủ lao động, không tước đi kỹ năng của họ, và không gây hại trước hoặc sau khi nghỉ việc."
+    },
+    {
+     "id": "eth-additional-compensation-arrangements",
+     "reading": null,
+     "en": "Additional compensation arrangements",
+     "ed": "Members must obtain written consent from all parties before accepting outside compensation that competes with the employer's interest.",
+     "vn": "Thỏa thuận thù lao bổ sung",
+     "vd": "Thành viên phải có sự đồng ý bằng văn bản của tất cả các bên trước khi nhận thù lao bên ngoài cạnh tranh với lợi ích của chủ lao động."
+    },
+    {
+     "id": "eth-responsibilities-of-supervisors",
+     "reading": null,
+     "en": "Responsibilities of supervisors",
+     "ed": "Members in supervisory roles must make reasonable efforts to detect and prevent violations by those under their supervision.",
+     "vn": "Trách nhiệm của người giám sát",
+     "vd": "Thành viên ở vai trò giám sát phải nỗ lực hợp lý để phát hiện và ngăn chặn vi phạm của những người dưới quyền."
+    },
+    {
+     "id": "eth-standard-v-investment-analysis-recommendations",
+     "reading": null,
+     "en": "Standard V: Investment analysis & recommendations",
+     "ed": "Requires diligence and reasonable basis, clear communication, and retention of records supporting analysis.",
+     "vn": "Chuẩn mực V: Phân tích và khuyến nghị đầu tư",
+     "vd": "Yêu cầu sự cần mẫn và cơ sở hợp lý, truyền đạt rõ ràng, và lưu giữ hồ sơ hỗ trợ phân tích."
+    },
+    {
+     "id": "eth-diligence-and-reasonable-basis",
+     "reading": null,
+     "en": "Diligence and reasonable basis",
+     "ed": "Investment actions must rest on thorough research and a reasonable, adequate basis supported by appropriate diligence.",
+     "vn": "Cần mẫn và cơ sở hợp lý",
+     "vd": "Hành động đầu tư phải dựa trên nghiên cứu kỹ lưỡng và cơ sở hợp lý, đầy đủ, được hỗ trợ bằng sự cần mẫn phù hợp."
+    },
+    {
+     "id": "eth-communication-with-clients",
+     "reading": null,
+     "en": "Communication with clients",
+     "ed": "Members must distinguish fact from opinion, disclose the investment process and its risks, and identify material limitations.",
+     "vn": "Truyền đạt với khách hàng",
+     "vd": "Thành viên phải phân biệt sự kiện với ý kiến, công bố quy trình đầu tư và rủi ro của nó, và nêu rõ các giới hạn trọng yếu."
+    },
+    {
+     "id": "eth-record-retention",
+     "reading": null,
+     "en": "Record retention",
+     "ed": "Members must keep records supporting their analyses, recommendations, and actions; records are the firm's property.",
+     "vn": "Lưu giữ hồ sơ",
+     "vd": "Thành viên phải lưu giữ hồ sơ hỗ trợ phân tích, khuyến nghị và hành động; hồ sơ là tài sản của công ty."
+    },
+    {
+     "id": "eth-standard-vi-conflicts-of-interest",
+     "reading": null,
+     "en": "Standard VI: Conflicts of interest",
+     "ed": "Requires full disclosure of conflicts, priority of client transactions over personal ones, and disclosure of referral fees.",
+     "vn": "Chuẩn mực VI: Xung đột lợi ích",
+     "vd": "Yêu cầu công bố đầy đủ xung đột, ưu tiên giao dịch của khách hàng hơn cá nhân, và công bố phí giới thiệu."
+    },
+    {
+     "id": "eth-priority-of-transactions",
+     "reading": null,
+     "en": "Priority of transactions",
+     "ed": "Client and employer transactions take precedence over a member's personal (beneficial-ownership) transactions.",
+     "vn": "Ưu tiên giao dịch",
+     "vd": "Giao dịch của khách hàng và chủ lao động được ưu tiên hơn giao dịch cá nhân (sở hữu hưởng lợi) của thành viên."
+    },
+    {
+     "id": "eth-standard-vii-responsibilities-as-a-member-candidate",
+     "reading": null,
+     "en": "Standard VII: Responsibilities as a member/candidate",
+     "ed": "Prohibits conduct compromising the CFA Program's integrity and misrepresenting the CFA designation.",
+     "vn": "Chuẩn mực VII: Trách nhiệm của thành viên/thí sinh",
+     "vd": "Cấm hành vi làm tổn hại tính toàn vẹn của Chương trình CFA và xuyên tạc về danh hiệu CFA."
+    },
+    {
+     "id": "eth-global-investment-performance-standards-gips",
+     "reading": null,
+     "en": "Global Investment Performance Standards (GIPS)",
+     "ed": "Voluntary ethical standards for calculating and presenting investment performance to ensure fair representation and full disclosure.",
+     "vn": "Chuẩn GIPS",
+     "vd": "Bộ chuẩn mực đạo đức tự nguyện về tính toán và trình bày hiệu suất đầu tư nhằm đảm bảo trình bày công bằng và công bố đầy đủ."
+    }
+   ]
+  }
+ ]
+}
