@@ -93,6 +93,10 @@ main{max-width:1120px;margin:0 auto;padding:22px;}
 .tag{display:inline-flex;align-items:center;font-size:10.5px;font-weight:600;text-transform:uppercase;
   letter-spacing:.06em;color:#fff;padding:4px 10px;border-radius:999px;background:var(--accent);}
 .num{font-size:11px;color:var(--muted);font-family:'Playfair Display',serif;}
+.starbtn{border:none;background:none;cursor:pointer;font-size:16px;line-height:1;color:var(--muted);
+  padding:2px 4px;border-radius:6px;transition:.15s;}
+.starbtn:hover{color:var(--amber);background:var(--amber-soft);}
+.starbtn.on{color:var(--amber);}
 .hint{margin-left:auto;font-size:11px;color:var(--muted);}
 .term{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;line-height:1.25;margin:auto 0;
   color:var(--accent-deep);cursor:pointer;}
@@ -185,6 +189,7 @@ footer{max-width:1120px;margin:0 auto;padding:14px 22px 44px;color:var(--muted);
         <option value="known">Known</option>
         <option value="unseen">Unmarked</option>
         <option value="noted">With notes</option>
+        <option value="starred">★ Starred</option>
       </select>
     </div>
     <div class="topics" id="topics"></div>
@@ -285,6 +290,7 @@ function filtered(){
     if(statusFilter==='unknown'&&s.s!=='u') return false;
     if(statusFilter==='unseen'&&s.s) return false;
     if(statusFilter==='noted'&&!(s.n&&s.n.trim())) return false;
+    if(statusFilter==='starred'&&!s.fl) return false;
     return true;
   });
 }
@@ -335,11 +341,11 @@ function render(){
     el.innerHTML=`
       <div class="inner">
         <div class="face front">
-          <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><span class="num">#${c.num}</span><span class="hint">tap to flip ↻</span></div>
+          <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><span class="num">#${c.num}</span><button class="starbtn${s.fl?' on':''}" title="Đánh dấu">${s.fl?'★':'☆'}</button><span class="hint">tap to flip ↻</span></div>
           <div class="term"><span class="en">${fmtMath(esc(c.en))}</span><span class="vi">${fmtMath(esc(c.vn))}</span></div>
         </div>
         <div class="face back">
-          <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><span class="hint">tap to flip ↻</span></div>
+          <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><button class="starbtn${s.fl?' on':''}" title="Đánh dấu">${s.fl?'★':'☆'}</button><span class="hint">tap to flip ↻</span></div>
           <div class="def"><span class="en"></span><span class="vi"></span></div>
           <div class="selhint">Bôi đen một đoạn để <b>tô sáng</b> · bấm vào chỗ đã tô để ghi chú</div>
           <div class="hlnote" data-stop style="display:none"></div>
@@ -430,6 +436,14 @@ function render(){
       const idx=+m.dataset.idx;
       if(activeHL&&activeHL.lang===lang&&activeHL.idx===idx) closeHLNote();
       else openHLNote(lang,idx);
+    });
+
+    el.querySelectorAll('.starbtn').forEach(btn=>btn.onclick=e=>{
+      e.stopPropagation();
+      const cur=st(c.id), ns={...cur,fl:!cur.fl};
+      state[c.id]=ns; save(); updateStats();
+      el.querySelectorAll('.starbtn').forEach(b=>{ b.classList.toggle('on',ns.fl); b.textContent=ns.fl?'★':'☆'; });
+      if(statusFilter==='starred') render();
     });
 
     el.querySelectorAll('.sbtn').forEach(btn=>btn.onclick=e=>{
