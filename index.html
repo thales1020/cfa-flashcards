@@ -104,7 +104,7 @@ select{border:1px solid var(--line);background:var(--panel);color:var(--ink);bor
 .pill.u{background:color-mix(in srgb,var(--unknown) 20%,transparent);color:var(--unknown);}
 main{max-width:1120px;margin:0 auto;padding:14px 22px 22px;contain:layout style;}
 .deck{display:grid;gap:18px;align-items:start;}
-.card{perspective:1800px;content-visibility:auto;contain-intrinsic-size:auto 260px;}
+.card{perspective:1800px;}
 .inner{position:relative;width:100%;min-height:200px;transition:transform .55s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d;}
 .card.flipped .inner{transform:rotateY(180deg);}
 .face{backface-visibility:hidden;-webkit-backface-visibility:hidden;
@@ -366,7 +366,7 @@ function normHL(arr){
 function getHL(cid){const h=(state[cid]||{}).hl;return {en:normHL(h&&h.en),vi:normHL(h&&h.vi)};}
 function setHL(cid,hl){const cur=state[cid]||{};state[cid]={...cur,hl};save();}
 
-const BATCH=60; // cards rendered per page; keeps DOM size bounded regardless of topic size (some have 1600+ cards)
+const BATCH=40; // cards rendered per page; keeps DOM size bounded regardless of topic size (some have 1600+ cards)
 let renderLimit=BATCH;
 function buildCardEl(c){
     const s=st(c.id);
@@ -509,7 +509,9 @@ function render(minLimit){
   renderLimit=Math.min(Math.max(minLimit||BATCH,BATCH),list.length);
   deck.innerHTML='';
   $('#empty').style.display=list.length?'none':'block';
-  list.slice(0,renderLimit).forEach(c=>{ deck.appendChild(buildCardEl(c)); });
+  const frag=document.createDocumentFragment();
+  list.slice(0,renderLimit).forEach(c=>frag.appendChild(buildCardEl(c)));
+  deck.appendChild(frag); // one DOM mutation/reflow for the whole page, not one per card
   $('#count').textContent=`${list.length} / ${cards.length} cards`;
   updateStats();
   refreshNotesBar();
@@ -519,7 +521,9 @@ function loadMore(){
   const list=filtered();
   if(renderLimit>=list.length) return;
   const next=Math.min(renderLimit+BATCH,list.length);
-  list.slice(renderLimit,next).forEach(c=>{ deck.appendChild(buildCardEl(c)); });
+  const frag=document.createDocumentFragment();
+  list.slice(renderLimit,next).forEach(c=>frag.appendChild(buildCardEl(c)));
+  deck.appendChild(frag);
   renderLimit=next;
   updateSentinel(list.length);
 }
@@ -620,7 +624,7 @@ $('#theme').onclick=()=>{
 };
 
 // load the next page of cards once the sentinel (end of the rendered batch) nears the viewport
-new IntersectionObserver(entries=>{ if(entries[0].isIntersecting) loadMore(); }, {rootMargin:'900px 0px'})
+new IntersectionObserver(entries=>{ if(entries[0].isIntersecting) loadMore(); }, {rootMargin:'300px 0px'})
   .observe(document.getElementById('sentinel'));
 
 // fully collapse the header (title + search + topics + readings) while scrolling down,
