@@ -47,6 +47,9 @@ header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,var(--
 .brand{display:flex;flex-direction:column;max-height:60px;opacity:1;overflow:hidden;
   transition:max-height .25s ease,opacity .2s ease;}
 header.collapsed .brand{max-height:0;opacity:0;}
+.collapsible-controls{max-height:400px;opacity:1;overflow:hidden;
+  transition:max-height .28s ease,opacity .2s ease;}
+header.collapsed .collapsible-controls{max-height:0;opacity:0;}
 .chap{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:600;}
 h1{font-family:'Playfair Display',serif;font-size:1.1rem;margin:.02rem 0 0;font-weight:700;
   letter-spacing:-.2px;color:var(--accent-deep);}
@@ -216,11 +219,13 @@ footer{max-width:1120px;margin:0 auto;padding:14px 22px 44px;color:var(--muted);
         </div>
       </div>
     </div>
-    <div class="controls">
-      <input type="search" id="search" placeholder="Search EN or VN… / Tìm thuật ngữ…">
+    <div class="collapsible-controls">
+      <div class="controls">
+        <input type="search" id="search" placeholder="Search EN or VN… / Tìm thuật ngữ…">
+      </div>
+      <div class="topics" id="topics"></div>
+      <div class="readings" id="readings" style="display:none"></div>
     </div>
-    <div class="topics" id="topics"></div>
-    <div class="readings" id="readings" style="display:none"></div>
   </div>
 </header>
 
@@ -586,12 +591,20 @@ $('#theme').onclick=()=>{
   else{document.documentElement.setAttribute('data-theme','dark');$('#theme').textContent='☀️ Light';localStorage.setItem('cfa_theme','dark');}
 };
 
-// collapse the brand title once the user starts scrolling, to reclaim vertical space for the deck
+// fully collapse the header (title + search + topics + readings) while scrolling down,
+// reveal it again on any upward scroll (or once back near the top) - only the ☰ menu stays.
 const headerEl=document.querySelector('header');
-let headerCollapsed=false;
+let headerCollapsed=false, lastScrollY=window.scrollY;
+function setHeaderCollapsed(v){
+  if(v===headerCollapsed) return;
+  headerCollapsed=v; headerEl.classList.toggle('collapsed',v);
+}
 function onScroll(){
-  const collapsed=window.scrollY>40;
-  if(collapsed!==headerCollapsed){ headerCollapsed=collapsed; headerEl.classList.toggle('collapsed',collapsed); }
+  const y=window.scrollY, dy=y-lastScrollY;
+  if(y<=40) setHeaderCollapsed(false);
+  else if(dy>4) setHeaderCollapsed(true);
+  else if(dy<-4) setHeaderCollapsed(false);
+  lastScrollY=y;
 }
 window.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
