@@ -67,9 +67,10 @@ select{border:1px solid var(--line);background:var(--panel);color:var(--ink);bor
 .chip.rd{border-color:var(--amber);color:var(--amber);}
 .chip.rd:hover{background:var(--amber-soft);color:var(--amber);border-color:var(--amber);}
 .chip.rd.active{background:var(--amber);color:#fff;border-color:var(--amber);}
-.notesbar{margin-top:9px;}
-.notepanel{margin-top:8px;max-height:280px;overflow-y:auto;border:1px solid var(--line);border-radius:12px;
-  background:var(--panel);padding:6px;display:flex;flex-direction:column;gap:2px;}
+.notesbar{margin-top:9px;position:relative;}
+.notepanel{position:absolute;top:calc(100% + 6px);left:0;right:0;
+  max-height:min(280px,60vh);overflow-y:auto;border:1px solid var(--line);border-radius:12px;
+  background:var(--panel);padding:6px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow);}
 .noterow{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:8px;cursor:pointer;
   transition:.15s;text-align:left;border:none;background:none;width:100%;font-family:inherit;}
 .noterow:hover{background:var(--accent-soft);}
@@ -537,11 +538,16 @@ function jumpToCard(cid){
     setTimeout(()=>card.classList.remove('jump-flash'),1500);
   });
 }
-$('#notesToggle').onclick=()=>{
+$('#notesToggle').onclick=e=>{
+  e.stopPropagation();
   const panel=$('#notepanel');
   panel.style.display = panel.style.display==='none' ? '' : 'none';
   refreshNotesBar();
 };
+document.addEventListener('click',ev=>{
+  const bar=document.querySelector('.notesbar'), panel=$('#notepanel');
+  if(panel.style.display!=='none' && bar && !bar.contains(ev.target)) panel.style.display='none';
+});
 
 function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
 
