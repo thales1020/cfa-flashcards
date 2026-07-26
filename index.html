@@ -47,7 +47,7 @@ header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,var(--
 .brand{display:flex;flex-direction:column;max-height:60px;opacity:1;overflow:hidden;
   transition:max-height .25s ease,opacity .2s ease;}
 header.collapsed .brand{max-height:0;opacity:0;}
-.collapsible-controls{max-height:400px;opacity:1;overflow:hidden;
+.collapsible-controls{max-height:200px;opacity:1;overflow:hidden;
   transition:max-height .28s ease,opacity .2s ease;}
 header.collapsed .collapsible-controls{max-height:0;opacity:0;}
 .chap{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:600;}
@@ -100,9 +100,9 @@ select{border:1px solid var(--line);background:var(--panel);color:var(--ink);bor
 .pill{padding:3px 12px;border-radius:999px;font-weight:600;font-size:12px;}
 .pill.k{background:color-mix(in srgb,var(--known) 20%,transparent);color:var(--known);}
 .pill.u{background:color-mix(in srgb,var(--unknown) 20%,transparent);color:var(--unknown);}
-main{max-width:1120px;margin:0 auto;padding:14px 22px 22px;}
+main{max-width:1120px;margin:0 auto;padding:14px 22px 22px;contain:layout style;}
 .deck{display:grid;gap:18px;align-items:start;}
-.card{perspective:1800px;}
+.card{perspective:1800px;content-visibility:auto;contain-intrinsic-size:auto 260px;}
 .inner{position:relative;width:100%;min-height:200px;transition:transform .55s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d;}
 .card.flipped .inner{transform:rotateY(180deg);}
 .face{backface-visibility:hidden;-webkit-backface-visibility:hidden;
@@ -599,12 +599,18 @@ function setHeaderCollapsed(v){
   if(v===headerCollapsed) return;
   headerCollapsed=v; headerEl.classList.toggle('collapsed',v);
 }
+let scrollTicking=false;
 function onScroll(){
-  const y=window.scrollY, dy=y-lastScrollY;
-  if(y<=40) setHeaderCollapsed(false);
-  else if(dy>4) setHeaderCollapsed(true);
-  else if(dy<-4) setHeaderCollapsed(false);
-  lastScrollY=y;
+  if(scrollTicking) return;
+  scrollTicking=true;
+  requestAnimationFrame(()=>{
+    const y=window.scrollY, dy=y-lastScrollY;
+    if(y<=40) setHeaderCollapsed(false);
+    else if(dy>4) setHeaderCollapsed(true);
+    else if(dy<-4) setHeaderCollapsed(false);
+    lastScrollY=y;
+    scrollTicking=false;
+  });
 }
 window.addEventListener('scroll',onScroll,{passive:true});
 onScroll();
