@@ -117,10 +117,11 @@ main{max-width:1120px;margin:0 auto;padding:14px 22px 22px;contain:layout style;
 .tag{display:inline-flex;align-items:center;font-size:10.5px;font-weight:600;text-transform:uppercase;
   letter-spacing:.06em;color:#fff;padding:4px 10px;border-radius:999px;background:var(--accent);}
 .num{font-size:11px;color:var(--muted);font-family:'Playfair Display',serif;}
-.starbtn{border:none;background:none;cursor:pointer;font-size:16px;line-height:1;color:var(--muted);
-  padding:2px 4px;border-radius:6px;transition:.15s;}
-.starbtn:hover{color:var(--amber);background:var(--amber-soft);}
-.starbtn.on{color:var(--amber);}
+.starbtn{display:inline-flex;gap:1px;padding:2px 4px;border-radius:6px;transition:.15s;}
+.starbtn:hover{background:var(--amber-soft);}
+.starbtn .star{font-size:14px;line-height:1;color:var(--line);cursor:pointer;transition:.15s;}
+.starbtn .star.on{color:var(--amber);}
+.starbtn .star:hover{color:var(--amber);}
 .hint{margin-left:auto;font-size:11px;color:var(--muted);}
 .term{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;line-height:1.25;margin:8px 0 0;
   color:var(--accent-deep);cursor:pointer;}
@@ -267,6 +268,7 @@ const langCycle=['both','en','vi']; const langLabel={both:'\U0001F310 EN + VN',e
 
 function save(){localStorage.setItem(KEY,JSON.stringify(state));}
 function st(cid){return state[cid]||{};}
+function prOf(s){ return s.pr!=null ? s.pr : (s.fl?1:0); } // migrate old boolean fl -> priority 1
 function shortTopic(t){return t.replace('Financial Statement Analysis','FSA').replace('Ethics & Professional Standards','Ethics').replace('Alternative Investments','Alternatives').replace('Quantitative Methods','Quant').replace('Portfolio Management','Portfolio Mgmt');}
 
 function renderTopics(){
@@ -325,7 +327,7 @@ function filtered(){
     if(statusFilter==='unknown'&&s.s!=='u') return false;
     if(statusFilter==='unseen'&&s.s) return false;
     if(statusFilter==='noted'&&!(s.n&&s.n.trim())) return false;
-    if(statusFilter==='starred'&&!s.fl) return false;
+    if(statusFilter==='starred'&&!prOf(s)) return false;
     return true;
   });
 }
@@ -368,6 +370,8 @@ const BATCH=60; // cards rendered per page; keeps DOM size bounded regardless of
 let renderLimit=BATCH;
 function buildCardEl(c){
     const s=st(c.id);
+    const pr=prOf(s);
+    const starsHTML=`<span class="starbtn" title="Độ ưu tiên">${[1,2,3].map(n=>`<span class="star${pr>=n?' on':''}" data-lvl="${n}">★</span>`).join('')}</span>`;
     const col=topicColors[c.topic];
     const el=document.createElement('div');
     el.className='card'+(allFlipped?' flipped':'');
@@ -375,11 +379,11 @@ function buildCardEl(c){
     el.innerHTML=`
       <div class="inner">
         <div class="face front">
-          <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><span class="num">#${c.num}</span><button class="starbtn${s.fl?' on':''}" title="Đánh dấu">${s.fl?'★':'☆'}</button><span class="hint">tap to flip ↻</span></div>
+          <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><span class="num">#${c.num}</span>${starsHTML}<span class="hint">tap to flip ↻</span></div>
           <div class="term"><span class="en">${fmtMath(esc(c.en))}</span><span class="vi">${fmtMath(esc(c.vn))}</span></div>
         </div>
         <div class="face back">
-          <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><button class="starbtn${s.fl?' on':''}" title="Đánh dấu">${s.fl?'★':'☆'}</button><span class="hint">tap to flip ↻</span></div>
+          <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span>${starsHTML}<span class="hint">tap to flip ↻</span></div>
           <div class="def"><span class="en"></span><span class="vi"></span></div>
           <div class="selhint">Bôi đen một đoạn để <b>tô sáng</b> · bấm vào chỗ đã tô để ghi chú</div>
           <div class="hlnote" data-stop style="display:none"></div>
@@ -472,11 +476,15 @@ function buildCardEl(c){
       else openHLNote(lang,idx);
     });
 
-    el.querySelectorAll('.starbtn').forEach(btn=>btn.onclick=e=>{
+    el.querySelectorAll('.starbtn .star').forEach(star=>star.onclick=e=>{
       e.stopPropagation();
-      const cur=st(c.id), ns={...cur,fl:!cur.fl};
+      const lvl=+star.dataset.lvl, cur=st(c.id), curPr=prOf(cur);
+      const newPr=curPr===lvl?0:lvl; // tap the currently-set level again to clear it
+      const ns={...cur,pr:newPr}; delete ns.fl;
       state[c.id]=ns; save(); updateStats();
-      el.querySelectorAll('.starbtn').forEach(b=>{ b.classList.toggle('on',ns.fl); b.textContent=ns.fl?'★':'☆'; });
+      el.querySelectorAll('.starbtn').forEach(wrap=>{
+        wrap.querySelectorAll('.star').forEach(s2=>s2.classList.toggle('on',newPr>=+s2.dataset.lvl));
+      });
       if(statusFilter==='starred') render();
     });
 
