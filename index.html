@@ -67,10 +67,14 @@ select{border:1px solid var(--line);background:var(--panel);color:var(--ink);bor
 .chip.rd{border-color:var(--amber);color:var(--amber);}
 .chip.rd:hover{background:var(--amber-soft);color:var(--amber);border-color:var(--amber);}
 .chip.rd.active{background:var(--amber);color:#fff;border-color:var(--amber);}
-.notesbar{margin-top:9px;position:relative;}
-.notepanel{position:absolute;top:calc(100% + 6px);left:0;right:0;
-  max-height:min(280px,60vh);overflow-y:auto;border:1px solid var(--line);border-radius:12px;
-  background:var(--panel);padding:6px;display:flex;flex-direction:column;gap:2px;box-shadow:var(--shadow);}
+.optionsbar{position:relative;}
+.optionspanel{position:absolute;top:calc(100% + 6px);right:0;z-index:25;width:min(320px,88vw);
+  max-height:min(420px,55vh);overflow-y:auto;border:1px solid var(--line);border-radius:12px;
+  background:var(--panel);box-shadow:var(--shadow);padding:10px;display:flex;flex-direction:column;gap:7px;}
+.optionspanel select,.optionspanel>.btn{width:100%;text-align:left;border-radius:10px;}
+.menudivider{border-top:1px dashed var(--line);margin:2px 0;}
+.notesheader{font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--amber);}
+.notepanel{display:flex;flex-direction:column;gap:2px;}
 .noterow{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:8px;cursor:pointer;
   transition:.15s;text-align:left;border:none;background:none;width:100%;font-family:inherit;}
 .noterow:hover{background:var(--accent-soft);}
@@ -188,29 +192,33 @@ footer{max-width:1120px;margin:0 auto;padding:14px 22px 44px;color:var(--muted);
       <div class="brand"><span class="chap">Tài liệu ôn thi CFA</span><h1>CFA <span>Level&nbsp;I</span> Flashcards</h1></div>
       <span class="count" id="count"></span>
       <div class="spacer"></div>
-      <button class="btn" id="lang">🌐 EN + VN</button>
-      <button class="btn" id="flipall">👁 Hiện nghĩa</button>
-      <button class="btn" id="shuffle">🔀 Shuffle</button>
-      <button class="btn" id="reset">↺ Reset</button>
-      <button class="btn" id="theme">🌙 Dark</button>
+      <div class="optionsbar">
+        <button class="btn" id="menuToggle" title="Tuỳ chọn">☰</button>
+        <div class="optionspanel" id="optionspanel" style="display:none">
+          <select id="filterStatus">
+            <option value="all">All cards</option>
+            <option value="unknown">Still learning</option>
+            <option value="known">Known</option>
+            <option value="unseen">Unmarked</option>
+            <option value="noted">With notes</option>
+            <option value="starred">★ Starred</option>
+          </select>
+          <button class="btn" id="lang">🌐 EN + VN</button>
+          <button class="btn" id="flipall">👁 Hiện nghĩa</button>
+          <button class="btn" id="shuffle">🔀 Shuffle</button>
+          <button class="btn" id="reset">↺ Reset</button>
+          <button class="btn" id="theme">🌙 Dark</button>
+          <div class="menudivider"></div>
+          <div class="notesheader">📝 Ghi chú <span id="notesCount">(0)</span></div>
+          <div class="notepanel" id="notepanel"></div>
+        </div>
+      </div>
     </div>
     <div class="controls">
       <input type="search" id="search" placeholder="Search EN or VN… / Tìm thuật ngữ…">
-      <select id="filterStatus">
-        <option value="all">All cards</option>
-        <option value="unknown">Still learning</option>
-        <option value="known">Known</option>
-        <option value="unseen">Unmarked</option>
-        <option value="noted">With notes</option>
-        <option value="starred">★ Starred</option>
-      </select>
     </div>
     <div class="topics" id="topics"></div>
     <div class="readings" id="readings" style="display:none"></div>
-    <div class="notesbar">
-      <button class="btn" id="notesToggle">📝 Ghi chú <span id="notesCount">(0)</span></button>
-      <div class="notepanel" id="notepanel" style="display:none"></div>
-    </div>
   </div>
 </header>
 
@@ -510,8 +518,8 @@ function collectNotes(){
 function refreshNotesBar(){
   const notes=collectNotes();
   $('#notesCount').textContent='('+notes.length+')';
+  if($('#optionspanel').style.display==='none') return;
   const panel=$('#notepanel');
-  if(panel.style.display==='none') return;
   if(!notes.length){
     panel.innerHTML='<div class="empty2">Chưa có ghi chú nào trong '+(activeTopic==='All'?'bộ thẻ':'môn này')+'.</div>';
     return;
@@ -525,7 +533,7 @@ function refreshNotesBar(){
 }
 function jumpToCard(cid){
   const c=cards.find(x=>x.id===cid); if(!c) return;
-  $('#notepanel').style.display='none';
+  $('#optionspanel').style.display='none';
   activeTopic=c.topic; activeReading=c.reading||'All'; q=''; statusFilter='all';
   searchEl.value=''; filterEl.value='all';
   saveUI(); renderTopics(); renderReadings(); render();
@@ -538,14 +546,14 @@ function jumpToCard(cid){
     setTimeout(()=>card.classList.remove('jump-flash'),1500);
   });
 }
-$('#notesToggle').onclick=e=>{
+$('#menuToggle').onclick=e=>{
   e.stopPropagation();
-  const panel=$('#notepanel');
+  const panel=$('#optionspanel');
   panel.style.display = panel.style.display==='none' ? '' : 'none';
   refreshNotesBar();
 };
 document.addEventListener('click',ev=>{
-  const bar=document.querySelector('.notesbar'), panel=$('#notepanel');
+  const bar=document.querySelector('.optionsbar'), panel=$('#optionspanel');
   if(panel.style.display!=='none' && bar && !bar.contains(ev.target)) panel.style.display='none';
 });
 
