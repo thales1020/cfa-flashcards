@@ -7331,6 +7331,276 @@
      "vn": "Dấu hiệu cảnh báo kế toán về thao túng",
      "vd": "Các dấu hiệu cảnh báo gồm: quyết định vốn hóa, phương pháp khấu hao, thời gian sử dụng hữu ích, và giá trị thanh lý khác biệt so với các công ty tương đương; lợi nhuận ròng không được hỗ trợ bởi dòng tiền hoạt động; tăng trưởng doanh thu khác biệt so với đối thủ, thay đổi hoặc thiếu minh bạch về ghi nhận doanh thu; các tỷ số vòng quay giảm dần theo thời gian (khoản phải thu, hàng tồn kho, tổng tài sản); mô hình lợi nhuận quý bốn không do tính mùa vụ; các khoản không thường xuyên xuất hiện thường xuyên; giao dịch bill-and-hold, hàng đổi hàng, hoặc bên liên quan; và nhấn mạnh các chỉ tiêu phi GAAP với công bố tối thiểu.",
      "los": "10.h"
+    },
+    {
+     "id": "fsa-accounting-profit-vs-taxable-income",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Accounting profit vs. taxable income",
+     "ed": "Accounting profit (pre-tax income) is profit recognized under financial reporting standards (IFRS/US GAAP). Taxable income is profit calculated under tax rules and is the base to which the tax rate is applied to get taxes payable. Differences in revenue/expense recognition between the two frameworks cause accounting profit to differ from taxable income.",
+     "vn": "Lợi nhuận kế toán vs. Thu nhập chịu thuế",
+     "vd": "Lợi nhuận kế toán (lợi nhuận trước thuế) là lợi nhuận ghi nhận theo chuẩn mực báo cáo tài chính (IFRS/US GAAP). Thu nhập chịu thuế là lợi nhuận tính theo quy định thuế, dùng làm cơ sở nhân với thuế suất để ra thuế phải nộp. Khác biệt trong ghi nhận doanh thu/chi phí giữa hai khuôn khổ khiến lợi nhuận kế toán khác thu nhập chịu thuế.",
+     "los": "9.a"
+    },
+    {
+     "id": "fsa-taxes-payable-vs-income-tax-expense",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Taxes payable vs. income tax expense",
+     "ed": "Taxes payable (income tax payable) = Taxable income × Tax rate; it is the amount owed to tax authorities. Income tax expense = Taxes payable + Deferred tax expense; it is the amount recognized on the income statement. The two differ whenever there is a deferred tax expense (i.e., temporary differences exist).",
+     "vn": "Thuế phải nộp vs. Chi phí thuế thu nhập",
+     "vd": "Thuế phải nộp = Thu nhập chịu thuế × Thuế suất; đây là số tiền phải nộp cho cơ quan thuế. Chi phí thuế thu nhập = Thuế phải nộp + Chi phí thuế hoãn lại; đây là số ghi nhận trên báo cáo kết quả kinh doanh. Hai số này khác nhau khi có chi phí thuế hoãn lại (tức tồn tại chênh lệch tạm thời).",
+     "los": "9.a"
+    },
+    {
+     "id": "fsa-temporary-difference-definition",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Temporary difference (definition)",
+     "ed": "A temporary difference is a difference between taxable income and accounting profit that is expected to reverse in the future. It gives rise to deferred tax assets (DTA) or deferred tax liabilities (DTL).",
+     "vn": "Chênh lệch tạm thời",
+     "vd": "Chênh lệch tạm thời là chênh lệch giữa thu nhập chịu thuế và lợi nhuận kế toán, được kỳ vọng sẽ đảo ngược trong tương lai. Nó tạo ra tài sản thuế thu nhập hoãn lại (DTA) hoặc nợ thuế thu nhập hoãn lại (DTL).",
+     "los": "9.a"
+    },
+    {
+     "id": "fsa-permanent-difference-definition",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Permanent difference (definition)",
+     "ed": "A permanent difference is a difference between taxable income and accounting profit that will not reverse in the future (e.g., non-deductible expenses, tax-exempt income). It directly affects taxable income and causes the effective tax rate to differ from the statutory tax rate, but it does not create a DTA or DTL.",
+     "vn": "Chênh lệch vĩnh viễn",
+     "vd": "Chênh lệch vĩnh viễn là chênh lệch giữa thu nhập chịu thuế và lợi nhuận kế toán sẽ không đảo ngược trong tương lai (ví dụ chi phí không được khấu trừ thuế, thu nhập miễn thuế). Nó ảnh hưởng trực tiếp đến thu nhập chịu thuế và khiến thuế suất hiệu lực khác thuế suất theo luật định, nhưng không tạo ra DTA hay DTL.",
+     "los": "9.a"
+    },
+    {
+     "id": "fsa-p-l-approach-to-deferred-tax",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "P&L approach to deferred tax",
+     "ed": "Under the profit-and-loss (P&L) approach, deferred tax expense is measured directly from the temporary difference in pre-tax income each period: Deferred tax expense = (Accounting profit − Taxable income) × Tax rate. This expense accumulates over time as the DTL/DTA balance.",
+     "vn": "Cách tiếp cận P&L (lãi/lỗ) đối với thuế hoãn lại",
+     "vd": "Theo cách tiếp cận lãi/lỗ (P&L), chi phí thuế hoãn lại được tính trực tiếp từ chênh lệch tạm thời trong lợi nhuận trước thuế mỗi kỳ: Chi phí thuế hoãn lại = (Lợi nhuận kế toán − Thu nhập chịu thuế) × Thuế suất. Chi phí này tích lũy theo thời gian thành số dư DTL/DTA.",
+     "los": "9.a"
+    },
+    {
+     "id": "fsa-balance-sheet-approach-to-deferred-tax",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Balance sheet approach to deferred tax",
+     "ed": "Under the balance sheet (B/S) approach — the more commonly used method — DTL/DTA is measured from the temporary difference in account balances: DTL or DTA = |Carrying amount of asset/liability − Tax base| × Tax rate. The change in the DTA/DTL balance from period to period equals the deferred tax expense recognized in P&L.",
+     "vn": "Cách tiếp cận Bảng cân đối kế toán (B/S) đối với thuế hoãn lại",
+     "vd": "Theo cách tiếp cận bảng cân đối kế toán (B/S) — phương pháp phổ biến hơn — DTL/DTA được tính từ chênh lệch tạm thời trong số dư tài khoản: DTL hoặc DTA = |Giá trị ghi sổ tài sản/nợ phải trả − Cơ sở tính thuế| × Thuế suất. Thay đổi số dư DTA/DTL giữa các kỳ bằng đúng chi phí thuế hoãn lại ghi nhận trên P&L.",
+     "los": "9.a"
+    },
+    {
+     "id": "fsa-statutory-tax-rate",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Statutory tax rate",
+     "ed": "The statutory tax rate is the corporate income tax rate set by law in the country in which the company is domiciled.",
+     "vn": "Thuế suất theo luật định",
+     "vd": "Thuế suất theo luật định là thuế suất thuế thu nhập doanh nghiệp do pháp luật quy định tại quốc gia mà công ty đặt trụ sở.",
+     "los": "9.c"
+    },
+    {
+     "id": "fsa-effective-tax-rate",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Effective tax rate",
+     "ed": "Effective tax rate = Income tax expense (reported on the income statement) ÷ Pre-tax (accounting) income. It can differ from the statutory rate due to permanent differences, tax credits, foreign operations, and other adjustments.",
+     "vn": "Thuế suất hiệu lực",
+     "vd": "Thuế suất hiệu lực = Chi phí thuế thu nhập (ghi trên báo cáo kết quả kinh doanh) ÷ Thu nhập trước thuế (kế toán). Thuế suất này có thể khác thuế suất theo luật định do chênh lệch vĩnh viễn, ưu đãi thuế, hoạt động ở nước ngoài và các điều chỉnh khác.",
+     "los": "9.c"
+    },
+    {
+     "id": "fsa-cash-tax-rate",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Cash tax rate",
+     "ed": "Cash tax rate = Cash taxes actually paid during the period ÷ Pre-tax income. It reflects the real cash tax burden as opposed to the accrual-based book tax expense.",
+     "vn": "Thuế suất tiền mặt",
+     "vd": "Thuế suất tiền mặt = Thuế thực nộp bằng tiền trong kỳ ÷ Thu nhập trước thuế. Nó phản ánh gánh nặng thuế bằng tiền thực tế, khác với chi phí thuế ghi sổ theo cơ sở dồn tích.",
+     "los": "9.c"
+    },
+    {
+     "id": "fsa-reasons-effective-tax-rate-differs-from-statutory-tax-ra",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Reasons effective tax rate differs from statutory tax rate",
+     "ed": "Differences can arise from: tax credits; withholding tax on dividends; adjustments related to prior years; expenses not deductible for tax purposes; and the company operating outside the country where it is domiciled.",
+     "vn": "Nguyên nhân thuế suất hiệu lực khác thuế suất theo luật định",
+     "vd": "Chênh lệch có thể phát sinh từ: ưu đãi/tín dụng thuế; thuế khấu trừ tại nguồn đối với cổ tức; điều chỉnh liên quan đến các năm trước; chi phí không được khấu trừ thuế; và việc công ty hoạt động ngoài quốc gia nơi đặt trụ sở.",
+     "los": "9.c"
+    },
+    {
+     "id": "fsa-deferred-tax-liability-dtl-definition",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Deferred tax liability (DTL) — definition",
+     "ed": "A deferred tax liability is the amount of income taxes payable in future periods as a result of taxable temporary differences.",
+     "vn": "Nợ thuế thu nhập hoãn lại (DTL) — định nghĩa",
+     "vd": "Nợ thuế thu nhập hoãn lại là khoản thuế thu nhập sẽ phải nộp trong các kỳ tương lai, phát sinh từ các chênh lệch tạm thời chịu thuế.",
+     "los": "9.b"
+    },
+    {
+     "id": "fsa-deferred-tax-asset-dta-definition",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Deferred tax asset (DTA) — definition",
+     "ed": "A deferred tax asset is the amount of income taxes recoverable (i.e., tax savings) in future periods as a result of deductible temporary differences.",
+     "vn": "Tài sản thuế thu nhập hoãn lại (DTA) — định nghĩa",
+     "vd": "Tài sản thuế thu nhập hoãn lại là khoản thuế thu nhập có thể thu hồi được (tức là tiết kiệm thuế) trong các kỳ tương lai, phát sinh từ các chênh lệch tạm thời được khấu trừ.",
+     "los": "9.b"
+    },
+    {
+     "id": "fsa-tax-base-of-an-asset",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Tax base of an asset",
+     "ed": "The tax base of an asset is the amount that will be deducted (expensed) on the tax return in the future as the economic benefits of the asset are realized.",
+     "vn": "Cơ sở tính thuế của tài sản",
+     "vd": "Cơ sở tính thuế của tài sản là số tiền sẽ được khấu trừ (ghi nhận là chi phí) trên tờ khai thuế trong tương lai khi lợi ích kinh tế của tài sản được thực hiện.",
+     "los": "9.b"
+    },
+    {
+     "id": "fsa-tax-base-of-a-liability",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Tax base of a liability",
+     "ed": "Tax base of liabilities = Carrying value of the liability − amounts that will be deductible on the tax return in the future. For revenue received in advance, tax base = carrying value − amount of revenue that will not be taxed in the future.",
+     "vn": "Cơ sở tính thuế của nợ phải trả",
+     "vd": "Cơ sở tính thuế của nợ phải trả = Giá trị ghi sổ của nợ phải trả − số tiền sẽ được khấu trừ trên tờ khai thuế trong tương lai. Đối với doanh thu nhận trước, cơ sở tính thuế = giá trị ghi sổ − phần doanh thu sẽ không bị đánh thuế trong tương lai.",
+     "los": "9.b"
+    },
+    {
+     "id": "fsa-dtl-dta-rule-for-an-asset-temporary-difference",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "DTL/DTA rule for an asset temporary difference",
+     "ed": "For an asset: if Carrying amount > Tax base, future accounting profit will be lower than future taxable income (pay more tax later) → deferred tax liability. If Carrying amount < Tax base, future accounting profit will be higher than future taxable income (pay less tax later) → deferred tax asset.",
+     "vn": "Quy tắc DTL/DTA đối với chênh lệch tạm thời trên tài sản",
+     "vd": "Đối với tài sản: nếu Giá trị ghi sổ > Cơ sở tính thuế, lợi nhuận kế toán tương lai sẽ thấp hơn thu nhập chịu thuế tương lai (nộp thêm thuế sau này) → nợ thuế hoãn lại. Nếu Giá trị ghi sổ < Cơ sở tính thuế, lợi nhuận kế toán tương lai sẽ cao hơn thu nhập chịu thuế tương lai (nộp ít thuế hơn sau này) → tài sản thuế hoãn lại.",
+     "los": "9.b"
+    },
+    {
+     "id": "fsa-dtl-dta-rule-for-a-liability-temporary-difference",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "DTL/DTA rule for a liability temporary difference",
+     "ed": "For a liability: Carrying amount > Tax base → deferred tax asset (e.g., warranty liability, interest/rent received in advance). Carrying amount < Tax base → deferred tax liability.",
+     "vn": "Quy tắc DTL/DTA đối với chênh lệch tạm thời trên nợ phải trả",
+     "vd": "Đối với nợ phải trả: Giá trị ghi sổ > Cơ sở tính thuế → tài sản thuế hoãn lại (ví dụ nợ bảo hành, lãi/tiền thuê nhận trước). Giá trị ghi sổ < Cơ sở tính thuế → nợ thuế hoãn lại.",
+     "los": "9.b"
+    },
+    {
+     "id": "fsa-taxable-vs-deductible-temporary-differences",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Taxable vs. deductible temporary differences",
+     "ed": "Taxable temporary differences are expected to result in future taxable income and create a DTL (tax to pay in the future). Deductible temporary differences are expected to provide tax deductions in the future and create a DTA (tax saving in the future). Summary: Assets, CA>TB → DTL; Assets, CA<TB → DTA; Liabilities, CA<TB → DTL; Liabilities, CA>TB → DTA.",
+     "vn": "Chênh lệch tạm thời chịu thuế vs. chênh lệch tạm thời được khấu trừ",
+     "vd": "Chênh lệch tạm thời chịu thuế được kỳ vọng làm phát sinh thu nhập chịu thuế trong tương lai và tạo ra DTL (thuế phải nộp trong tương lai). Chênh lệch tạm thời được khấu trừ được kỳ vọng mang lại khoản khấu trừ thuế trong tương lai và tạo ra DTA (tiết kiệm thuế trong tương lai). Tóm tắt: Tài sản, GTGS>CSTT → DTL; Tài sản, GTGS<CSTT → DTA; Nợ phải trả, GTGS<CSTT → DTL; Nợ phải trả, GTGS>CSTT → DTA.",
+     "los": "9.b"
+    },
+    {
+     "id": "fsa-key-formulas-tax-payable-tax-expense-dtl-dta",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Key formulas: tax payable, tax expense, DTL/DTA",
+     "ed": "Income tax payable = Taxable income × Tax rate. Income tax expense = Taxes payable + Deferred tax expense = Taxes payable + ΔDTL − ΔDTA. Deferred tax liability/asset = Temporary difference × Tax rate = |Carrying amount − Tax base| × Tax rate.",
+     "vn": "Các công thức chính: thuế phải nộp, chi phí thuế, DTL/DTA",
+     "vd": "Thuế phải nộp = Thu nhập chịu thuế × Thuế suất. Chi phí thuế thu nhập = Thuế phải nộp + Chi phí thuế hoãn lại = Thuế phải nộp + ΔDTL − ΔDTA. Nợ/tài sản thuế hoãn lại = Chênh lệch tạm thời × Thuế suất = |Giá trị ghi sổ − Cơ sở tính thuế| × Thuế suất.",
+     "los": "9.b"
+    },
+    {
+     "id": "fsa-effect-of-a-tax-rate-decrease-on-financial-statements",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Effect of a tax rate decrease on financial statements",
+     "ed": "When the tax rate decreases: (1) DTA decreases → the change in DTA decreases → income tax expense increases → net income decreases → retained earnings/equity decrease. (2) DTL decreases → the change in DTL decreases → income tax expense decreases → net income increases → retained earnings/equity increase. Since Income tax expense = Taxes payable + ΔDTL − ΔDTA, the net effect on a firm depends on whether it is in a net DTA or net DTL position (the reverse logic applies for a tax rate increase).",
+     "vn": "Ảnh hưởng của việc giảm thuế suất đến báo cáo tài chính",
+     "vd": "Khi thuế suất giảm: (1) DTA giảm → thay đổi DTA giảm → chi phí thuế thu nhập tăng → lợi nhuận ròng giảm → lợi nhuận giữ lại/vốn chủ sở hữu giảm. (2) DTL giảm → thay đổi DTL giảm → chi phí thuế thu nhập giảm → lợi nhuận ròng tăng → lợi nhuận giữ lại/vốn chủ sở hữu tăng. Vì Chi phí thuế thu nhập = Thuế phải nộp + ΔDTL − ΔDTA, ảnh hưởng ròng lên công ty phụ thuộc vào việc công ty đang ở vị thế DTA ròng hay DTL ròng (khi thuế suất tăng thì logic ngược lại).",
+     "los": "Pre.i"
+    },
+    {
+     "id": "fsa-effect-of-tax-rate-change-on-leverage-ratios",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Effect of tax rate change on leverage ratios",
+     "ed": "When tax rate decreases and DTA decreases (equity decreases): long-term debt-to-equity, debt-to-equity, total debt ratio, and financial leverage all increase. When tax rate decreases and DTL decreases (equity increases): long-term debt-to-equity, debt-to-equity, and financial leverage decrease; total debt ratio is unchanged.",
+     "vn": "Ảnh hưởng của thay đổi thuế suất đến các tỷ số đòn bẩy",
+     "vd": "Khi thuế suất giảm và DTA giảm (vốn chủ sở hữu giảm): tỷ số nợ dài hạn/vốn chủ sở hữu, nợ/vốn chủ sở hữu, tổng nợ/tổng tài sản và đòn bẩy tài chính đều tăng. Khi thuế suất giảm và DTL giảm (vốn chủ sở hữu tăng): tỷ số nợ dài hạn/vốn chủ sở hữu, nợ/vốn chủ sở hữu và đòn bẩy tài chính giảm; tỷ số tổng nợ/tổng tài sản không đổi.",
+     "los": "Pre.i"
+    },
+    {
+     "id": "fsa-valuation-allowance-for-deferred-tax-assets",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Valuation allowance for deferred tax assets",
+     "ed": "Deferred tax assets are assessed each balance sheet date for the likelihood of sufficient future taxable income to recover them. Under US GAAP, if it is more likely than not (>50% chance) that the DTA will NOT be recovered, a valuation allowance (a contra-asset account) is required to reduce the DTA; if recovery is more likely than not, no valuation allowance is required.",
+     "vn": "Khoản dự phòng đánh giá (valuation allowance) cho tài sản thuế hoãn lại",
+     "vd": "Tài sản thuế hoãn lại được đánh giá lại vào mỗi ngày lập bảng cân đối kế toán về khả năng có đủ thu nhập chịu thuế trong tương lai để thu hồi. Theo US GAAP, nếu nhiều khả năng xảy ra hơn là không (more likely than not, >50%) rằng DTA sẽ KHÔNG được thu hồi, cần lập khoản dự phòng đánh giá (một tài khoản giảm trừ tài sản) để giảm DTA; nếu khả năng thu hồi cao hơn, không cần lập dự phòng.",
+     "los": "Pre.ii"
+    },
+    {
+     "id": "fsa-effect-of-change-in-valuation-allowance-on-financial-sta",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Effect of change in valuation allowance on financial statements",
+     "ed": "An increase in the valuation allowance decreases the deferred tax asset, decreases the change in DTA, increases income tax expense, decreases net income, and decreases retained earnings/shareholders' equity. A decrease in the valuation allowance has the opposite effects.",
+     "vn": "Ảnh hưởng của thay đổi khoản dự phòng đánh giá đến báo cáo tài chính",
+     "vd": "Tăng khoản dự phòng đánh giá làm giảm tài sản thuế hoãn lại, giảm thay đổi DTA, tăng chi phí thuế thu nhập, giảm lợi nhuận ròng và giảm lợi nhuận giữ lại/vốn chủ sở hữu. Giảm khoản dự phòng đánh giá có tác động ngược lại.",
+     "los": "Pre.ii"
+    },
+    {
+     "id": "fsa-tax-loss-carryforward",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Tax loss carryforward",
+     "ed": "A tax loss carryforward is a provision allowing a taxpayer to move a tax loss to future years to offset future taxable profit, reducing future taxable income.",
+     "vn": "Lỗ chuyển sang các năm sau (tax loss carryforward)",
+     "vd": "Lỗ chuyển sang các năm sau là quy định cho phép người nộp thuế chuyển khoản lỗ thuế sang các năm tương lai để bù trừ với lợi nhuận chịu thuế trong tương lai, làm giảm thu nhập chịu thuế trong tương lai.",
+     "los": "Pre.iii"
+    },
+    {
+     "id": "fsa-tax-credit",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Tax credit",
+     "ed": "A tax credit is an amount of money that taxpayers can subtract directly from the taxes owed to their government, reducing the tax owed.",
+     "vn": "Tín dụng thuế (tax credit)",
+     "vd": "Tín dụng thuế là một khoản tiền mà người nộp thuế có thể trừ trực tiếp vào số thuế phải nộp cho chính phủ, làm giảm số thuế phải nộp.",
+     "los": "Pre.iii"
+    },
+    {
+     "id": "fsa-recognition-of-tax-losses-credits-ifrs-vs-us-gaap",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Recognition of tax losses/credits: IFRS vs. US GAAP",
+     "ed": "IFRS: recognizes a DTA from unused tax losses and credits only to the extent it is probable that future taxable income will be available against which they can be applied. US GAAP: recognizes a DTA in full, then reduces it via a valuation allowance if it is more likely than not that some or all of the DTA will not be realized.",
+     "vn": "Ghi nhận lỗ/tín dụng thuế chưa sử dụng: IFRS vs. US GAAP",
+     "vd": "IFRS: chỉ ghi nhận DTA từ lỗ và tín dụng thuế chưa sử dụng trong phạm vi có khả năng (probable) sẽ có thu nhập chịu thuế trong tương lai để bù trừ. US GAAP: ghi nhận đầy đủ DTA, sau đó giảm trừ bằng khoản dự phòng đánh giá nếu nhiều khả năng xảy ra hơn là không (more likely than not) rằng một phần hoặc toàn bộ DTA sẽ không được thực hiện.",
+     "los": "Pre.iii"
+    },
+    {
+     "id": "fsa-deferred-tax-items-recognized-directly-in-equity",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Deferred tax items recognized directly in equity",
+     "ed": "When deferred tax items relate to items recognized in other comprehensive income (not net income), the deferred tax effect is charged directly to equity rather than through profit or loss. Examples: revaluation of PP&E (not permitted under US GAAP), long-term investments at fair value, changes in accounting policies, prior-period error corrections against opening retained earnings, initial recognition of equity components of complex financial instruments, and foreign currency translation adjustments.",
+     "vn": "Các khoản thuế hoãn lại ghi nhận trực tiếp vào vốn chủ sở hữu",
+     "vd": "Khi các khoản thuế hoãn lại liên quan đến các khoản mục ghi nhận trong thu nhập toàn diện khác (không phải lợi nhuận ròng), ảnh hưởng thuế hoãn lại được ghi nhận trực tiếp vào vốn chủ sở hữu thay vì qua lãi/lỗ. Ví dụ: đánh giá lại TSCĐ (không được phép theo US GAAP), đầu tư dài hạn theo giá trị hợp lý, thay đổi chính sách kế toán, điều chỉnh sai sót kỳ trước vào lợi nhuận giữ lại đầu kỳ, ghi nhận ban đầu cấu phần vốn của công cụ tài chính phức hợp, và chênh lệch tỷ giá quy đổi báo cáo tài chính hoạt động nước ngoài.",
+     "los": "Pre.iii"
+    },
+    {
+     "id": "fsa-typical-deferred-tax-disclosures",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Typical deferred tax disclosures",
+     "ed": "Companies typically disclose: DTLs, DTAs, any valuation allowance and its net change over the period; any unrecognized DTL for undistributed earnings of subsidiaries/joint ventures; the current-year tax effect of each type of temporary difference; components of income tax expense; a reconciliation of reported income tax expense to the tax expense based on the statutory rate; and tax loss carryforwards and credits.",
+     "vn": "Các thuyết minh điển hình về thuế hoãn lại",
+     "vd": "Các công ty thường thuyết minh: DTL, DTA, khoản dự phòng đánh giá và thay đổi ròng trong kỳ; DTL chưa ghi nhận đối với lợi nhuận chưa phân phối của công ty con/liên doanh; ảnh hưởng thuế trong năm của từng loại chênh lệch tạm thời; các cấu phần của chi phí thuế thu nhập; bảng đối chiếu giữa chi phí thuế thu nhập báo cáo và chi phí thuế tính theo thuế suất luật định; và các khoản lỗ/tín dụng thuế chuyển sang các năm sau.",
+     "los": "9.d"
+    },
+    {
+     "id": "fsa-effective-tax-rate-reconciliation-causes-of-difference",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Effective tax rate reconciliation — causes of difference",
+     "ed": "Reported income tax expense differs from the amount based on the statutory tax rate for reasons including: different tax rates across jurisdictions; permanent tax differences (tax credits, tax-exempt income, nondeductible expenses, differing treatment of capital gains vs. operating income); changes in tax rates/legislation; deferred taxes on reinvested earnings of foreign/unconsolidated domestic affiliates; and tax holidays (watch for termination dates or requirements to repay accumulated taxes later).",
+     "vn": "Bảng đối chiếu thuế suất hiệu lực — nguyên nhân chênh lệch",
+     "vd": "Chi phí thuế thu nhập báo cáo khác với số tính theo thuế suất luật định do các nguyên nhân: thuế suất khác nhau giữa các khu vực pháp lý; chênh lệch thuế vĩnh viễn (ưu đãi thuế, thu nhập miễn thuế, chi phí không được khấu trừ, cách xử lý khác nhau giữa lãi vốn và thu nhập hoạt động); thay đổi thuế suất/luật thuế; thuế hoãn lại trên lợi nhuận tái đầu tư của công ty liên kết nước ngoài/trong nước chưa hợp nhất; và các kỳ ưu đãi miễn giảm thuế (lưu ý ngày kết thúc ưu đãi hoặc yêu cầu hoàn trả thuế tích lũy sau này).",
+     "los": "9.d"
+    },
+    {
+     "id": "fsa-ifrs-vs-us-gaap-deferred-tax-key-differences",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "IFRS vs. US GAAP — deferred tax key differences",
+     "ed": "Revaluation of PP&E/intangibles: IFRS recognizes deferred tax in equity; US GAAP does not apply (no revaluation allowed). Undistributed profit of subsidiaries/JVs/associates: IFRS recognizes deferred tax unless the parent/investor controls distribution and it is probable the temporary difference will not reverse; US GAAP generally has no deferred tax for foreign subsidiaries/JVs meeting the indefinite reversal criterion, and none for domestic subsidiaries if tax-free, but recognizes deferred taxes for associates from temporary differences. DTA recognition: IFRS recognizes if probable sufficient future taxable profit will be available; US GAAP recognizes in full then reduces via valuation allowance if more likely than not some/all will not be realized. Tax rate used: IFRS uses enacted or substantively enacted rate; US GAAP uses enacted rate only.",
+     "vn": "IFRS vs. US GAAP — khác biệt chính về thuế hoãn lại",
+     "vd": "Đánh giá lại TSCĐ/tài sản vô hình: IFRS ghi nhận thuế hoãn lại vào vốn chủ sở hữu; US GAAP không áp dụng (không cho phép đánh giá lại). Lợi nhuận chưa phân phối của công ty con/liên doanh/liên kết: IFRS ghi nhận thuế hoãn lại trừ khi công ty mẹ/nhà đầu tư kiểm soát việc phân phối và có khả năng cao là chênh lệch tạm thời sẽ không đảo ngược trong tương lai; US GAAP thường không ghi nhận thuế hoãn lại cho công ty con/liên doanh nước ngoài đáp ứng tiêu chí đảo ngược vô thời hạn, và không ghi nhận cho công ty con trong nước nếu miễn thuế, nhưng ghi nhận thuế hoãn lại cho công ty liên kết từ chênh lệch tạm thời. Ghi nhận DTA: IFRS ghi nhận nếu có khả năng (probable) sẽ có đủ lợi nhuận chịu thuế tương lai; US GAAP ghi nhận đầy đủ rồi giảm trừ bằng dự phòng đánh giá nếu nhiều khả năng xảy ra hơn là không rằng một phần/toàn bộ sẽ không được thực hiện. Thuế suất sử dụng: IFRS dùng thuế suất đã ban hành hoặc về cơ bản đã ban hành; US GAAP chỉ dùng thuế suất đã ban hành.",
+     "los": "Pre.iv"
+    },
+    {
+     "id": "fsa-depreciation-driven-temporary-difference-example-illustr",
+     "reading": "Module 9: Analysis Of Income Taxes",
+     "en": "Depreciation-driven temporary difference example (Illustration I)",
+     "ed": "A machine costs $100 with a 5-year useful life for accounting but a 4-year life for tax. In years 1-4, tax depreciation ($25) exceeds accounting depreciation ($20), so taxable income < accounting profit, deferring tax (creating a DTL); in year 5 the reverse occurs and the DTL reverses to $0. Deferred tax expense each year = (Accounting profit − Taxable income) × tax rate, e.g., ($360−$355)×20% = $1 in years 1-4, and ($340−$360)×20% = −$4 in year 5.",
+     "vn": "Ví dụ chênh lệch tạm thời do khấu hao (Minh họa I)",
+     "vd": "Một máy móc giá $100, thời gian sử dụng hữu ích 5 năm cho mục đích kế toán nhưng 4 năm cho mục đích thuế. Trong năm 1-4, khấu hao thuế ($25) lớn hơn khấu hao kế toán ($20), nên thu nhập chịu thuế < lợi nhuận kế toán, hoãn thuế lại (tạo DTL); đến năm 5 thì ngược lại và DTL đảo ngược về $0. Chi phí thuế hoãn lại mỗi năm = (Lợi nhuận kế toán − Thu nhập chịu thuế) × thuế suất, ví dụ ($360−$355)×20% = $1 trong năm 1-4, và ở năm 5 chênh lệch đảo chiều nên chi phí thuế hoãn lại = −$4.",
+     "los": "9.a"
     }
    ]
   },
