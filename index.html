@@ -105,8 +105,20 @@ main{max-width:1120px;margin:0 auto;padding:22px;}
 .def mark{background:var(--hl-bg);color:var(--hl-ink);border-radius:4px;padding:.02em .16em;cursor:pointer;
   -webkit-box-decoration-break:clone;box-decoration-break:clone;transition:box-shadow .15s;}
 .def mark:hover{box-shadow:inset 0 0 0 2px var(--amber);}
+.def mark.noted{box-shadow:inset 0 -2.5px 0 var(--amber);}
+.def mark.noted:hover{box-shadow:inset 0 0 0 2px var(--amber),inset 0 -2.5px 0 var(--amber);}
 .selhint{font-size:11px;color:var(--muted);margin-top:10px;opacity:.85;}
 .selhint b{color:var(--amber);font-weight:600;}
+.hlnote{position:relative;margin-top:14px;border:1px dashed var(--amber);background:var(--note-bg);
+  border-radius:12px;padding:12px 14px 10px;}
+.hlnote .hltext{font-size:11.5px;color:var(--muted);margin-bottom:8px;line-height:1.5;}
+.hlnote .hltext b{color:var(--hl-ink);background:var(--hl-bg);border-radius:4px;padding:.02em .3em;font-weight:600;}
+.hlnote-ta{width:100%;border:1px solid var(--line);background:var(--panel);color:var(--ink);
+  border-radius:10px;padding:10px 12px;font-size:13.5px;font-family:inherit;line-height:1.55;
+  resize:vertical;min-height:44px;outline:none;transition:.18s;}
+.hlnote-ta:focus{border-color:var(--amber);box-shadow:0 0 0 3px var(--amber-soft);}
+.hlnote-ta::placeholder{color:var(--muted);opacity:.7;}
+.hlactions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px;}
 .cardfoot{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;align-items:center;}
 .sbtn{border:1px solid var(--line);background:var(--bg);color:var(--muted);border-radius:999px;
   padding:6px 13px;font-size:12px;font-weight:600;cursor:pointer;transition:.18s;}
@@ -277,25 +289,20 @@ function filtered(){
   });
 }
 
-/* ----- highlight helpers ----- */
-function mergeRanges(rs){
-  if(!rs||!rs.length) return [];
-  rs=rs.map(r=>[Math.min(r[0],r[1]),Math.max(r[0],r[1])]).sort((a,b)=>a[0]-b[0]);
-  const out=[rs[0].slice()];
-  for(let i=1;i<rs.length;i++){const last=out[out.length-1];
-    if(rs[i][0]<=last[1]) last[1]=Math.max(last[1],rs[i][1]); else out.push(rs[i].slice());}
-  return out;
-}
-function hlHTML(text,ranges){
-  ranges=mergeRanges(ranges);
-  if(!ranges.length) return esc(text);
+/* ----- highlight helpers -----
+   each highlight is {s,e,n}: char range [s,e) into the raw ed/vd text, plus its own note (n).
+   ranges never overlap (a new selection that overlaps an existing one opens that one's note instead). */
+function hlHTML(text,list){
+  const items=list.map((h,i)=>({...h,_i:i})).sort((a,b)=>a.s-b.s);
+  if(!items.length) return fmtMath(esc(text));
   let out='',i=0;
-  for(const [s,e] of ranges){
-    if(s>i) out+=esc(text.slice(i,s));
-    out+='<mark data-s="'+s+'" data-e="'+e+'" title="Bấm để xoá tô sáng">'+esc(text.slice(s,e))+'</mark>';
-    i=e;
+  for(const h of items){
+    if(h.s>i) out+=fmtMath(esc(text.slice(i,h.s)));
+    const noted=h.n&&h.n.trim()?' noted':'';
+    out+='<mark data-idx="'+h._i+'" class="'+noted.trim()+'" title="Bấm để xem/sửa ghi chú">'+fmtMath(esc(text.slice(h.s,h.e)))+'</mark>';
+    i=h.e;
   }
-  out+=esc(text.slice(i));
+  if(i<text.length) out+=fmtMath(esc(text.slice(i)));
   return out;
 }
 // render formula notation: x^(a) / x^n -> superscript, x_(a) / x_i -> subscript
@@ -310,7 +317,10 @@ function spanOffset(span,node,off){
   while((n=w.nextNode())){ if(n===node) return total+off; total+=n.nodeValue.length; }
   return total;
 }
-function getHL(cid){const h=(state[cid]||{}).hl;return {en:(h&&h.en)?h.en.slice():[],vi:(h&&h.vi)?h.vi.slice():[]};}
+function normHL(arr){
+  return (arr||[]).map(x=>Array.isArray(x)?{s:x[0],e:x[1],n:''}:{s:x.s,e:x.e,n:x.n||''});
+}
+function getHL(cid){const h=(state[cid]||{}).hl;return {en:normHL(h&&h.en),vi:normHL(h&&h.vi)};}
 function setHL(cid,hl){const cur=state[cid]||{};state[cid]={...cur,hl};save();}
 
 function render(){
@@ -331,7 +341,8 @@ function render(){
         <div class="face back">
           <div class="meta"><span class="tag" style="background:${col}">${shortTopic(c.topic)}</span><span class="hint">tap to flip ↻</span></div>
           <div class="def"><span class="en"></span><span class="vi"></span></div>
-          <div class="selhint">Bôi đen một đoạn để <b>tô sáng</b> · bấm vào chỗ đã tô để xoá</div>
+          <div class="selhint">Bôi đen một đoạn để <b>tô sáng</b> · bấm vào chỗ đã tô để ghi chú</div>
+          <div class="hlnote" data-stop style="display:none"></div>
           <div class="cardfoot" data-stop>
             <button class="sbtn k${s.s==='k'?' on':''}" data-act="k">✓ Known</button>
             <button class="sbtn u${s.s==='u'?' on':''}" data-act="u">↻ Learning</button>
@@ -341,10 +352,41 @@ function render(){
         </div>
       </div>`;
     const enSpan=el.querySelector('.def .en'), viSpan=el.querySelector('.def .vi');
+    const hlnoteEl=el.querySelector('.hlnote');
     function paint(){const hl=getHL(c.id);
-      enSpan.innerHTML = hl.en.length ? hlHTML(c.ed,hl.en) : fmtMath(esc(c.ed));
-      viSpan.innerHTML = hl.vi.length ? hlHTML(c.vd,hl.vi) : fmtMath(esc(c.vd));}
+      enSpan.innerHTML = hlHTML(c.ed,hl.en);
+      viSpan.innerHTML = hlHTML(c.vd,hl.vi);}
     paint();
+
+    // per-highlight note editor
+    let activeHL=null; // {lang, idx}
+    function closeHLNote(){ activeHL=null; hlnoteEl.style.display='none'; hlnoteEl.innerHTML=''; }
+    function openHLNote(lang,idx){
+      const hl=getHL(c.id), item=hl[lang][idx];
+      if(!item) return;
+      activeHL={lang,idx};
+      const srcText=lang==='en'?c.ed:c.vd;
+      hlnoteEl.style.display='';
+      hlnoteEl.innerHTML=`
+        <div class="hltext">Ghi chú cho: <b>${esc(srcText.slice(item.s,item.e))}</b></div>
+        <textarea class="hlnote-ta" placeholder="Ghi chú cho đoạn tô sáng này…">${esc(item.n||'')}</textarea>
+        <div class="hlactions">
+          <button class="sbtn erase" data-hl-del type="button">🗑 Xoá tô sáng</button>
+          <button class="sbtn" data-hl-close type="button">Đóng</button>
+        </div>`;
+      const ta=hlnoteEl.querySelector('.hlnote-ta');
+      ta.addEventListener('input',()=>{
+        const cur=getHL(c.id); if(!cur[lang][idx]) return;
+        cur[lang][idx].n=ta.value; setHL(c.id,{en:cur.en,vi:cur.vi});
+      });
+      hlnoteEl.querySelector('[data-hl-del]').onclick=ev=>{
+        ev.stopPropagation();
+        const cur=getHL(c.id); cur[lang].splice(idx,1); setHL(c.id,{en:cur.en,vi:cur.vi});
+        closeHLNote(); paint();
+      };
+      hlnoteEl.querySelector('[data-hl-close]').onclick=ev=>{ ev.stopPropagation(); closeHLNote(); };
+      ta.focus();
+    }
 
     // flip only on genuine tap (not drag / text-selection / interactive area)
     const inner=el.querySelector('.inner');
@@ -359,7 +401,7 @@ function render(){
       el.classList.toggle('flipped');
     });
 
-    // select-to-highlight
+    // select-to-highlight (a selection overlapping an existing highlight opens its note instead of adding a new one)
     function addSel(span,lang){
       const sel=window.getSelection();
       if(!sel||sel.rangeCount===0||sel.isCollapsed) return false;
@@ -368,8 +410,13 @@ function render(){
       let a=spanOffset(span,r.startContainer,r.startOffset), b=spanOffset(span,r.endContainer,r.endOffset);
       if(a>b)[a,b]=[b,a];
       if(b-a<1) return false;
-      const hl=getHL(c.id); hl[lang]=mergeRanges([...hl[lang],[a,b]]); setHL(c.id,hl);
-      sel.removeAllRanges(); paint(); return true;
+      sel.removeAllRanges();
+      const hl=getHL(c.id), list=hl[lang];
+      const overlapIdx=list.findIndex(h=>a<h.e && h.s<b);
+      if(overlapIdx>=0){ openHLNote(lang,overlapIdx); return true; }
+      list.push({s:a,e:b,n:''});
+      setHL(c.id,{en:hl.en,vi:hl.vi});
+      paint(); openHLNote(lang,list.length-1); return true;
     }
     enSpan.addEventListener('mouseup',()=>{ if(addSel(enSpan,'en')) el._sup=true; });
     viSpan.addEventListener('mouseup',()=>{ if(addSel(viSpan,'vi')) el._sup=true; });
@@ -380,14 +427,15 @@ function render(){
       const m=ev.target.closest('mark'); if(!m) return;
       ev.stopPropagation(); el._sup=true;
       const span=m.parentElement, lang=span.classList.contains('en')?'en':'vi';
-      const a=+m.dataset.s, b=+m.dataset.e;
-      const hl=getHL(c.id); hl[lang]=hl[lang].filter(r=>!(r[0]===a&&r[1]===b)); setHL(c.id,hl); paint();
+      const idx=+m.dataset.idx;
+      if(activeHL&&activeHL.lang===lang&&activeHL.idx===idx) closeHLNote();
+      else openHLNote(lang,idx);
     });
 
     el.querySelectorAll('.sbtn').forEach(btn=>btn.onclick=e=>{
       e.stopPropagation();
       const a=btn.dataset.act, cur=st(c.id), ns={...cur};
-      if(a==='clr'){ setHL(c.id,{en:[],vi:[]}); paint(); return; }
+      if(a==='clr'){ setHL(c.id,{en:[],vi:[]}); closeHLNote(); paint(); return; }
       if(a==='k') ns.s=ns.s==='k'?null:'k';
       if(a==='u') ns.s=ns.s==='u'?null:'u';
       state[c.id]=ns; save(); updateStats();
