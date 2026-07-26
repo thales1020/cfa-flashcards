@@ -194,12 +194,13 @@ footer{max-width:1120px;margin:0 auto;padding:14px 22px 44px;color:var(--muted);
 </style>
 </head>
 <body data-lang="both">
-<header>
+<header class="collapsed">
   <div class="hwrap">
     <div class="titlerow">
       <div class="brand"><span class="chap">Tài liệu ôn thi CFA</span><h1>CFA <span>Level&nbsp;I</span> Flashcards</h1></div>
       <span class="count" id="count"></span>
       <div class="spacer"></div>
+      <button class="btn" id="filtersToggle" title="Tìm kiếm / Lọc">🔍</button>
       <div class="optionsbar">
         <button class="btn" id="menuToggle" title="Tuỳ chọn">☰</button>
         <div class="optionspanel" id="optionspanel" style="display:none">
@@ -627,29 +628,10 @@ $('#theme').onclick=()=>{
 new IntersectionObserver(entries=>{ if(entries[0].isIntersecting) loadMore(); }, {rootMargin:'300px 0px'})
   .observe(document.getElementById('sentinel'));
 
-// fully collapse the header (title + search + topics + readings) while scrolling down,
-// reveal it again on any upward scroll (or once back near the top) - only the ☰ menu stays.
+// title + search + topics + readings stay collapsed (hidden) by default - a manual tap
+// reveals them, rather than any scroll-linked behavior (simpler, and no scroll listener at all).
 const headerEl=document.querySelector('header');
-let headerCollapsed=false, lastScrollY=window.scrollY;
-function setHeaderCollapsed(v){
-  if(v===headerCollapsed) return;
-  headerCollapsed=v; headerEl.classList.toggle('collapsed',v);
-}
-let scrollTicking=false;
-function onScroll(){
-  if(scrollTicking) return;
-  scrollTicking=true;
-  requestAnimationFrame(()=>{
-    const y=window.scrollY, dy=y-lastScrollY;
-    if(y<=40) setHeaderCollapsed(false);
-    else if(dy>4) setHeaderCollapsed(true);
-    else if(dy<-4) setHeaderCollapsed(false);
-    lastScrollY=y;
-    scrollTicking=false;
-  });
-}
-window.addEventListener('scroll',onScroll,{passive:true});
-onScroll();
+$('#filtersToggle').onclick=()=>headerEl.classList.toggle('collapsed');
 
 boot();
 </script>
