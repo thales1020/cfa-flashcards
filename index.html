@@ -241,6 +241,7 @@ footer{max-width:1120px;margin:0 auto;padding:14px 22px 44px;color:var(--muted);
 <main>
   <div class="deck" id="deck"></div>
   <div class="empty" id="empty" style="display:none">No cards match. / Không có thẻ phù hợp.</div>
+  <div id="sentinel" style="height:1px;"></div>
 </main>
 <footer>
   Tap a card to flip · Mark Known/Learning · Highlight · Add notes — all saved in your browser. &nbsp;|&nbsp; Nhấn thẻ để lật · English + Tiếng Việt · CFA Level I.
@@ -363,11 +364,9 @@ function normHL(arr){
 function getHL(cid){const h=(state[cid]||{}).hl;return {en:normHL(h&&h.en),vi:normHL(h&&h.vi)};}
 function setHL(cid,hl){const cur=state[cid]||{};state[cid]={...cur,hl};save();}
 
-function render(){
-  const list=filtered();
-  deck.innerHTML='';
-  $('#empty').style.display=list.length?'none':'block';
-  list.forEach(c=>{
+const BATCH=60; // cards rendered per page; keeps DOM size bounded regardless of topic size (some have 1600+ cards)
+let renderLimit=BATCH;
+function buildCardEl(c){
     const s=st(c.id);
     const col=topicColors[c.topic];
     const el=document.createElement('div');
@@ -494,12 +493,29 @@ function render(){
     });
     const ta=el.querySelector('.note');
     ta.addEventListener('input',()=>{const cur=st(c.id);state[c.id]={...cur,n:ta.value};save();refreshNotesBar();});
-    deck.appendChild(el);
-  });
+    return el;
+}
+
+function render(minLimit){
+  const list=filtered();
+  renderLimit=Math.min(Math.max(minLimit||BATCH,BATCH),list.length);
+  deck.innerHTML='';
+  $('#empty').style.display=list.length?'none':'block';
+  list.slice(0,renderLimit).forEach(c=>{ deck.appendChild(buildCardEl(c)); });
   $('#count').textContent=`${list.length} / ${cards.length} cards`;
   updateStats();
   refreshNotesBar();
+  updateSentinel(list.length);
 }
+function loadMore(){
+  const list=filtered();
+  if(renderLimit>=list.length) return;
+  const next=Math.min(renderLimit+BATCH,list.length);
+  list.slice(renderLimit,next).forEach(c=>{ deck.appendChild(buildCardEl(c)); });
+  renderLimit=next;
+  updateSentinel(list.length);
+}
+function updateSentinel(total){ $('#sentinel').style.display = renderLimit<total ? '' : 'none'; }
 
 function updateStats(){
   let k=0,u=0;
@@ -545,7 +561,9 @@ function jumpToCard(cid){
   $('#optionspanel').style.display='none';
   activeTopic=c.topic; activeReading=c.reading||'All'; q=''; statusFilter='all';
   searchEl.value=''; filterEl.value='all';
-  saveUI(); renderTopics(); renderReadings(); render();
+  saveUI(); renderTopics(); renderReadings();
+  const idx=filtered().findIndex(x=>x.id===cid);
+  render(idx>=0?idx+1:undefined); // make sure the target card's page is actually rendered
   requestAnimationFrame(()=>{
     const card=deck.querySelector('.card[data-cid="'+cid+'"]');
     if(!card) return;
@@ -592,6 +610,10 @@ $('#theme').onclick=()=>{
   if(dark){document.documentElement.removeAttribute('data-theme');$('#theme').textContent='🌙 Dark';localStorage.setItem('cfa_theme','light');}
   else{document.documentElement.setAttribute('data-theme','dark');$('#theme').textContent='☀️ Light';localStorage.setItem('cfa_theme','dark');}
 };
+
+// load the next page of cards once the sentinel (end of the rendered batch) nears the viewport
+new IntersectionObserver(entries=>{ if(entries[0].isIntersecting) loadMore(); }, {rootMargin:'900px 0px'})
+  .observe(document.getElementById('sentinel'));
 
 // fully collapse the header (title + search + topics + readings) while scrolling down,
 // reveal it again on any upward scroll (or once back near the top) - only the ☰ menu stays.
