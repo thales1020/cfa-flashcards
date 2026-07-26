@@ -4077,6 +4077,411 @@
      "ed": "Among the three major international organizations, the World Trade Organization (WTO) is the one explicitly focused on expanding international trade, the International Monetary Fund (IMF) is focused on providing funding to member nations (and monetary/exchange-rate stability), and the World Bank is focused on reducing poverty (economic development).",
      "vn": "Vai trò của IMF, World Bank và WTO",
      "vd": "Trong ba tổ chức quốc tế lớn, Tổ chức Thương mại Thế giới (WTO) là tổ chức tập trung rõ ràng vào mở rộng thương mại quốc tế, Quỹ Tiền tệ Quốc tế (IMF) tập trung vào cung cấp tài trợ cho các quốc gia thành viên (và ổn định tiền tệ/tỷ giá), và Ngân hàng Thế giới (World Bank) tập trung vào giảm nghèo (phát triển kinh tế)."
+    },
+    {
+     "id": "econ-cross-rate",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Cross rate",
+     "ed": "The exchange rate between two currencies implied by their exchange rates with a common third currency, used when there is no active FX market in that currency pair. Rule: A/B = A/C x C/B (or A/C : B/C, or C/B : C/A) — just follow fraction rules.",
+     "vn": "Tỷ giá chéo",
+     "vd": "Tỷ giá hối đoái giữa hai đồng tiền được suy ra từ tỷ giá của mỗi đồng tiền với một đồng tiền thứ ba chung, dùng khi không có thị trường ngoại hối hoạt động trực tiếp cho cặp tiền tệ đó. Quy tắc: A/B = A/C x C/B (hoặc A/C : B/C, hoặc C/B : C/A) — chỉ cần áp dụng quy tắc phân số.",
+     "los": "8.a"
+    },
+    {
+     "id": "econ-cross-rate-calculation-example",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Cross rate calculation example",
+     "ed": "Given 10.7 MXN/USD and 0.6 USD/AUD, the cross rate MXN/AUD = MXN/USD x USD/AUD = 10.7 x 0.6 = 6.42 MXN/AUD.",
+     "vn": "Ví dụ tính tỷ giá chéo",
+     "vd": "Cho 10.7 MXN/USD và 0.6 USD/AUD, tỷ giá chéo MXN/AUD = MXN/USD x USD/AUD = 10.7 x 0.6 = 6.42 MXN/AUD.",
+     "los": "8.a"
+    },
+    {
+     "id": "econ-forward-points-pips",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Forward points (pips)",
+     "ed": "Forward exchange rates are quoted in points (pips), representing the difference between the forward rate and the spot rate. The unit of points is the last decimal place of the spot rate. Pips = (F - S) x 10^n, where F = forward rate, S = spot rate, n = number of decimal places. Pips > 0 means the forward rate is higher than the spot rate; pips < 0 means it is lower.",
+     "vn": "Điểm kỳ hạn (pips)",
+     "vd": "Tỷ giá kỳ hạn được yết theo điểm (pips), thể hiện chênh lệch giữa tỷ giá kỳ hạn và tỷ giá giao ngay. Đơn vị điểm là chữ số thập phân cuối cùng của tỷ giá giao ngay. Pips = (F - S) x 10^n, trong đó F là tỷ giá kỳ hạn, S là tỷ giá giao ngay, n là số chữ số thập phân. Pips > 0 nghĩa là tỷ giá kỳ hạn cao hơn tỷ giá giao ngay; pips < 0 nghĩa là thấp hơn.",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-forward-rate-from-points-example",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Forward rate from points example",
+     "ed": "AUD/EUR spot rate = 0.7313, 1-year forward rate quoted at +3.5 points. +3.5 points = (F - S) x 10,000, so F - S = 0.00035, and F = 0.7313 + 0.00035 = 0.73165.",
+     "vn": "Ví dụ tính tỷ giá kỳ hạn từ điểm kỳ hạn",
+     "vd": "Tỷ giá giao ngay AUD/EUR = 0.7313, tỷ giá kỳ hạn 1 năm được yết ở mức +3.5 điểm. +3.5 điểm = (F - S) x 10,000, suy ra F - S = 0.00035, và F = 0.7313 + 0.00035 = 0.73165.",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-forward-rate-in-percentage-terms",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Forward rate in percentage terms",
+     "ed": "Forward exchange rates (or points) may also be quoted as a percentage of the spot rate: F = S x (1 + percentage), so percentage = F/S - 1, where F = forward rate, S = spot rate. Percentage > 0 (premium) means the forward rate is higher than spot; percentage < 0 (discount) means it is lower.",
+     "vn": "Tỷ giá kỳ hạn theo phần trăm",
+     "vd": "Tỷ giá kỳ hạn (hoặc điểm kỳ hạn) cũng có thể được yết theo phần trăm của tỷ giá giao ngay: F = S x (1 + phần trăm), do đó phần trăm = F/S - 1, trong đó F là tỷ giá kỳ hạn, S là tỷ giá giao ngay. Phần trăm > 0 (premium) nghĩa là tỷ giá kỳ hạn cao hơn giao ngay; phần trăm < 0 (discount) nghĩa là thấp hơn.",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-forward-rate-from-percentage-example",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Forward rate from percentage example",
+     "ed": "AUD/EUR spot rate = 0.7313, 1-year forward rate quoted at -0.062%. Forward rate = 0.7313 x (1 - 0.062%) = 0.7308.",
+     "vn": "Ví dụ tính tỷ giá kỳ hạn từ phần trăm",
+     "vd": "Tỷ giá giao ngay AUD/EUR = 0.7313, tỷ giá kỳ hạn 1 năm được yết ở mức -0.062%. Tỷ giá kỳ hạn = 0.7313 x (1 - 0.062%) = 0.7308.",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-forward-premium-vs-forward-discount",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Forward premium vs. forward discount",
+     "ed": "Forward premium: the forward rate is higher than the spot rate, so the base currency is trading at a forward premium and tends to appreciate in the future. Forward discount: the forward rate is lower than the spot rate, so the base currency is trading at a forward discount and is expected to depreciate. On points basis: premium if pips > 0, discount if pips < 0. On percentage basis: premium if percentage > 0, discount if percentage < 0.",
+     "vn": "Forward premium so với forward discount",
+     "vd": "Forward premium: tỷ giá kỳ hạn cao hơn tỷ giá giao ngay, do đó đồng tiền yết giá cơ sở đang giao dịch ở mức premium kỳ hạn và có xu hướng lên giá trong tương lai. Forward discount: tỷ giá kỳ hạn thấp hơn tỷ giá giao ngay, do đó đồng tiền cơ sở đang giao dịch ở mức discount kỳ hạn và được kỳ vọng giảm giá. Theo điểm: premium nếu pips > 0, discount nếu pips < 0. Theo phần trăm: premium nếu phần trăm > 0, discount nếu phần trăm < 0.",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-forward-premium-discount-example",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Forward premium/discount example",
+     "ed": "Case 1: spot CAD/USD = 1.0155, 1-year forward = 1.0183. Percentage = (1.0183/1.0155) - 1 = 0.2757%, so USD (base currency) trades at a forward premium of 0.2757%. Case 2: spot = 1.0183, forward = 1.0155. Percentage = (1.0155/1.0183) - 1 = -0.2749%, so USD trades at a forward discount of -0.2749%.",
+     "vn": "Ví dụ forward premium/discount",
+     "vd": "Trường hợp 1: tỷ giá giao ngay CAD/USD = 1.0155, tỷ giá kỳ hạn 1 năm = 1.0183. Phần trăm = (1.0183/1.0155) - 1 = 0.2757%, nên USD (đồng tiền cơ sở) giao dịch ở mức premium kỳ hạn 0.2757%. Trường hợp 2: tỷ giá giao ngay = 1.0183, tỷ giá kỳ hạn = 1.0155. Phần trăm = (1.0155/1.0183) - 1 = -0.2749%, nên USD giao dịch ở mức discount kỳ hạn -0.2749%.",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-no-arbitrage-forward-rate-condition-covered-interest-ra",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "No-arbitrage forward rate condition (covered interest rate parity setup)",
+     "ed": "Quote USD/EUR at spot rate S. An investor with 1,000 EUR can either (1) invest in EUR at rate i_EUR, earning 1,000(1 + i_EUR) EUR, or (2) convert to USD, invest at i_USD, and convert back at forward rate F, earning (1,000S/F)(1 + i_USD) EUR. Forward rates are set so that no arbitrage profit is possible — a trader earns the same amount investing via any currency.",
+     "vn": "Điều kiện tỷ giá kỳ hạn không có cơ hội chênh lệch giá (nền tảng ngang giá lãi suất có bảo hiểm)",
+     "vd": "Yết giá USD/EUR theo tỷ giá giao ngay S. Nhà đầu tư có 1.000 EUR có thể (1) đầu tư bằng EUR với lãi suất i_EUR, thu được 1.000(1 + i_EUR) EUR, hoặc (2) đổi sang USD, đầu tư với lãi suất i_USD, rồi đổi lại bằng tỷ giá kỳ hạn F, thu được (1.000S/F)(1 + i_USD) EUR. Tỷ giá kỳ hạn được thiết lập sao cho không có cơ hội kiếm lợi nhuận chênh lệch giá — nhà giao dịch thu được cùng một số tiền dù đầu tư qua đồng tiền nào.",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-arbitrage-opportunity-when-earnings-differ-between-opti",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Arbitrage opportunity when earnings differ between options",
+     "ed": "If option 2 earnings exceed option 1 (S/F > (1+i_EUR)/(1+i_USD), or F/S < (1+i_USD)/(1+i_EUR)): borrow EUR today, convert to USD, invest at i_USD; after 1 year the EUR debt cost is less than earnings converted back, yielding a risk-free profit. If option 1 earnings exceed option 2 (S/F < (1+i_EUR)/(1+i_USD), or F/S > (1+i_USD)/(1+i_EUR)): borrow USD today, convert to EUR, invest at i_EUR; the USD debt cost is less than the EUR earnings, again a risk-free profit.",
+     "vn": "Cơ hội chênh lệch giá khi lợi nhuận giữa hai phương án khác nhau",
+     "vd": "Nếu lợi nhuận phương án 2 lớn hơn phương án 1 (S/F > (1+i_EUR)/(1+i_USD), hay F/S < (1+i_USD)/(1+i_EUR)): vay EUR hôm nay, đổi sang USD, đầu tư với lãi suất i_USD; sau 1 năm chi phí nợ EUR thấp hơn khoản thu khi đổi lại, tạo lợi nhuận phi rủi ro. Nếu lợi nhuận phương án 1 lớn hơn phương án 2 (S/F < (1+i_EUR)/(1+i_USD), hay F/S > (1+i_USD)/(1+i_EUR)): vay USD hôm nay, đổi sang EUR, đầu tư với lãi suất i_EUR; chi phí nợ USD thấp hơn khoản thu bằng EUR, cũng tạo lợi nhuận phi rủi ro.",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-covered-interest-rate-parity-formula",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Covered interest rate parity formula",
+     "ed": "To eliminate arbitrage, earnings from both options must be equal, giving: F/S = (1 + i_USD)/(1 + i_EUR), i.e., Forward/Spot = (1 + interest rate of price currency)/(1 + interest rate of base currency).",
+     "vn": "Công thức ngang giá lãi suất có bảo hiểm (Covered interest rate parity)",
+     "vd": "Để loại bỏ chênh lệch giá, lợi nhuận từ cả hai phương án phải bằng nhau, cho ra: F/S = (1 + i_USD)/(1 + i_EUR), tức Tỷ giá kỳ hạn/Tỷ giá giao ngay = (1 + lãi suất đồng tiền yết giá)/(1 + lãi suất đồng tiền cơ sở).",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-covered-interest-rate-parity-with-actual-360-day-count",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Covered interest rate parity with actual/360 day count",
+     "ed": "Incorporating the Actual/360 day count convention: F_f/d = S_f/d x (1 + i_f x actual/360)/(1 + i_d x actual/360), where f is the foreign (price) currency and d is the domestic (base) currency, and 'actual' is the number of days in the period.",
+     "vn": "Ngang giá lãi suất có bảo hiểm với quy ước tính ngày Actual/360",
+     "vd": "Áp dụng quy ước tính ngày Actual/360: F_f/d = S_f/d x (1 + i_f x actual/360)/(1 + i_d x actual/360), trong đó f là đồng tiền yết giá (nước ngoài) và d là đồng tiền cơ sở (trong nước), 'actual' là số ngày thực tế trong kỳ.",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-forward-rate-calculation-example-covered-interest-rate",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "Forward rate calculation example (covered interest rate parity)",
+     "ed": "Spot AUD/USD = 1.0240, 12-month risk-free rate in the US = 4%, in Australia = 2%. F_AUD/USD = S_AUD/USD x (1 + i_AUD x 360/360)/(1 + i_USD x 360/360) = 1.0240 x (1.02/1.04) = 1.0043.",
+     "vn": "Ví dụ tính tỷ giá kỳ hạn (ngang giá lãi suất có bảo hiểm)",
+     "vd": "Tỷ giá giao ngay AUD/USD = 1.0240, lãi suất phi rủi ro 12 tháng tại Mỹ = 4%, tại Úc = 2%. F_AUD/USD = S_AUD/USD x (1 + i_AUD x 360/360)/(1 + i_USD x 360/360) = 1.0240 x (1.02/1.04) = 1.0043.",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-no-arbitrage-relation-forward-premium-discount-approxim",
+     "reading": "Module 8: Exchange Rate Calculations",
+     "en": "No-arbitrage relation: forward premium/discount approximation",
+     "ed": "Forward/Spot - 1 = (1 + i_price currency)/(1 + i_base currency) - 1, which simplifies to (Forward - Spot)/Spot = (i_price currency - i_base currency)/(1 + i_base currency). Since (1 + i_base currency) is approximately 1, (Forward - Spot)/Spot ≈ i_price currency - i_base currency: the percentage difference between forward and spot rates is approximately equal to the interest rate differential between the two countries.",
+     "vn": "Quan hệ không chênh lệch giá: xấp xỉ premium/discount kỳ hạn",
+     "vd": "Tỷ giá kỳ hạn/Tỷ giá giao ngay - 1 = (1 + i_đồng tiền yết giá)/(1 + i_đồng tiền cơ sở) - 1, rút gọn thành (Kỳ hạn - Giao ngay)/Giao ngay = (i_đồng tiền yết giá - i_đồng tiền cơ sở)/(1 + i_đồng tiền cơ sở). Vì (1 + i_đồng tiền cơ sở) xấp xỉ bằng 1, nên (Kỳ hạn - Giao ngay)/Giao ngay ≈ i_đồng tiền yết giá - i_đồng tiền cơ sở: chênh lệch phần trăm giữa tỷ giá kỳ hạn và giao ngay xấp xỉ bằng chênh lệch lãi suất giữa hai quốc gia.",
+     "los": "8.b"
+    },
+    {
+     "id": "econ-exchange-rate-definition",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Exchange rate — definition",
+     "ed": "An exchange rate is the price or cost of one currency (the base currency) stated in terms of another currency (the price currency). Example: 1.416 USD/EUR means EUR is the base currency, USD is the price currency, and each euro costs 1.416 USD.",
+     "vn": "Tỷ giá hối đoái — định nghĩa",
+     "vd": "Tỷ giá hối đoái là giá hoặc chi phí của một đồng tiền (đồng tiền định giá/base currency) tính theo một đồng tiền khác (đồng tiền yết giá/price currency). Ví dụ: 1,416 USD/EUR nghĩa là EUR là base currency, USD là price currency, và mỗi euro có giá 1,416 USD.",
+     "los": "7.a"
+    },
+    {
+     "id": "econ-direct-quote-vs-indirect-quote",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Direct quote vs indirect quote",
+     "ed": "An exchange rate quoted as price currency/base currency is a direct quote for investors in the price currency country (domestic) and an indirect quote for investors in the base currency country (foreign). E.g., 1.416 USD/EUR is a direct quote for a USD-based investor and an indirect quote for a EUR-based investor; 0.706 EUR/USD is the reverse.",
+     "vn": "Yết giá trực tiếp vs yết giá gián tiếp",
+     "vd": "Một tỷ giá được yết theo dạng price currency/base currency là yết giá trực tiếp đối với nhà đầu tư ở nước có price currency (trong nước) và là yết giá gián tiếp đối với nhà đầu tư ở nước có base currency (nước ngoài). Ví dụ: 1,416 USD/EUR là yết giá trực tiếp với nhà đầu tư dùng USD và là yết giá gián tiếp với nhà đầu tư dùng EUR; 0,706 EUR/USD thì ngược lại.",
+     "los": "7.a"
+    },
+    {
+     "id": "econ-currency-appreciation-depreciation-from-a-change-in-the",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Currency appreciation/depreciation from a change in the quote",
+     "ed": "With a price currency/base currency quote: if the exchange rate decreases, the base currency depreciates relative to the price currency (and the price currency appreciates). If the exchange rate increases, the base currency appreciates relative to the price currency (and the price currency depreciates).",
+     "vn": "Lên giá/mất giá theo biến động tỷ giá yết",
+     "vd": "Với tỷ giá yết theo dạng price currency/base currency: nếu tỷ giá giảm, base currency mất giá so với price currency (và price currency lên giá). Nếu tỷ giá tăng, base currency lên giá so với price currency (và price currency mất giá).",
+     "los": "7.a"
+    },
+    {
+     "id": "econ-percentage-change-asymmetry-between-base-and-price-curr",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Percentage change asymmetry between base and price currency",
+     "ed": "For the same exchange rate move, the percentage appreciation of the price currency is NOT equal to the percentage depreciation of the base currency (and vice versa), because percentage changes must be computed on the base currency's own quote convention. Example: USD/EUR falls from 1.42 to 1.39 → EUR depreciates 2.11% vs USD, but converting to EUR/USD (0.7042 to 0.7194) shows USD appreciates 2.16% vs EUR — not the same magnitude.",
+     "vn": "Sự bất đối xứng % thay đổi giữa base currency và price currency",
+     "vd": "Với cùng một biến động tỷ giá, % lên giá của price currency KHÔNG bằng % mất giá của base currency (và ngược lại), vì % thay đổi phải được tính theo đúng cách yết giá của base currency. Ví dụ: USD/EUR giảm từ 1,42 xuống 1,39 → EUR mất giá 2,11% so với USD, nhưng khi đổi sang EUR/USD (0,7042 lên 0,7194) thì USD lại lên giá 2,16% so với EUR — không cùng độ lớn.",
+     "los": "7.a"
+    },
+    {
+     "id": "econ-nominal-exchange-rate",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Nominal exchange rate",
+     "ed": "The nominal exchange rate is the value of a currency stated simply in terms of units of another currency (i.e., the everyday quoted exchange rate).",
+     "vn": "Tỷ giá danh nghĩa (nominal exchange rate)",
+     "vd": "Tỷ giá danh nghĩa là giá trị của một đồng tiền được biểu thị đơn giản theo số đơn vị của một đồng tiền khác (tức tỷ giá được yết thông thường hàng ngày).",
+     "los": "7.a"
+    },
+    {
+     "id": "econ-real-exchange-rate-definition-and-formula",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Real exchange rate — definition and formula",
+     "ed": "The real exchange rate is the real price an individual pays to buy a foreign product using their home currency, adjusted for relative price levels. Formula: Real exchange rate = Nominal exchange rate × (CPI_base / CPI_price). Example: nominal rate 1.6 USD/GBP, CPI US = 110, CPI UK = 112 → real rate = 1.6 × (112/110) = 1.629 USD/GBP, meaning a US consumer must give up 1.81% more domestic goods to buy UK goods due to higher UK inflation.",
+     "vn": "Tỷ giá thực (real exchange rate) — định nghĩa và công thức",
+     "vd": "Tỷ giá thực là mức giá thực tế mà một cá nhân phải trả để mua một sản phẩm nước ngoài bằng đồng nội tệ của mình, đã điều chỉnh theo mức giá tương đối. Công thức: Tỷ giá thực = Tỷ giá danh nghĩa × (CPI_base / CPI_price). Ví dụ: tỷ giá danh nghĩa 1,6 USD/GBP, CPI Mỹ = 110, CPI Anh = 112 → tỷ giá thực = 1,6 × (112/110) = 1,629 USD/GBP, nghĩa là người tiêu dùng Mỹ phải từ bỏ thêm 1,81% hàng hóa trong nước để mua hàng Anh do lạm phát Anh cao hơn.",
+     "los": "7.a"
+    },
+    {
+     "id": "econ-factors-affecting-the-real-exchange-rate",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Factors affecting the real exchange rate",
+     "ed": "Three factors affect the real exchange rate (relative purchasing power of the base-currency country's individuals): (1) Nominal exchange rate — positively related to purchasing power (a rise increases purchasing power); (2) Price level in the base country — positively related (higher base-country prices/income raise purchasing power); (3) Price level in the price country — inversely related (higher price-country prices reduce purchasing power).",
+     "vn": "Các yếu tố ảnh hưởng đến tỷ giá thực",
+     "vd": "Ba yếu tố ảnh hưởng đến tỷ giá thực (sức mua tương đối của cá nhân ở nước có base currency): (1) Tỷ giá danh nghĩa — quan hệ đồng biến với sức mua (tăng tỷ giá danh nghĩa làm tăng sức mua); (2) Mức giá ở nước base currency — quan hệ đồng biến (giá/thu nhập nước base cao hơn làm tăng sức mua); (3) Mức giá ở nước price currency — quan hệ nghịch biến (giá nước price currency cao hơn làm giảm sức mua).",
+     "los": "7.a"
+    },
+    {
+     "id": "econ-spot-exchange-rate-vs-forward-exchange-rate",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Spot exchange rate vs forward exchange rate",
+     "ed": "Spot exchange rate: the rate for immediate delivery — for most currencies, settlement actually occurs 2 days after the trade. Forward exchange rate: a rate agreed today for an exchange to be completed at a future date (commonly quoted for 30, 60, 90 days or 1 year).",
+     "vn": "Tỷ giá giao ngay (spot) vs tỷ giá kỳ hạn (forward)",
+     "vd": "Tỷ giá giao ngay: tỷ giá cho việc giao dịch ngay lập tức — với hầu hết các đồng tiền, việc thanh toán thực tế diễn ra 2 ngày sau giao dịch. Tỷ giá kỳ hạn: tỷ giá được thỏa thuận hôm nay cho một giao dịch sẽ hoàn tất vào một ngày trong tương lai (thường được yết cho các kỳ hạn 30, 60, 90 ngày hoặc 1 năm).",
+     "los": "7.a"
+    },
+    {
+     "id": "econ-functions-of-the-foreign-exchange-fx-market",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Functions of the foreign exchange (FX) market",
+     "ed": "The FX market: (1) facilitates international trade in goods and services; (2) allows investors to convert currencies to move funds into/out of foreign assets; (3) provides instruments for market participants facing exchange rate risk to hedge; (4) enables other participants to speculate on currency values.",
+     "vn": "Chức năng của thị trường ngoại hối (FX market)",
+     "vd": "Thị trường FX: (1) tạo điều kiện cho thương mại quốc tế về hàng hóa và dịch vụ; (2) cho phép nhà đầu tư chuyển đổi giữa các đồng tiền để dịch chuyển vốn vào/ra khỏi tài sản nước ngoài; (3) cung cấp các công cụ giúp các bên tham gia thị trường đối mặt với rủi ro tỷ giá phòng ngừa rủi ro; (4) cho phép các bên tham gia khác đầu cơ vào giá trị đồng tiền.",
+     "los": "7.a"
+    },
+    {
+     "id": "econ-sell-side-vs-buy-side-fx-market-participants",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Sell-side vs buy-side FX market participants",
+     "ed": "Sell-side: the part of the financial industry involved in purchasing and selling foreign currency to/for the public market (e.g., large multinational banks with global reach and technology providing competitive quotes; regional/local banks as second/third-tier due to lacking scale and global client base). Buy-side: the part of the industry that buys or sells foreign currency for its own purposes (e.g., corporations, investment accounts, retail accounts, governments).",
+     "vn": "Bên bán (sell-side) vs bên mua (buy-side) trong thị trường FX",
+     "vd": "Sell-side: bộ phận của ngành tài chính tham gia mua và bán ngoại tệ cho/từ thị trường đại chúng (ví dụ: các ngân hàng đa quốc gia lớn với công nghệ và mạng lưới khách hàng toàn cầu cung cấp báo giá cạnh tranh; ngân hàng khu vực/địa phương thuộc nhóm hai/ba do thiếu quy mô và khách hàng toàn cầu). Buy-side: bộ phận của ngành mua hoặc bán ngoại tệ cho mục đích của chính mình (ví dụ: doanh nghiệp, tài khoản đầu tư, tài khoản bán lẻ, chính phủ).",
+     "los": "7.a"
+    },
+    {
+     "id": "econ-buy-side-participants-investment-accounts-real-money-vs",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Buy-side participants: investment accounts (real money vs leveraged)",
+     "ed": "Investment accounts transact in foreign currencies via holding foreign securities or currency derivatives. Real money accounts: mutual funds, pension funds, insurance companies, and other institutional accounts that do not use derivatives. Leveraged accounts: investment firms that use derivatives, including hedge funds and firms trading for their own account.",
+     "vn": "Bên mua: tài khoản đầu tư (real money vs leveraged)",
+     "vd": "Tài khoản đầu tư giao dịch ngoại tệ thông qua việc nắm giữ chứng khoán nước ngoài hoặc phái sinh tiền tệ. Tài khoản real money: quỹ tương hỗ, quỹ hưu trí, công ty bảo hiểm và các tổ chức khác không sử dụng phái sinh. Tài khoản leveraged: các công ty đầu tư sử dụng phái sinh, bao gồm quỹ phòng hộ (hedge fund) và các công ty giao dịch cho tài khoản riêng của mình.",
+     "los": "7.a"
+    },
+    {
+     "id": "econ-three-properties-of-the-ideal-currency-regime",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Three properties of the ideal currency regime",
+     "ed": "An ideal currency regime would have: (1) the exchange rate between any two currencies credibly fixed; (2) all currencies fully convertible (freely exchanged for any purpose and amount); (3) each country able to conduct fully independent monetary policy for domestic objectives (growth, inflation). These three conditions are mutually inconsistent, so no ideal currency regime can exist.",
+     "vn": "Ba đặc điểm của chế độ tỷ giá lý tưởng",
+     "vd": "Một chế độ tỷ giá lý tưởng sẽ có: (1) tỷ giá giữa hai đồng tiền bất kỳ được cố định đáng tin cậy; (2) tất cả các đồng tiền được chuyển đổi hoàn toàn tự do (trao đổi tự do cho bất kỳ mục đích và số lượng nào); (3) mỗi quốc gia có thể thực hiện chính sách tiền tệ hoàn toàn độc lập vì mục tiêu trong nước (tăng trưởng, lạm phát). Ba điều kiện này không thể đồng thời thỏa mãn, do đó không tồn tại chế độ tỷ giá lý tưởng.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-taxonomy-of-currency-regimes",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Taxonomy of currency regimes",
+     "ed": "Currency regimes split into: (1) countries without their own currency — dollarization, monetary union; (2) countries with their own currency — currency board arrangement, conventional fixed peg, target zone, crawling peg, fixed parity with crawling bands, managed float, independently floating rates. Moving down this list generally increases exchange rate flexibility and decreases the loss of monetary policy independence.",
+     "vn": "Phân loại các chế độ tỷ giá",
+     "vd": "Các chế độ tỷ giá chia thành: (1) quốc gia không có đồng tiền riêng — dollarization (đô la hóa), liên minh tiền tệ (monetary union); (2) quốc gia có đồng tiền riêng — currency board arrangement, conventional fixed peg, target zone, crawling peg, fixed parity with crawling bands, managed float, independently floating rates. Đi dần xuống danh sách này, tính linh hoạt tỷ giá thường tăng lên còn mức độ mất tính độc lập của chính sách tiền tệ giảm dần.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-dollarization",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Dollarization",
+     "ed": "A country uses another nation's currency (usually the USD) as its medium of exchange and unit of account (e.g., Ecuador, Caribbean Netherlands). The country inherits the currency's credibility but not its credit-worthiness — local banks are not Fed members and lack FDIC insurance, so interest rates differ from those in the US. Pros: central bank cannot inflate away debt; can boost trade/capital flows via expectation of stability. Cons: loses ability to conduct independent monetary policy.",
+     "vn": "Đô la hóa (Dollarization)",
+     "vd": "Một quốc gia sử dụng đồng tiền của nước khác (thường là USD) làm phương tiện trao đổi và đơn vị hạch toán (ví dụ: Ecuador, vùng Caribbean thuộc Hà Lan). Quốc gia này thừa hưởng độ tin cậy của đồng tiền đó nhưng không thừa hưởng mức tín nhiệm tín dụng — ngân hàng địa phương không phải thành viên Fed và không có bảo hiểm FDIC, nên lãi suất khác với ở Mỹ. Ưu điểm: ngân hàng trung ương không thể in tiền để giảm nợ; có thể thúc đẩy thương mại/dòng vốn nhờ kỳ vọng ổn định. Nhược điểm: mất khả năng thực hiện chính sách tiền tệ độc lập.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-monetary-union",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Monetary union",
+     "ed": "Member countries share the same legal tender (e.g., the European Economic and Monetary Union, whose members use the euro), with monetary policy conducted centrally (e.g., by the ECB). Pros: gives credibility to economies with a history of fiscal excess/monetary indiscipline. Cons: members do not gain their own creditworthiness (e.g., Greece's 2010 sovereign debt crisis) and cannot conduct independent monetary policy.",
+     "vn": "Liên minh tiền tệ (Monetary union)",
+     "vd": "Các nước thành viên dùng chung một đồng tiền pháp định (ví dụ: Liên minh Kinh tế và Tiền tệ Châu Âu, các thành viên dùng đồng euro), với chính sách tiền tệ được điều hành tập trung (ví dụ: bởi ECB). Ưu điểm: tạo độ tin cậy cho các nền kinh tế có lịch sử thâm hụt tài khóa/thiếu kỷ luật tiền tệ. Nhược điểm: các thành viên không có được mức tín nhiệm tín dụng riêng (ví dụ: khủng hoảng nợ công Hy Lạp năm 2010) và không thể thực hiện chính sách tiền tệ độc lập.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-currency-board-arrangement",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Currency board arrangement",
+     "ed": "An explicit commitment to exchange domestic currency for a specified foreign currency at a fixed exchange rate; domestic currency is only issued when fully backed by holdings of an equivalent amount of the foreign currency, which resists uncontrolled money printing and inflation. Example: Hong Kong's currency is fully backed by USD holdings.",
+     "vn": "Chế độ ủy ban tiền tệ (Currency board arrangement)",
+     "vd": "Một cam kết rõ ràng đổi đồng nội tệ lấy một đồng ngoại tệ được chỉ định theo tỷ giá cố định; đồng nội tệ chỉ được phát hành khi được đảm bảo hoàn toàn bởi lượng ngoại tệ tương đương, giúp hạn chế việc in tiền không kiểm soát và lạm phát. Ví dụ: đồng tiền Hồng Kông được đảm bảo hoàn toàn bằng dự trữ USD.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-conventional-fixed-peg-arrangement",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Conventional fixed peg arrangement",
+     "ed": "A country pegs its currency within margins of ±1% versus another currency or a basket of currencies of its major trading/financial partners; the monetary authority stands ready to buy/sell foreign currency reserves to keep the rate within a narrow band. Example: the UAE dirham pegged to the US dollar.",
+     "vn": "Chế độ neo tỷ giá cố định thông thường (Conventional fixed peg arrangement)",
+     "vd": "Một quốc gia neo đồng tiền của mình trong biên độ ±1% so với một đồng tiền khác hoặc một rổ tiền tệ của các đối tác thương mại/tài chính lớn; cơ quan tiền tệ sẵn sàng mua/bán dự trữ ngoại tệ để giữ tỷ giá trong một biên độ hẹp. Ví dụ: đồng dirham của UAE neo theo đô la Mỹ.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-target-zone",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Target zone",
+     "ed": "Similar to a fixed-rate system, but the monetary authority aims to maintain the exchange rate within a slightly broader band than a conventional fixed peg.",
+     "vn": "Vùng mục tiêu (Target zone)",
+     "vd": "Tương tự chế độ tỷ giá cố định, nhưng cơ quan tiền tệ đặt mục tiêu duy trì tỷ giá trong một biên độ rộng hơn một chút so với chế độ neo cố định thông thường.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-crawling-peg-passive-vs-active",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Crawling peg (passive vs active)",
+     "ed": "A crawling peg adjusts the exchange rate in small steps over time. Passive crawling peg: the exchange rate is adjusted frequently in line with the rate of inflation. Active crawling peg: the exchange rate path is pre-announced for coming weeks, with changes made in small steps.",
+     "vn": "Neo tỷ giá trườn bò (Crawling peg) — thụ động vs chủ động",
+     "vd": "Crawling peg điều chỉnh tỷ giá theo từng bước nhỏ theo thời gian. Crawling peg thụ động: tỷ giá được điều chỉnh thường xuyên theo tỷ lệ lạm phát. Crawling peg chủ động: lộ trình tỷ giá được công bố trước cho các tuần sắp tới, và các thay đổi được thực hiện theo từng bước nhỏ.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-fixed-parity-with-crawling-bands",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Fixed parity with crawling bands",
+     "ed": "A regime in which the width of the bands that identify permissible exchange rates is increased over time, signaling the country is moving toward a more flexible exchange rate system.",
+     "vn": "Chế độ cố định ngang giá với biên độ trườn bò (Fixed parity with crawling bands)",
+     "vd": "Một chế độ trong đó độ rộng của biên độ xác định tỷ giá được phép dao động tăng dần theo thời gian, cho thấy quốc gia đang tiến tới một hệ thống tỷ giá linh hoạt hơn.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-managed-float",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Managed float",
+     "ed": "The country does not explicitly state an exchange rate target; instead it intervenes in FX markets as needed to meet policy objectives regarding trade balance, price stability, or unemployment. Example: in September 2000 the ECB sold EUR 2.5 billion of USD-denominated interest revenues to support the falling euro via the portfolio balance mechanism (reducing demand for USD, causing USD to depreciate and EUR to appreciate).",
+     "vn": "Thả nổi có quản lý (Managed float)",
+     "vd": "Quốc gia không công bố rõ mục tiêu tỷ giá; thay vào đó can thiệp vào thị trường FX khi cần để đạt các mục tiêu chính sách về cán cân thương mại, ổn định giá cả, hoặc thất nghiệp. Ví dụ: tháng 9/2000, ECB đã bán 2,5 tỷ EUR khoản thu lãi bằng USD để hỗ trợ đồng euro đang giảm giá thông qua cơ chế cân bằng danh mục (portfolio balance mechanism) — làm giảm cầu USD, khiến USD mất giá và EUR lên giá.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-independently-floating-rates",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Independently floating rates",
+     "ed": "The central bank rarely intervenes in exchange rate determination, which is left to market supply and demand; there is no band imposed on the exchange rate.",
+     "vn": "Tỷ giá thả nổi độc lập (Independently floating rates)",
+     "vd": "Ngân hàng trung ương hiếm khi can thiệp vào việc xác định tỷ giá, để tỷ giá được quyết định bởi cung cầu thị trường; không có biên độ nào được áp đặt lên tỷ giá.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-determinants-of-exchange-rate-capital-flows-vs-trade-fl",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Determinants of exchange rate: capital flows vs trade flows",
+     "ed": "Capital flows (potential and actual) are the primary determinant of exchange rate movements in the short to intermediate term, while trade flows are the important determinant in the long term — because expenditure/saving decisions and goods prices change much more slowly than financial investment decisions and asset prices.",
+     "vn": "Các yếu tố quyết định tỷ giá: dòng vốn vs dòng thương mại",
+     "vd": "Dòng vốn (tiềm năng và thực tế) là yếu tố quyết định chính đối với biến động tỷ giá trong ngắn đến trung hạn, trong khi dòng thương mại là yếu tố quan trọng trong dài hạn — vì các quyết định chi tiêu/tiết kiệm và giá hàng hóa thay đổi chậm hơn nhiều so với các quyết định đầu tư tài chính và giá tài sản.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-elasticities-approach-and-the-marshall-lerner-condition",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Elasticities approach and the Marshall-Lerner condition",
+     "ed": "The elasticities approach examines how currency depreciation affects the trade balance based on the price-sensitivity (elasticity) of export and import demand. The Marshall-Lerner condition, ω_X ε_X + ω_M(ε_M − 1) > 0, is satisfied when export and import demand are relatively elastic — in that case, domestic currency depreciation increases export revenue and decreases import expenditure, so X − M increases and the current account deficit shrinks. If demand is relatively inelastic (condition not satisfied), depreciation instead increases the current account deficit.",
+     "vn": "Phương pháp co giãn và điều kiện Marshall-Lerner",
+     "vd": "Phương pháp co giãn (elasticities approach) xem xét cách mất giá tiền tệ ảnh hưởng đến cán cân thương mại dựa trên độ nhạy cảm với giá (độ co giãn) của cầu xuất khẩu và nhập khẩu. Điều kiện Marshall-Lerner, ω_X ε_X + ω_M(ε_M − 1) > 0, được thỏa mãn khi cầu xuất khẩu và nhập khẩu tương đối co giãn — khi đó, việc nội tệ mất giá làm tăng doanh thu xuất khẩu và giảm chi tiêu nhập khẩu, nên X − M tăng và thâm hụt tài khoản vãng lai thu hẹp. Nếu cầu tương đối không co giãn (điều kiện không thỏa mãn), việc mất giá sẽ làm tăng thâm hụt tài khoản vãng lai.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-elasticities-approach-time-lag-of-trade-balance-effects",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Elasticities approach: time lag of trade balance effects (J-curve idea)",
+     "ed": "Because import/export contracts usually require future delivery and payment, trade quantities are relatively insensitive to currency depreciation in the short run. A currency depreciation may initially worsen the trade deficit; only over time, as importers and exporters adjust, do the expected effects (per the Marshall-Lerner condition) actually take place.",
+     "vn": "Phương pháp co giãn: độ trễ thời gian của tác động lên cán cân thương mại (ý tưởng đường cong J)",
+     "vd": "Vì các hợp đồng xuất/nhập khẩu thường yêu cầu giao hàng và thanh toán trong tương lai, khối lượng thương mại tương đối kém nhạy cảm với việc mất giá tiền tệ trong ngắn hạn. Việc mất giá tiền tệ ban đầu có thể làm thâm hụt thương mại xấu đi; chỉ theo thời gian, khi nhà xuất/nhập khẩu điều chỉnh, các tác động kỳ vọng (theo điều kiện Marshall-Lerner) mới thực sự xảy ra.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-absorption-approach-formula",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Absorption approach — formula",
+     "ed": "The absorption approach is a macroeconomic technique focusing on capital flows (capital account): BT = Y − E, where Y = domestic production of goods and services (national income), E = domestic absorption (total expenditure), and BT = balance of trade. A currency depreciation raises the current account surplus if it increases national income relative to expenditure (equivalently, national saving relative to investment).",
+     "vn": "Phương pháp hấp thụ (Absorption approach) — công thức",
+     "vd": "Phương pháp hấp thụ là một kỹ thuật kinh tế vĩ mô tập trung vào dòng vốn (tài khoản vốn): BT = Y − E, trong đó Y = sản lượng hàng hóa và dịch vụ trong nước (thu nhập quốc dân), E = mức hấp thụ trong nước (tổng chi tiêu), và BT = cán cân thương mại. Việc nội tệ mất giá làm tăng thặng dư tài khoản vãng lai nếu nó làm tăng thu nhập quốc dân so với chi tiêu (tương đương, tăng tiết kiệm quốc dân so với đầu tư).",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-absorption-approach-economy-below-full-employment",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Absorption approach — economy below full employment",
+     "ed": "When the economy operates at less than full capacity, currency depreciation makes domestic goods/assets more attractive than foreign ones, shifting demand toward domestic goods and increasing both income and expenditure — but because part of the income increase is saved, income rises more than expenditure, so the balance of trade (current account) improves. The same logic applies in reverse for currency appreciation.",
+     "vn": "Phương pháp hấp thụ — nền kinh tế dưới mức toàn dụng",
+     "vd": "Khi nền kinh tế hoạt động dưới công suất toàn dụng, việc nội tệ mất giá khiến hàng hóa/tài sản trong nước hấp dẫn hơn hàng hóa/tài sản nước ngoài, làm dịch chuyển cầu sang hàng nội địa và tăng cả thu nhập lẫn chi tiêu — nhưng vì một phần thu nhập tăng thêm được tiết kiệm, thu nhập tăng nhiều hơn chi tiêu, nên cán cân thương mại (tài khoản vãng lai) được cải thiện. Logic tương tự áp dụng ngược lại khi nội tệ lên giá.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-absorption-approach-economy-at-full-employment",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Absorption approach — economy at full employment",
+     "ed": "At full employment (potential GDP), output/income cannot increase further. Currency depreciation raises domestic spending without raising output, driving up domestic prices, which reverses the relative price change from the depreciation. The decline in domestic asset values reduces savers' real wealth, prompting increased saving to rebuild it; over time wealth is regained and saving falls back, returning the economy and trade balance to their previous state — i.e., no lasting effect on the balance of trade. Same logic applies in reverse for appreciation.",
+     "vn": "Phương pháp hấp thụ — nền kinh tế ở mức toàn dụng",
+     "vd": "Ở mức toàn dụng (GDP tiềm năng), sản lượng/thu nhập không thể tăng thêm. Việc nội tệ mất giá làm tăng chi tiêu trong nước mà không tăng sản lượng, đẩy giá trong nước tăng lên, làm đảo ngược thay đổi giá tương đối do việc mất giá tạo ra. Sự sụt giảm giá trị tài sản trong nước làm giảm của cải thực của người tiết kiệm, thúc đẩy họ tăng tiết kiệm để khôi phục; theo thời gian của cải được khôi phục và tiết kiệm giảm trở lại, đưa nền kinh tế và cán cân thương mại về trạng thái ban đầu — tức không có tác động lâu dài lên cán cân thương mại. Logic tương tự áp dụng ngược lại khi nội tệ lên giá.",
+     "los": "7.b"
+    },
+    {
+     "id": "econ-capital-restrictions-definition-and-types",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Capital restrictions — definition and types",
+     "ed": "Capital restrictions are controls placed on the flow of financial capital across borders (limiting foreigners' ability to own domestic assets and/or domestic residents' ability to own foreign assets), which limit the openness of financial markets. Two broad types: price controls (special taxes on returns from international investments, taxes on certain transactions, mandatory reserve requirements) and quantity controls (limits on borrowing from foreign creditors, special authorization requirements, government approval for certain transactions, outright prohibitions on international trade in assets).",
+     "vn": "Hạn chế vốn (Capital restrictions) — định nghĩa và các loại",
+     "vd": "Hạn chế vốn là các biện pháp kiểm soát đối với dòng chảy vốn tài chính qua biên giới (giới hạn khả năng người nước ngoài sở hữu tài sản trong nước và/hoặc khả năng cư dân trong nước sở hữu tài sản nước ngoài), làm hạn chế tính mở của thị trường tài chính. Hai loại chính: kiểm soát giá (thuế đặc biệt trên lợi nhuận đầu tư quốc tế, thuế trên một số loại giao dịch, yêu cầu dự trữ bắt buộc) và kiểm soát số lượng (giới hạn mức vay từ chủ nợ nước ngoài, yêu cầu cấp phép đặc biệt, yêu cầu chấp thuận của chính phủ cho một số giao dịch, cấm hoàn toàn giao dịch tài sản quốc tế).",
+     "los": "7.c"
+    },
+    {
+     "id": "econ-costs-and-benefits-of-capital-restrictions",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Costs and benefits of capital restrictions",
+     "ed": "Short-run benefits: capital restrictions help developing countries avoid the impact of large inflows of foreign capital (expansion) and large outflows (contraction). Long-run costs: administrative costs; negative market perceptions that raise the cost of a country's foreign borrowing; and delayed necessary policy adjustments or impeded private-sector adaptation due to protection of domestic financial markets. Overall, short-term benefits typically do not offset long-term costs, so capital restrictions decrease economic welfare overall.",
+     "vn": "Chi phí và lợi ích của hạn chế vốn",
+     "vd": "Lợi ích ngắn hạn: hạn chế vốn giúp các nước đang phát triển tránh tác động của dòng vốn nước ngoài chảy vào lớn (mở rộng) và dòng vốn chảy ra lớn (thu hẹp). Chi phí dài hạn: chi phí hành chính; nhận thức tiêu cực của thị trường làm tăng chi phí vay vốn nước ngoài của quốc gia; và việc bảo hộ thị trường tài chính trong nước có thể trì hoãn các điều chỉnh chính sách cần thiết hoặc cản trở khu vực tư nhân thích nghi. Nhìn chung, lợi ích ngắn hạn thường không bù đắp được chi phí dài hạn, nên hạn chế vốn làm giảm phúc lợi kinh tế tổng thể.",
+     "los": "7.c"
+    },
+    {
+     "id": "econ-objectives-of-capital-restrictions-4",
+     "reading": "Module 7: Capital Flows And The FX Market",
+     "en": "Objectives of capital restrictions (4)",
+     "ed": "Common government objectives for imposing capital restrictions: (1) reduce the volatility of domestic asset prices by limiting capital inflow/outflow during expansions/contractions; (2) maintain fixed exchange rates by limiting foreign investment capital flows, making it easier to hit fixed-rate targets and boosting the impact of monetary/fiscal policy; (3) keep domestic interest rates low by limiting the outflow of investment capital; (4) protect strategic industries by prohibiting foreign investment in industries important to national security, such as defense or telecommunications.",
+     "vn": "Các mục tiêu của hạn chế vốn (4)",
+     "vd": "Các mục tiêu phổ biến khiến chính phủ áp đặt hạn chế vốn: (1) giảm biến động giá tài sản trong nước bằng cách hạn chế dòng vốn vào/ra trong các giai đoạn mở rộng/thu hẹp; (2) duy trì tỷ giá cố định bằng cách hạn chế dòng vốn đầu tư nước ngoài, giúp dễ đạt mục tiêu tỷ giá cố định hơn và tăng tác động của chính sách tiền tệ/tài khóa; (3) giữ lãi suất trong nước ở mức thấp bằng cách hạn chế dòng vốn đầu tư chảy ra; (4) bảo vệ các ngành chiến lược bằng cách cấm đầu tư nước ngoài vào các ngành quan trọng đối với an ninh quốc gia, như quốc phòng hoặc viễn thông.",
+     "los": "7.c"
     }
    ]
   },
