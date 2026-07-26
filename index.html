@@ -44,7 +44,9 @@ header{position:sticky;top:0;z-index:20;background:linear-gradient(180deg,var(--
 .hwrap{max-width:1120px;margin:0 auto;
   padding:calc(11px + env(safe-area-inset-top,0px)) max(22px,env(safe-area-inset-right,0px)) 9px max(22px,env(safe-area-inset-left,0px));}
 .titlerow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
-.brand{display:flex;flex-direction:column;}
+.brand{display:flex;flex-direction:column;max-height:60px;opacity:1;overflow:hidden;
+  transition:max-height .25s ease,opacity .2s ease;}
+header.collapsed .brand{max-height:0;opacity:0;}
 .chap{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:600;}
 h1{font-family:'Playfair Display',serif;font-size:1.1rem;margin:.02rem 0 0;font-weight:700;
   letter-spacing:-.2px;color:var(--accent-deep);}
@@ -583,6 +585,16 @@ $('#theme').onclick=()=>{
   if(dark){document.documentElement.removeAttribute('data-theme');$('#theme').textContent='🌙 Dark';localStorage.setItem('cfa_theme','light');}
   else{document.documentElement.setAttribute('data-theme','dark');$('#theme').textContent='☀️ Light';localStorage.setItem('cfa_theme','dark');}
 };
+
+// collapse the brand title once the user starts scrolling, to reclaim vertical space for the deck
+const headerEl=document.querySelector('header');
+let headerCollapsed=false;
+function onScroll(){
+  const collapsed=window.scrollY>40;
+  if(collapsed!==headerCollapsed){ headerCollapsed=collapsed; headerEl.classList.toggle('collapsed',collapsed); }
+}
+window.addEventListener('scroll',onScroll,{passive:true});
+onScroll();
 
 boot();
 </script>
