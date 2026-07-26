@@ -67,6 +67,18 @@ select{border:1px solid var(--line);background:var(--panel);color:var(--ink);bor
 .chip.rd{border-color:var(--amber);color:var(--amber);}
 .chip.rd:hover{background:var(--amber-soft);color:var(--amber);border-color:var(--amber);}
 .chip.rd.active{background:var(--amber);color:#fff;border-color:var(--amber);}
+.notesbar{margin-top:9px;}
+.notepanel{margin-top:8px;max-height:280px;overflow-y:auto;border:1px solid var(--line);border-radius:12px;
+  background:var(--panel);padding:6px;display:flex;flex-direction:column;gap:2px;}
+.noterow{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:8px;cursor:pointer;
+  transition:.15s;text-align:left;border:none;background:none;width:100%;font-family:inherit;}
+.noterow:hover{background:var(--accent-soft);}
+.noterow-head{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);}
+.noterow-head b{color:var(--accent-deep);font-weight:600;}
+.noterow-text{font-size:12.5px;color:var(--ink);line-height:1.5;white-space:pre-wrap;}
+.notepanel .empty2{padding:16px;text-align:center;color:var(--muted);font-size:12.5px;}
+@keyframes jumpFlash{0%{box-shadow:0 0 0 3px var(--amber)}100%{box-shadow:none}}
+.card.jump-flash .face{animation:jumpFlash 1.4s ease-out;}
 .chip{border:1px solid var(--line);background:var(--panel);color:var(--muted);border-radius:999px;
   padding:5px 13px;font-size:12px;cursor:pointer;font-weight:600;transition:.18s;}
 .chip:hover{color:var(--accent-deep);border-color:var(--accent);background:var(--accent-soft);}
@@ -194,6 +206,10 @@ footer{max-width:1120px;margin:0 auto;padding:14px 22px 44px;color:var(--muted);
     </div>
     <div class="topics" id="topics"></div>
     <div class="readings" id="readings" style="display:none"></div>
+    <div class="notesbar">
+      <button class="btn" id="notesToggle">📝 Ghi chú <span id="notesCount">(0)</span></button>
+      <div class="notepanel" id="notepanel" style="display:none"></div>
+    </div>
   </div>
 </header>
 
@@ -338,6 +354,7 @@ function render(){
     const col=topicColors[c.topic];
     const el=document.createElement('div');
     el.className='card'+(allFlipped?' flipped':'');
+    el.dataset.cid=c.id;
     el.innerHTML=`
       <div class="inner">
         <div class="face front">
@@ -383,12 +400,12 @@ function render(){
       const ta=hlnoteEl.querySelector('.hlnote-ta');
       ta.addEventListener('input',()=>{
         const cur=getHL(c.id); if(!cur[lang][idx]) return;
-        cur[lang][idx].n=ta.value; setHL(c.id,{en:cur.en,vi:cur.vi});
+        cur[lang][idx].n=ta.value; setHL(c.id,{en:cur.en,vi:cur.vi}); refreshNotesBar();
       });
       hlnoteEl.querySelector('[data-hl-del]').onclick=ev=>{
         ev.stopPropagation();
         const cur=getHL(c.id); cur[lang].splice(idx,1); setHL(c.id,{en:cur.en,vi:cur.vi});
-        closeHLNote(); paint();
+        closeHLNote(); paint(); refreshNotesBar();
       };
       hlnoteEl.querySelector('[data-hl-close]').onclick=ev=>{ ev.stopPropagation(); closeHLNote(); };
       ta.focus();
@@ -449,7 +466,7 @@ function render(){
     el.querySelectorAll('.sbtn').forEach(btn=>btn.onclick=e=>{
       e.stopPropagation();
       const a=btn.dataset.act, cur=st(c.id), ns={...cur};
-      if(a==='clr'){ setHL(c.id,{en:[],vi:[]}); closeHLNote(); paint(); return; }
+      if(a==='clr'){ setHL(c.id,{en:[],vi:[]}); closeHLNote(); paint(); refreshNotesBar(); return; }
       if(a==='k') ns.s=ns.s==='k'?null:'k';
       if(a==='u') ns.s=ns.s==='u'?null:'u';
       state[c.id]=ns; save(); updateStats();
@@ -458,11 +475,12 @@ function render(){
       if(statusFilter!=='all') render();
     });
     const ta=el.querySelector('.note');
-    ta.addEventListener('input',()=>{const cur=st(c.id);state[c.id]={...cur,n:ta.value};save();});
+    ta.addEventListener('input',()=>{const cur=st(c.id);state[c.id]={...cur,n:ta.value};save();refreshNotesBar();});
     deck.appendChild(el);
   });
   $('#count').textContent=`${list.length} / ${cards.length} cards`;
   updateStats();
+  refreshNotesBar();
 }
 
 function updateStats(){
@@ -474,6 +492,56 @@ function updateStats(){
   $('#barfill').style.width=pct+'%';
   $('#pct').textContent=pct+'%';
 }
+
+/* ----- notes toolbar: lists every card-note and highlight-note in the active topic, click to jump ----- */
+function collectNotes(){
+  const scope=activeTopic==='All'?cards:cards.filter(c=>c.topic===activeTopic);
+  const out=[];
+  scope.forEach(c=>{
+    const s=st(c.id);
+    if(s.n&&s.n.trim()) out.push({cid:c.id,type:'card',text:s.n.trim(),term:c.en});
+    const hl=getHL(c.id);
+    hl.en.forEach(h=>{ if(h.n&&h.n.trim()) out.push({cid:c.id,type:'hl',text:h.n.trim(),term:c.en}); });
+    hl.vi.forEach(h=>{ if(h.n&&h.n.trim()) out.push({cid:c.id,type:'hl',text:h.n.trim(),term:c.en}); });
+  });
+  return out;
+}
+function refreshNotesBar(){
+  const notes=collectNotes();
+  $('#notesCount').textContent='('+notes.length+')';
+  const panel=$('#notepanel');
+  if(panel.style.display==='none') return;
+  if(!notes.length){
+    panel.innerHTML='<div class="empty2">Chưa có ghi chú nào trong '+(activeTopic==='All'?'bộ thẻ':'môn này')+'.</div>';
+    return;
+  }
+  panel.innerHTML=notes.map(nt=>`
+    <button class="noterow" data-cid="${nt.cid}">
+      <div class="noterow-head">${nt.type==='hl'?'🖍️':'📝'} <b>${esc(nt.term)}</b></div>
+      <div class="noterow-text">${esc(nt.text.length>140?nt.text.slice(0,140)+'…':nt.text)}</div>
+    </button>`).join('');
+  panel.querySelectorAll('.noterow').forEach(row=>row.onclick=()=>jumpToCard(row.dataset.cid));
+}
+function jumpToCard(cid){
+  const c=cards.find(x=>x.id===cid); if(!c) return;
+  $('#notepanel').style.display='none';
+  activeTopic=c.topic; activeReading=c.reading||'All'; q=''; statusFilter='all';
+  searchEl.value=''; filterEl.value='all';
+  saveUI(); renderTopics(); renderReadings(); render();
+  requestAnimationFrame(()=>{
+    const card=deck.querySelector('.card[data-cid="'+cid+'"]');
+    if(!card) return;
+    card.classList.add('flipped');
+    card.scrollIntoView({behavior:'smooth',block:'center'});
+    card.classList.add('jump-flash');
+    setTimeout(()=>card.classList.remove('jump-flash'),1500);
+  });
+}
+$('#notesToggle').onclick=()=>{
+  const panel=$('#notepanel');
+  panel.style.display = panel.style.display==='none' ? '' : 'none';
+  refreshNotesBar();
+};
 
 function esc(s){return s.replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
 
